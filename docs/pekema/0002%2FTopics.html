@@ -1,0 +1,776 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>xUTP Magazine - xUTP Topics: 第二回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    div.adminmenu {
+    display: block;
+}
+
+span.adminmenu {
+    background-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    border-color: rgb(255,255,255);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+span.adminmenu a {
+    background-color: transparent;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+/*
+span.adminmenu a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+*/
+
+span.adminmenu a:hover {
+    background-color: transparent;
+    color: green;
+    text-decoration: none;
+}
+
+body {
+    background-position: top center;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 0.4em;
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 {
+    border-color: #000000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: large;
+    margin-bottom: 0.4em;
+    margin-top: 50px;
+    padding-left: 0.2em;
+    text-align: left;
+}
+h1.header a {
+    color: #444444;
+    text-decoration: none;
+}
+
+div.body a {
+    background-color: transparent;
+    color: #0000EE;
+}
+div.body a:visited {
+    background-color: transparent;
+    color: #000095;
+}
+div.body a:hover {
+    background-color: transparent;
+    color: #FF6835;
+}
+
+div.body h3 a {
+    text-decoration: none;
+}
+div.body h4 a {
+    text-decoration: none;
+}
+
+div.referer, div.refererlist, div.day div.form {
+    border-color: #AA1111;
+    border-style: solid;
+    border-width: 1px;
+    font-size: small;
+    margin-bottom: 0.5em;
+    margin-left: 3em;
+    padding: 0.5em;
+}
+div.day div.field {
+    display: inline;
+    margin-right: 1em;
+}
+img.icon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.amazon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.right {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.ext {
+    border: medium none;
+}
+div.comment {
+    display: none;
+    font-size: x-small;
+}
+div.trackbacks {
+    display: inline;
+    font-size: small;
+}
+
+div.main {
+    background-position: 0 44px;
+    background-repeat: no-repeat;
+    margin-left: 150px;
+    margin-right: 0.6em;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+}
+div.main hr {
+    background-color: transparent;
+    color: #888888;
+    width: 96%;
+}
+div.main hr.sep {
+    display: none;
+    margin: 0;
+}
+div.main h2 {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid green;
+    border-left: 15px solid green;
+    color: #000000;
+    font-size: 150%;
+    margin: 0.5em 0;
+    padding: 0.2em;
+    text-align: left;
+}
+div.main p img {
+    float: left;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p em img {
+    float: none;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p strong img {
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+div.main dt img {
+    float: left;
+    margin: 0.6em;
+}
+div.main dd img {
+    float: right;
+    margin: 0.2em 0.8em 0.6em 0.6em;
+}
+div.main dl {
+    clear: none;
+}
+div.main div.day, h2, h3, h4, h5, h6, h7, h8, h9, hr {
+    clear: both;
+}
+div.main h2 a:link, div.main h2 a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+div.main h2 span.title {
+}
+div.main div.day {
+    font-size: 90%;
+    margin-right: 0;
+}
+div.main div.section {
+    margin-left: 1em;
+}
+div.main span.readmore {
+    font-size: 80%;
+}
+div.main div.lm {
+    font-size: 75%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-top: 0;
+    text-align: right;
+}
+span.lm {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 1px 0 0;
+}
+div.main h3 {
+    border-color: #950000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: 110%;
+}
+div.main h4 {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 0 0 1px;
+    font-size: 100%;
+    margin-left: 0.6em;
+}
+div.main h5, h6, h7, h8, h9 {
+    font-size: 100%;
+    margin: 0;
+    padding: 0.4em 1em;
+}
+div.main p {
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    padding-right: 2em;
+}
+div.main li {
+    line-height: 1.5;
+}
+div.main ul, div.main dl {
+    margin-left: 2em;
+    margin-top: 0.2em;
+    padding-left: 0;
+}
+div.main dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+div.main dd {
+    line-height: 140%;
+    margin-left: 2em;
+}
+div.main pre {
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    margin-left: 2em;
+    padding: 4px;
+}
+div.main blockquote {
+    background-color: #F0F0F0;
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    color: #333333;
+    padding: 8px 8px 0;
+}
+div.main table {
+    border-collapse: collapse;
+    margin: 1em;
+    text-align: center;
+}
+div.main td {
+    border: thin solid #888888;
+    padding: 2px 0.6em;
+}
+div.form {
+    clear: right;
+}
+span.corres {
+    font-size: 80%;
+    font-weight: lighter;
+}
+div.main span.footnote a {
+    font-size: x-small;
+    text-decoration: none;
+}
+div.main p.footnote {
+    font-size: small;
+}
+div.main p.footnote a {
+    text-decoration: none;
+}
+div.sidebar {
+    display: block;
+    background-color: green;
+    background-repeat: no-repeat;
+    color: #FFEEEE;
+    left: 0;
+    padding-bottom: 5em;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    width: 150px;
+}
+div.sidebar h4 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar h5 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar div.menu {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 4px;
+}
+div.sidebar ul {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+div.sidebar li {
+    font-size: x-small;
+    line-height: 100%;
+    list-style-type: none;
+    margin: 6px 0;
+}
+div.sidebar hr {
+    background-color: transparent;
+    color: #FFFFFF;
+    margin-bottom: 1em;
+    width: 80%;
+}
+div.sidebar p {
+    font-size: x-small;
+    margin: 0;
+    padding: 0;
+}
+div.sidebar form {
+    font-size: x-small;
+    line-height: 110%;
+    margin-left: 0.5em;
+    margin-right: 4px;
+    margin-top: 0;
+    padding-right: 8px;
+}
+div.sidebar a {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar img {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubynokai {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubima_logo {
+    border-style: none;
+    left: 0;
+    margin-left: 0;
+    position: absolute;
+    top: 49px;
+}
+div.footer {
+    clear: both;
+    font-size: 90%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding-top: 36px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.LineNumber {
+    color: #AAAAAA;
+}
+.html_linenumber {
+    color: #AAAAAA;
+}
+.html_webtemplate {
+    color: #0000AA;
+}
+.html_erb {
+    color: #339933;
+}
+.html_tag {
+    color: #AA5500;
+}
+.html_tag_block {
+    color: #AA0000;
+}
+.html_comment {
+    color: #00AA00;
+}
+
+div.day span.sanchor {
+    display: none;
+}
+
+div.note {
+    font-size: small;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
+div.social{
+    padding-bottom: 10px;
+}
+
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/pekema/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./">ぺけま</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=login;p=0002%2FTopics">Login</a></span></div>
+  <h1 class="header">xUTP Topics: 第二回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <dl>
+<dt>書いた人</dt>
+<dd><a href="https://twitter.com/#!/yujiorama" class="external">@yujiorama</a>(<a href="http://d.hatena.ne.jp/yujiorama" class="external">id:yujiorama</a>)
+</dd>
+</dl>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">目次</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>目的</li>
+<li>はじめに</li>
+<li>テストコードの不吉な臭い一覧</li>
+<li>逆引きテスティングパターン</li>
+<li>さいごに</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">目的</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>この連載記事の目的は次のような感じです。</p>
+<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会</a>で得られた知見を整理する</li>
+<li>xUnit Test Patterns に書かれている内容を分かりやすい形で広める</li>
+</ul>
+<p>英語の壁も、難しさの壁も、読書会の有志による努力によって取り払われました。</p>
+<p>軽い気持ちで、xUnit Test Patterns に挑戦してみましょう。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">はじめに</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>私見ですが、分量の多い本なので、全体像を掴んでから興味のありそうなところを
+つまみ読みするのがよいのではないか、と思っています。</p>
+<p>前回は表紙の裏に記載されている、「テスティングパターンの一覧」について示しました。</p>
+<p>今回は裏表紙の裏に記載されている、「テストコードの不吉な臭い一覧」と「逆引きテスティングパターン」
+を紹介したいと思います。</p>
+<p>例によってリンクは<a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会Wiki</a>から辿れるようになっています。
+リンクの無いものは、独立した章にはなっていないものの、文中で触れられているキーワードとなります。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l3"> </a></span><span class="title">テストコードの不吉な臭い一覧</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>「テストコードの不吉な臭い」とは、マーティン・ファウラーのリファクタリングでも触れられている
+「リファクタリングが必要であるような腐ったコード」のテストコード版です。</p>
+<p>例えば、テストコードが増えてくるにつれて、プロダクトコードと合わせて修正する対象が増えてしまい、
+結果として生産性が低下してしまうという経験はよくあることでしょう。</p>
+<p>xUnit Test Patterns では、そういった傾向を「不吉な臭い」と呼び、パターンとして分類しています。</p>
+<p>「テストコードはあるのに何故かうまくいかない」という状況になったら、見直してみる価値はあると思います。</p>
+<ul>
+<li><a href="http://www.slideshare.net/t_wada/xunit-test-patterns-chapter16" class="external">Assertion Roulette</a><ul>
+<li>テストが失敗した際、どのアサーションで失敗したのか分かりにくいテストメソッド。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FBuggy+Tests" class="external">Buggy Tests</a><ul>
+<li>バグが定期的に見つかるような自動化テスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FConditional+Test+Logic" class="external">Conditional Test Logic</a><ul>
+<li>条件によって実行されたり、されなかったりするコードが含まれているテスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FDevelopers+Not+Writing+Tests" class="external">Developers Not Writing Tests</a><ul>
+<li>開発者が自動化テストを書いてくれない。</li>
+</ul></li>
+<li><a href="http://www.slideshare.net/t_wada/xunit-test-patterns-chapter16" class="external">Erratic Test</a><ul>
+<li>あるときは成功したりまたあるときは失敗したりといった不安定なテスト。</li>
+</ul></li>
+<li><a href="http://www.slideshare.net/t_wada/xunit-test-patterns-chapter16" class="external">Fragile Test</a><ul>
+<li>SUT のテストに関係のない部分を変更したはずなのに、テストがコンパイルできなくなったり失敗するようになったりする。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FFrequent+Debugging" class="external">Frequent Debugging</a><ul>
+<li>テストが失敗する原因を調べるのに手動のデバッグが必要なテスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FHard-to-Test+Code" class="external">Hard-to-Test Code|</a><ul>
+<li>テストを書くのが難しいコード。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FHigh+Test+Maintenance+Cost" class="external">High Test Maintenance Cost</a><ul>
+<li>メンテナンスしていくのに大きな手間のかかるテスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FManual+Intervention" class="external">Manual Intervention</a><ul>
+<li>実行するたびに人が何かの操作をしなければならないようなテスト。</li>
+</ul></li>
+<li>Obscure Test<ul>
+<li>一瞥して理解できないくらい難しいテスト。</li>
+</ul></li>
+<li>Production Bugs<ul>
+<li>形式的なテストや商用環境で検出された多くのバグ。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FSlow+Tests" class="external">Slow Tests</a><ul>
+<li>実行にとても長い時間のかかるテスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FTest+Code+Duplication" class="external">Test Code Duplication</a><ul>
+<li>同じようなコードが繰り返し書かれているテスト。</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6%2FTest+Logic+in+Production" class="external">Test Logic in Production</a><ul>
+<li>テストのときだけ実行されるロジックをプロダクションコードに埋め込んでしまったテスト。</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l4"> </a></span><span class="title">逆引きテスティングパターン</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>私達の開発するシステムは、規模も複雑さもまちまちです。</p>
+<p>しかし、本質的には同じような構造を有しているものが多くあります。</p>
+<p>これは、テストコードにも同じことが言えます。</p>
+<p>そこで、直面している問題について本質を見抜き、適切なテスティングパターンを選択することで、
+良いテストコードを書くことができるようになるでしょう。</p>
+<p>なお、SUT とは System Under Test の略語で、本文で頻出する単語です。
+具体的には、開発しているシステムを構成するコンポーネントの中で、テストコードが対象としているものを指します。</p>
+<ul>
+<li>私達のソフトウェアについて自動化テストを書くには何を準備すればよいのですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FRecorded+Test" class="external">Recorded Test (278)</a></li>
+<li>Scripted Test (285)</li>
+<li>Data-Driven Test (288)</li>
+</ul></li>
+<li>どうやったらテストを書いたり実行するのを簡単にできますか？<ul>
+<li>Test Automation Framework (298)</li>
+</ul></li>
+<li>テストコードはどこに配置すればいいですか？<ul>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19" class="external">Test Method (348)</a></li>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19-2-testcase-class" class="external">Testcase Class (373)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTest+Helper" class="external">Test Helper (643)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTestcase+Superclass" class="external">Testcase Superclass (638)</a></li>
+</ul></li>
+<li>テストメソッドをテストケースクラスにまとめるにはどうしたらいいですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTestcase+Class+per+Feature" class="external">Testcase Class per Feature (624)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTestcase+Class+per+Fixture" class="external">Testcase Class per Fixture (631)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTestcase+Class+per+Class" class="external">Testcase Class per Class (617)|</a></li>
+</ul></li>
+<li>テストの自己チェックはどうしたらいいですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FState+Verification" class="external">State Verification (462)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FBehavior+Verification" class="external">Behavior Verification (468)</a></li>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19" class="external">Assertion Method (362)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FCustom+Assertion" class="external">Custom Assertion (474)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FDelta+Assertion" class="external">Delta Assertion (485)</a></li>
+</ul></li>
+<li>テストロジックはどうやって構造化すればよいですか？<ul>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19" class="external">Four-Phase Test (358)</a></li>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19" class="external">Assertion Message (370)</a></li>
+<li>Unfinished Test Assertion (494)</li>
+</ul></li>
+<li>テストコードの重複を取り除くにはどうしたらいいですか？<ul>
+<li>Data-Driven Test (288)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FCustom+Assertion" class="external">Custom Assertion (474)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTest+Utility+Method" class="external">Test Utility Method (599)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FParameterized+Test" class="external">Parameterized Test (607)</a></li>
+</ul></li>
+<li>テストをどうやって実行したらいいですか？<ul>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19-2-testcase-class" class="external">Test Runner (377)</a></li>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter19-2-testcase-class" class="external">Testcase Object (382)</a></li>
+<li>Test Suite Object (387)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FNamed+Test+Suite" class="external">Named Test Suite (592)</a></li>
+</ul></li>
+<li>テストランナーが実行するテストをどうやって選択すればよいですか？<ul>
+<li>Test Discovery (393)</li>
+<li>Test Enumeration (399)</li>
+<li>Test Selection (403)</li>
+</ul></li>
+<li>どのフィクスチャー戦略を使うべきでしょうか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FMinimal+Fixture" class="external">Minimal Fixture (302)</a></li>
+<li>Standard Fixture (305)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FFresh+Fixture" class="external">Fresh Fixture (311)</a></li>
+<li>Shared Fixture (317)</li>
+</ul></li>
+<li>フィクスチャーをどうやって構築したらよいですか？<ul>
+<li>In-line Setup (408)</li>
+<li>Delegated Setup (411)</li>
+<li>Creation Method (415)</li>
+<li>Implicit Setup (424)</li>
+</ul></li>
+<li>最初のテストメソッドが共有フィクスチャーを必要とするまで構築を遅らせるにはどうすればいいですか？<ul>
+<li>Prebuilt Fixture (429)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FLazy+Setup" class="external">Lazy Setup (435)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FSuite+Fixture+Setup" class="external">Suite Fixture Setup (441)</a></li>
+<li>Setup Decorator (447)</li>
+<li>Chained Tests (454)</li>
+</ul></li>
+<li>テストコードで使用する値 (定数) はどうやって決めればよいですか？<ul>
+<li>Dummy Object (728)</li>
+<li>Literal Value (714)</li>
+<li><a href="http://d.hatena.ne.jp/gnarl/20110227/1298816458" class="external">Derived Value (718)</a></li>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter27-generated-value" class="external">Generated Value (723)</a></li>
+</ul></li>
+<li>フィクスチャーを破棄するにはどうしたらいいですか？<ul>
+<li><a href="http://www.slideshare.net/setoazusa/garbage-collected-teardown" class="external">Garbage-Collected Teardown (500)</a></li>
+<li><a href="http://www.slideshare.net/setoazusa/in-line-teardown" class="external">In-line Teardown (509)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FImplicit+Teardown" class="external">Implicit Teardown (516)</a></li>
+<li>Automated Teardown (503)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTable+Truncation+Teardown" class="external">Table Truncation Teardown (661)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTransaction+Rollback+Teardown" class="external">Transaction Rollback Teardown (668)</a></li>
+</ul></li>
+<li>スローテストを避けるにはどうしたらいいですか？<ul>
+<li>Shared Fixture (317)</li>
+<li><a href="http://infog.0ch.biz/download/xutp_testdouble_testdouble.pdf" class="external">Test Double (522)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FFake+Object" class="external">Fake Object (551)</a></li>
+</ul></li>
+<li>条件に基づくテストロジックを避けるにはどうしたらいいですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FCustom+Assertion" class="external">Custom Assertion (474)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FGuard+Assertion" class="external">Guard Assertion (490)</a></li>
+</ul></li>
+<li>ロジックだけを独立して検証するにはどうしたらいいですか？<ul>
+<li><a href="http://www.slideshare.net/secret/2pCCpWpafR8WJ" class="external">Back Door Manipulation (327)</a></li>
+<li>Layer Test (337)</li>
+<li><a href="http://infog.0ch.biz/download/xutp_testdouble_testdouble.pdf" class="external">Test Double (522)</a></li>
+<li>Test Stub (529)</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTest+Spy" class="external">Test Spy (538)</a></li>
+<li><a href="http://www.slideshare.net/setoazusa/mock-object" class="external">Mock Object (544)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FFake+Object" class="external">Fake Object (551)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FStored+Procedure+Test" class="external">Stored Procedure Test (654)</a></li>
+</ul></li>
+<li>振る舞いを検証するにはどうしたらいいですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FTest+Spy" class="external">Test Spy (538)</a></li>
+<li><a href="http://www.slideshare.net/setoazusa/mock-object" class="external">Mock Object (544)</a></li>
+</ul></li>
+<li>テストダブルに任意の返り値や期待値を指定するにはどうしたらよいですか？<ul>
+<li><a href="http://www.slideshare.net/setoazusa/20100925xutp" class="external">Configurable Test Double (558)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FHard-Coded+Test+Double" class="external">Hard-Coded Test Double (568)</a></li>
+</ul></li>
+<li>コードをテストしやすくするにはどうしたらよいですか？<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FHumble+Object" class="external">Humble Object (695)</a></li>
+<li>Test-Specific Subclass (579)</li>
+</ul></li>
+<li>SUT が動的に依存先を置き換えられるようにするにはどうしたらよいですか？<ul>
+<li><a href="http://www.slideshare.net/t_wada/xutp-chapter26-dependency-injection" class="external">Dependency Injection (678)</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B7%2FDependency+Lookup" class="external">Dependency Lookup (686)</a></li>
+<li><a href="http://www.slideshare.net/setoazusa/20101114" class="external">Test Hook (709)</a></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l5"> </a></span><span class="title">さいごに</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>次回以降の方向性として、目次を概観するか、テスティングパターンランゲージの領域ごとに概観していくか、少し迷っています。</p>
+<p>「全体像はいいから、ここの説明を詳しく！」などのご意見などいただければ、検討させていただきたいと思います。</p>
+<p>ご意見、叱咤、反論などはいつでも承りますので、お気軽にどうぞ。</p>
+<p>長いリスティングにお付きあいいただき、本当にありがとうございました。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l6"> </a></span><span class="title">修正履歴</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>2011/12/01<ul>
+<li>「不吉な匂い」は有名な誤訳であるとのご指摘をいただいたため「不吉な臭い」に修正</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2011/11/30 22:40:31<br>
+        Keyword(s):<br>
+        References:[<a href="./?0002">xUTP Magazine 0002号</a>] [<a href="./">ぺけま</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h3><a name="s0"><span class="sanchor"> </span></a>トップ</h3>
+<h3><a name="s1"><span class="sanchor"> </span></a><a href="./?0004">0004号(2012/06/8)</a></h3>
+<ul>
+<li><a href="./?0004%2F%E5%B7%BB%E9%A0%AD%E8%A8%80">巻頭言</a></li>
+<li><a href="./?0004%2FTopics">xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</a></li>
+<li><a href="./?0004%2FTddlive_Jo">TDD Live 番外編(TDD序破Q)</a></li>
+<li><a href="./?0004%2F%E7%B7%A8%E9%9B%86%E5%BE%8C%E8%A8%98">編集後記</a></li>
+</ul>
+<h3><a name="s2"><span class="sanchor"> </span></a>バックナンバー</h3>
+<ul>
+<li><a href="./?0003">0003号(2011/12/31)</a></li>
+<li><a href="./?0002">0002号(2011/11/30)</a></li>
+<li><a href="./?0001">0001号(2011/11/05)</a></li>
+</ul>
+<h3><a name="s3"><span class="sanchor"> </span></a>リンク</h3>
+<ul>
+<li><a href="http://devtesting.jp/goos/" class="external">goos読書会Wiki</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会Wiki</a></li>
+<li><a href="http://devtesting.jp/tddbc" class="external">TDDBC Wiki</a></li>
+<li><a href="http://groups.google.co.jp/group/devtesting-ja" class="external">devtesting-ja(Google Groups)</a></li>
+<li><a href="http://xunitpatterns.com/" class="external">xUnitPatterns.com</a></li>
+<li><a href="http://www.amazon.co.jp/dp/0131495054" class="external">xUnit Test Patterns(amazon.co.jp)</a></li>
+</ul>
+<h3><a name="s4"><span class="sanchor"> </span></a><a href="http://devtesting.jp/pekema/?c=rss" class="external">RSS</a></h3>
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.1.6-p336 (2015-04-13).<br>
+Founded by devtesing-ja.<br>
+</div>
+</div>
+</body>
+</html>

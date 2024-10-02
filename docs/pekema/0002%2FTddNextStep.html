@@ -1,0 +1,590 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>xUTP Magazine - TDDでのテストの構築と保守　その１　ユニットテストで支えるTDDの作業</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    div.adminmenu {
+    display: block;
+}
+
+span.adminmenu {
+    background-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    border-color: rgb(255,255,255);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+span.adminmenu a {
+    background-color: transparent;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+/*
+span.adminmenu a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+*/
+
+span.adminmenu a:hover {
+    background-color: transparent;
+    color: green;
+    text-decoration: none;
+}
+
+body {
+    background-position: top center;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 0.4em;
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 {
+    border-color: #000000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: large;
+    margin-bottom: 0.4em;
+    margin-top: 50px;
+    padding-left: 0.2em;
+    text-align: left;
+}
+h1.header a {
+    color: #444444;
+    text-decoration: none;
+}
+
+div.body a {
+    background-color: transparent;
+    color: #0000EE;
+}
+div.body a:visited {
+    background-color: transparent;
+    color: #000095;
+}
+div.body a:hover {
+    background-color: transparent;
+    color: #FF6835;
+}
+
+div.body h3 a {
+    text-decoration: none;
+}
+div.body h4 a {
+    text-decoration: none;
+}
+
+div.referer, div.refererlist, div.day div.form {
+    border-color: #AA1111;
+    border-style: solid;
+    border-width: 1px;
+    font-size: small;
+    margin-bottom: 0.5em;
+    margin-left: 3em;
+    padding: 0.5em;
+}
+div.day div.field {
+    display: inline;
+    margin-right: 1em;
+}
+img.icon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.amazon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.right {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.ext {
+    border: medium none;
+}
+div.comment {
+    display: none;
+    font-size: x-small;
+}
+div.trackbacks {
+    display: inline;
+    font-size: small;
+}
+
+div.main {
+    background-position: 0 44px;
+    background-repeat: no-repeat;
+    margin-left: 150px;
+    margin-right: 0.6em;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+}
+div.main hr {
+    background-color: transparent;
+    color: #888888;
+    width: 96%;
+}
+div.main hr.sep {
+    display: none;
+    margin: 0;
+}
+div.main h2 {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid green;
+    border-left: 15px solid green;
+    color: #000000;
+    font-size: 150%;
+    margin: 0.5em 0;
+    padding: 0.2em;
+    text-align: left;
+}
+div.main p img {
+    float: left;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p em img {
+    float: none;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p strong img {
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+div.main dt img {
+    float: left;
+    margin: 0.6em;
+}
+div.main dd img {
+    float: right;
+    margin: 0.2em 0.8em 0.6em 0.6em;
+}
+div.main dl {
+    clear: none;
+}
+div.main div.day, h2, h3, h4, h5, h6, h7, h8, h9, hr {
+    clear: both;
+}
+div.main h2 a:link, div.main h2 a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+div.main h2 span.title {
+}
+div.main div.day {
+    font-size: 90%;
+    margin-right: 0;
+}
+div.main div.section {
+    margin-left: 1em;
+}
+div.main span.readmore {
+    font-size: 80%;
+}
+div.main div.lm {
+    font-size: 75%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-top: 0;
+    text-align: right;
+}
+span.lm {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 1px 0 0;
+}
+div.main h3 {
+    border-color: #950000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: 110%;
+}
+div.main h4 {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 0 0 1px;
+    font-size: 100%;
+    margin-left: 0.6em;
+}
+div.main h5, h6, h7, h8, h9 {
+    font-size: 100%;
+    margin: 0;
+    padding: 0.4em 1em;
+}
+div.main p {
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    padding-right: 2em;
+}
+div.main li {
+    line-height: 1.5;
+}
+div.main ul, div.main dl {
+    margin-left: 2em;
+    margin-top: 0.2em;
+    padding-left: 0;
+}
+div.main dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+div.main dd {
+    line-height: 140%;
+    margin-left: 2em;
+}
+div.main pre {
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    margin-left: 2em;
+    padding: 4px;
+}
+div.main blockquote {
+    background-color: #F0F0F0;
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    color: #333333;
+    padding: 8px 8px 0;
+}
+div.main table {
+    border-collapse: collapse;
+    margin: 1em;
+    text-align: center;
+}
+div.main td {
+    border: thin solid #888888;
+    padding: 2px 0.6em;
+}
+div.form {
+    clear: right;
+}
+span.corres {
+    font-size: 80%;
+    font-weight: lighter;
+}
+div.main span.footnote a {
+    font-size: x-small;
+    text-decoration: none;
+}
+div.main p.footnote {
+    font-size: small;
+}
+div.main p.footnote a {
+    text-decoration: none;
+}
+div.sidebar {
+    display: block;
+    background-color: green;
+    background-repeat: no-repeat;
+    color: #FFEEEE;
+    left: 0;
+    padding-bottom: 5em;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    width: 150px;
+}
+div.sidebar h4 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar h5 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar div.menu {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 4px;
+}
+div.sidebar ul {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+div.sidebar li {
+    font-size: x-small;
+    line-height: 100%;
+    list-style-type: none;
+    margin: 6px 0;
+}
+div.sidebar hr {
+    background-color: transparent;
+    color: #FFFFFF;
+    margin-bottom: 1em;
+    width: 80%;
+}
+div.sidebar p {
+    font-size: x-small;
+    margin: 0;
+    padding: 0;
+}
+div.sidebar form {
+    font-size: x-small;
+    line-height: 110%;
+    margin-left: 0.5em;
+    margin-right: 4px;
+    margin-top: 0;
+    padding-right: 8px;
+}
+div.sidebar a {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar img {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubynokai {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubima_logo {
+    border-style: none;
+    left: 0;
+    margin-left: 0;
+    position: absolute;
+    top: 49px;
+}
+div.footer {
+    clear: both;
+    font-size: 90%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding-top: 36px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.LineNumber {
+    color: #AAAAAA;
+}
+.html_linenumber {
+    color: #AAAAAA;
+}
+.html_webtemplate {
+    color: #0000AA;
+}
+.html_erb {
+    color: #339933;
+}
+.html_tag {
+    color: #AA5500;
+}
+.html_tag_block {
+    color: #AA0000;
+}
+.html_comment {
+    color: #00AA00;
+}
+
+div.day span.sanchor {
+    display: none;
+}
+
+div.note {
+    font-size: small;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
+div.social{
+    padding-bottom: 10px;
+}
+
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/pekema/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./">ぺけま</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=login;p=0002%2FTddNextStep">Login</a></span></div>
+  <h1 class="header">TDDでのテストの構築と保守　その１　ユニットテストで支えるTDDの作業</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <dl>
+<dt>書いた人</dt>
+<dd><a href="https://twitter.com/#!/goyoki" class="external">@goyoki</a>
+</dd>
+</dl>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">はじめに</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>こんばんは。goyokiです。</p>
+<p>先日TDD Boot Camp for C++にてTDD入門の次のステップについて講演させていただきましたが、今回はその補足・復習として、ユニットテストの構築と保守について解説させて頂くことになりました。雑多な連載となるかもしれませんが、一連の記事がTDD習得の一助となれば幸いです。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">テストコードの再利用</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>RED→GREEN→REFACTORの基本サイクルを回していくうちにありふれた作業となるものに「テストコードの再利用」があります。
+例えば過去に書いたテストコードを使ってリファクタリングを実施する、過去に書いたテストコードを変更してREDにする、といった感じにです。</p>
+<p>その「テストコードの再利用」は、製品コードの保守と同じく色々な手間や問題が存在します。ただ一方で、TDDの作業を様々な面で支えており、結果的にTDDの恩恵の一部を構成しています。今回は連載の前提知識として、そのユニットテストのサポート効果について解説したいと思います。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">ユニットテストのサポート効果</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l3"><span class="sanchor"> </span></a>コードの解析性の向上</h3>
+<h4><a name="l4"> </a>Tests as Documentation</h4>
+<p>まずユニットテストは製品コードの理解を助けることで、TDDの各種作業をサポートします。</p>
+<p>例えばテストコードの構造や名前の工夫により、実装仕様を示すドキュメントとしてユニットテストを扱えるようになります。このテストのドキュメントとしての用途はxUnit Test Patterns等でしばしば「Tests as Documentation」と呼称され、テストで達成すべき目標の１つとされています。</p>
+<p>またコードの入出力をテストの追加でどんどん明示化していくことで、コードの理解を深めることができます。この手法は仕様化テスト(Characterization Test)と呼ばれるテクニックです。中でもコードのふるまいを学ぶことを目的とした仕様化テストは学習テスト（Learning Test）と呼称されています。やはりこちらもテストを一種のドキュメントとして扱います。</p>
+<h4><a name="l5"> </a>Tests as DocumentationによるTDDのサポート</h4>
+<p>こうしたユニットテストのドキュメントとしての有用性は、リファクタリング・Assertファースト両方の作業をサポートします。</p>
+<p>例えばテストコード上で製品コードの用例・使われ方を表現してみることで、製品コードのインターフェースの良否を評価することができ、リファクタリングの必要性を決定することができます。</p>
+<p>　</p>
+<p>また、以下のような問題の絞り込み手段を実現することから、Assert Firstや意図しないデグレード対応のサポートとしても活用できます。</p>
+<ul>
+<li>クラスやメソッド単位で実行コードの絞り込みや切り分けができる。</li>
+<li>実行に時間がかかるコード、ブラックボックスなコンポーネント、特殊な実行環境といった、解析の障害を排除できる。</li>
+<li>MockオブジェクトやStub等の活用で、End-to-Endでは実現が困難な入力や初期状態を実現できる。</li>
+</ul>
+<p>この工夫の具体例にデバッギングテストが挙げられます。デバッギングテストはバグの再現手段・バグ発生個所の切り分け手段として、ユニットテストを活用する手法です。具体的には以下のような手順を取ります。</p>
+<ol>
+<li>ユニットテスト上でバグを再現する</li>
+<li>テストの追加でバグの発生個所を特定する</li>
+<li>バグを修正し、テスト結果の変化を見て修正が達成されたか確認する</li>
+</ol>
+<p>　</p>
+<p>なおこのテストコードで実現するドキュメントは、（テストファースト手法を除けば）従来のjavadocやdoxygenなどで実現されるような、コードの解説資料のようなものに位置付けられます。ただテストコードの場合、従来の資料と違ってテスト結果でドキュメントとコードの矛盾を把握可能なため、追加・変更が柔軟にできるのが強みです。</p>
+<h3><a name="l6"><span class="sanchor"> </span></a>コードの再利用性の向上によるTDDのサポート</h3>
+<p>さらにユニットテストはコードの再利用性を補強する点で、リファクタリングおよびAssertファーストによる追加変更を支えていきます。</p>
+<p>例えば定番ですが、リファクタリングでは、事前にユニットテストで既存コードのふるまいを保護することで、コードの設計改善をデグレードなく行えるようにしていきます。</p>
+<p>また追加・変更でも、以下のような手順を取ることで、デグレードを防ぎ、かつ変更・追加が意図したとおりに達成されたことを確認できるようになります。</p>
+<ol>
+<li>変更したくないふるまいをユニットテストで保護する</li>
+<li>変更後のふるまいに対するユニットテストを追加して、テストを失敗させる</li>
+<li>コードを変更して、失敗していたユニットテストをパスさせる。</li>
+</ol>
+<p>なおこの「テストで保護してからコードに手をつけるアプローチは、Cover &amp; Modify（保護して変更する）と呼ばれます。Cover &amp; Modifyのメリットは小さくなく、それを実施できるかどうかは、変更・再利用を安全かつ簡単にできるかどうかに大きく影響します。すなわちCover &amp; ModifyのやりやすさはTDDのやりやすさに直結するといっても過言ではありません。</p>
+<h3><a name="l7"><span class="sanchor"> </span></a>TDDのやりやすさの維持</h3>
+<p>そしてユニットテストは自動化された回帰テストとして継続実行することによって、テストが損なわれる変更の早期検出や、コードカバレッジといったテストの継続評価が実現されます。
+そうした継続的な保守サポートは、テストをいつでも利用可能な状態に維持することを助け、前述した「仕様化テストでコードの理解を進める」「Cover &amp; Modifyで変更の安全性を高める」といったメリットをいつでも活かせられるようにします。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l8"> </a></span><span class="title">ユニットテストの再利用について</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>上記のような効果を持つため、ユニットテストの再利用・継続的活用はTDDにおいて推進すべきものと考えています。ただユニットテストの再利用を続けるためには、様々な課題に直面することになります。</p>
+<p>例えばその１つとして、テストの網羅性の作りこみがあります。例えばTDDでも網羅性の劣ったテストを書くと、REFACTORでバグを埋め込んだり、Assertファーストで適切にコードを追加できなくなってしまったりするリスクが高まります。しかしかといって、時間のかかるテスト設計手法の採用や過剰なテストの網羅性作りこみを行うと、保守コストやTDDの効率を悪化させる恐れがあります。</p>
+<p>次回以降では、そうした課題がどういうものか、またそれにどう立ち向かっていくかについて解説していきたいと思います。</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2011/11/30 22:41:44<br>
+        Keyword(s):<br>
+        References:[<a href="./?0002">xUTP Magazine 0002号</a>] [<a href="./">ぺけま</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h3><a name="s0"><span class="sanchor"> </span></a>トップ</h3>
+<h3><a name="s1"><span class="sanchor"> </span></a><a href="./?0004">0004号(2012/06/8)</a></h3>
+<ul>
+<li><a href="./?0004%2F%E5%B7%BB%E9%A0%AD%E8%A8%80">巻頭言</a></li>
+<li><a href="./?0004%2FTopics">xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</a></li>
+<li><a href="./?0004%2FTddlive_Jo">TDD Live 番外編(TDD序破Q)</a></li>
+<li><a href="./?0004%2F%E7%B7%A8%E9%9B%86%E5%BE%8C%E8%A8%98">編集後記</a></li>
+</ul>
+<h3><a name="s2"><span class="sanchor"> </span></a>バックナンバー</h3>
+<ul>
+<li><a href="./?0003">0003号(2011/12/31)</a></li>
+<li><a href="./?0002">0002号(2011/11/30)</a></li>
+<li><a href="./?0001">0001号(2011/11/05)</a></li>
+</ul>
+<h3><a name="s3"><span class="sanchor"> </span></a>リンク</h3>
+<ul>
+<li><a href="http://devtesting.jp/goos/" class="external">goos読書会Wiki</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会Wiki</a></li>
+<li><a href="http://devtesting.jp/tddbc" class="external">TDDBC Wiki</a></li>
+<li><a href="http://groups.google.co.jp/group/devtesting-ja" class="external">devtesting-ja(Google Groups)</a></li>
+<li><a href="http://xunitpatterns.com/" class="external">xUnitPatterns.com</a></li>
+<li><a href="http://www.amazon.co.jp/dp/0131495054" class="external">xUnit Test Patterns(amazon.co.jp)</a></li>
+</ul>
+<h3><a name="s4"><span class="sanchor"> </span></a><a href="http://devtesting.jp/pekema/?c=rss" class="external">RSS</a></h3>
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.1.6-p336 (2015-04-13).<br>
+Founded by devtesing-ja.<br>
+</div>
+</div>
+</body>
+</html>

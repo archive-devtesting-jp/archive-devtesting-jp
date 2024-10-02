@@ -1,0 +1,983 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>xUTP Magazine - xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    div.adminmenu {
+    display: block;
+}
+
+span.adminmenu {
+    background-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    border-color: rgb(255,255,255);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+span.adminmenu a {
+    background-color: transparent;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+/*
+span.adminmenu a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+*/
+
+span.adminmenu a:hover {
+    background-color: transparent;
+    color: green;
+    text-decoration: none;
+}
+
+body {
+    background-position: top center;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 0.4em;
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 {
+    border-color: #000000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: large;
+    margin-bottom: 0.4em;
+    margin-top: 50px;
+    padding-left: 0.2em;
+    text-align: left;
+}
+h1.header a {
+    color: #444444;
+    text-decoration: none;
+}
+
+div.body a {
+    background-color: transparent;
+    color: #0000EE;
+}
+div.body a:visited {
+    background-color: transparent;
+    color: #000095;
+}
+div.body a:hover {
+    background-color: transparent;
+    color: #FF6835;
+}
+
+div.body h3 a {
+    text-decoration: none;
+}
+div.body h4 a {
+    text-decoration: none;
+}
+
+div.referer, div.refererlist, div.day div.form {
+    border-color: #AA1111;
+    border-style: solid;
+    border-width: 1px;
+    font-size: small;
+    margin-bottom: 0.5em;
+    margin-left: 3em;
+    padding: 0.5em;
+}
+div.day div.field {
+    display: inline;
+    margin-right: 1em;
+}
+img.icon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.amazon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.right {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.ext {
+    border: medium none;
+}
+div.comment {
+    display: none;
+    font-size: x-small;
+}
+div.trackbacks {
+    display: inline;
+    font-size: small;
+}
+
+div.main {
+    background-position: 0 44px;
+    background-repeat: no-repeat;
+    margin-left: 150px;
+    margin-right: 0.6em;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+}
+div.main hr {
+    background-color: transparent;
+    color: #888888;
+    width: 96%;
+}
+div.main hr.sep {
+    display: none;
+    margin: 0;
+}
+div.main h2 {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid green;
+    border-left: 15px solid green;
+    color: #000000;
+    font-size: 150%;
+    margin: 0.5em 0;
+    padding: 0.2em;
+    text-align: left;
+}
+div.main p img {
+    float: left;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p em img {
+    float: none;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p strong img {
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+div.main dt img {
+    float: left;
+    margin: 0.6em;
+}
+div.main dd img {
+    float: right;
+    margin: 0.2em 0.8em 0.6em 0.6em;
+}
+div.main dl {
+    clear: none;
+}
+div.main div.day, h2, h3, h4, h5, h6, h7, h8, h9, hr {
+    clear: both;
+}
+div.main h2 a:link, div.main h2 a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+div.main h2 span.title {
+}
+div.main div.day {
+    font-size: 90%;
+    margin-right: 0;
+}
+div.main div.section {
+    margin-left: 1em;
+}
+div.main span.readmore {
+    font-size: 80%;
+}
+div.main div.lm {
+    font-size: 75%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-top: 0;
+    text-align: right;
+}
+span.lm {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 1px 0 0;
+}
+div.main h3 {
+    border-color: #950000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: 110%;
+}
+div.main h4 {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 0 0 1px;
+    font-size: 100%;
+    margin-left: 0.6em;
+}
+div.main h5, h6, h7, h8, h9 {
+    font-size: 100%;
+    margin: 0;
+    padding: 0.4em 1em;
+}
+div.main p {
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    padding-right: 2em;
+}
+div.main li {
+    line-height: 1.5;
+}
+div.main ul, div.main dl {
+    margin-left: 2em;
+    margin-top: 0.2em;
+    padding-left: 0;
+}
+div.main dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+div.main dd {
+    line-height: 140%;
+    margin-left: 2em;
+}
+div.main pre {
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    margin-left: 2em;
+    padding: 4px;
+}
+div.main blockquote {
+    background-color: #F0F0F0;
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    color: #333333;
+    padding: 8px 8px 0;
+}
+div.main table {
+    border-collapse: collapse;
+    margin: 1em;
+    text-align: center;
+}
+div.main td {
+    border: thin solid #888888;
+    padding: 2px 0.6em;
+}
+div.form {
+    clear: right;
+}
+span.corres {
+    font-size: 80%;
+    font-weight: lighter;
+}
+div.main span.footnote a {
+    font-size: x-small;
+    text-decoration: none;
+}
+div.main p.footnote {
+    font-size: small;
+}
+div.main p.footnote a {
+    text-decoration: none;
+}
+div.sidebar {
+    display: block;
+    background-color: green;
+    background-repeat: no-repeat;
+    color: #FFEEEE;
+    left: 0;
+    padding-bottom: 5em;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    width: 150px;
+}
+div.sidebar h4 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar h5 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar div.menu {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 4px;
+}
+div.sidebar ul {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+div.sidebar li {
+    font-size: x-small;
+    line-height: 100%;
+    list-style-type: none;
+    margin: 6px 0;
+}
+div.sidebar hr {
+    background-color: transparent;
+    color: #FFFFFF;
+    margin-bottom: 1em;
+    width: 80%;
+}
+div.sidebar p {
+    font-size: x-small;
+    margin: 0;
+    padding: 0;
+}
+div.sidebar form {
+    font-size: x-small;
+    line-height: 110%;
+    margin-left: 0.5em;
+    margin-right: 4px;
+    margin-top: 0;
+    padding-right: 8px;
+}
+div.sidebar a {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar img {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubynokai {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubima_logo {
+    border-style: none;
+    left: 0;
+    margin-left: 0;
+    position: absolute;
+    top: 49px;
+}
+div.footer {
+    clear: both;
+    font-size: 90%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding-top: 36px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.LineNumber {
+    color: #AAAAAA;
+}
+.html_linenumber {
+    color: #AAAAAA;
+}
+.html_webtemplate {
+    color: #0000AA;
+}
+.html_erb {
+    color: #339933;
+}
+.html_tag {
+    color: #AA5500;
+}
+.html_tag_block {
+    color: #AA0000;
+}
+.html_comment {
+    color: #00AA00;
+}
+
+div.day span.sanchor {
+    display: none;
+}
+
+div.note {
+    font-size: small;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
+div.social{
+    padding-bottom: 10px;
+}
+
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/pekema/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./">ぺけま</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=login;p=0004%2FTopics">Login</a></span></div>
+  <h1 class="header">xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <p>書いた人：<a href="https://twitter.com/#!/yujiorama" class="external">@yujiorama</a>(<a href="http://d.hatena.ne.jp/yujiorama" class="external">id:yujiorama</a>)</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">目次</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>目的</li>
+<li>はじめに</li>
+<li>テストの匂い</li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l1" class="external">テストコードの匂い</a><ul>
+<li>Obscure Test</li>
+<li>Conditional Test Logic</li>
+<li>Hard-to-Test Code</li>
+<li>Test Code Duplication</li>
+<li>Test Logic in Production</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l2" class="external">振る舞いの匂い</a><ul>
+<li>Assertion Roulette</li>
+<li>Erratic Test</li>
+<li>Fragile Test</li>
+<li>Frequent Debugging</li>
+<li>Manual Intervention</li>
+<li>Slow Tests</li>
+</ul></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l3" class="external">プロジェクトの匂い</a><ul>
+<li>Buggy Tests</li>
+<li>Developers Not Writing Tests</li>
+<li>High Test Maintenance Cost</li>
+<li>Production Bugs</li>
+</ul></li>
+<li>さいごに</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">目的</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>この連載記事の目的は次のような感じです。</p>
+<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会</a>で得られた知見を整理する</li>
+<li>xUnit Test Patterns に書かれている内容を分かりやすい形で広める</li>
+</ul>
+<p>英語の壁も、難しさの壁も、読書会の有志による努力によって取り払われました。</p>
+<p>軽い気持ちで、xUnit Test Patterns に挑戦してみましょう。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">はじめに</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>xUnit Test Patterns(以下 xUTP) では、ソフトウェア開発全体におけるテストの在り方や考え方について説明されています。</p>
+<p>今回は、開発を進めていく中でよく遭遇するアンチパターンである、「テストの匂い」についてご紹介します。</p>
+<p>xUTP 読書会 Wiki で該当するページは次のとおりです。</p>
+<ul>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B5#l2" class="external">Part 1 Chapter2. Test Smells</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l1" class="external">Part 2 Chapter15. Code Smells</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l2" class="external">Part 2 Chapter16. Behavior Smells</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l3" class="external">Part 2 Chapter17. Project Smells</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l3"> </a></span><span class="title">テストの匂い</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>「匂い」とは、問題が発生する兆候のことです(<a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B5%2FWhat%27s+a+Test+Smell%3F" class="external">Part1 Chapter 2 Test Smells - What's a Test Smells？</a>)。</p>
+<p>"<a href="http://www.amazon.co.jp/dp/4894712288" class="external">リファクタリング</a>"では、「コードの不吉な匂い」としてプロダクションコードで見つかる問題に注目しています。
+xUTP の著者は、テストコードにおいても同様の問題があるのではないかと考えていたそうです。</p>
+<p>その後、<strong><a href="http://ciclamino.dibe.unige.it/xp2001/conference/" class="external">XP2001</a></strong> で"<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code</a>"というテストコードに固有の問題 (テストコードの不吉な匂い) や解決方法 (テストのリファクタリング) についての発表があったようです。
+(ちなみに、著者は同じセッションで"<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter21-Smith+alii.pdf" class="external">Increasing the Effecctiveness of Automated Testing</a>"というテストの効率化についての発表をしていました。)</p>
+<p>xUTP では、これらの知見を元に整理された「テストコードの不吉な匂い」を紹介しています。</p>
+<p><strong>テストコードの匂い</strong>は、<a href="http://www.amazon.co.jp/dp/4894712288" class="external">リファクタリング</a>で紹介された「コードの不吉な匂い」を、テストコードに適用したものです(<a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B5%2FThe+Code+Smells" class="external">Part1 Chapter 2. Test Smells - The Code Smells</a>)。</p>
+<p><strong>振る舞いの匂い</strong>は、テストが失敗する兆しや、そうなりやすいテストの特徴について説明したものです(<a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B5%2FThe+Behavior+Smells" class="external">Part1 Chapter 2. Test Smells - The Behavior Smells</a>)。</p>
+<p><strong>プロジェクトの匂い</strong>は、<strong>テストコードの匂い</strong>や<strong>振る舞いの匂い</strong>の組み合わせによって、プロジェクトの支えとなるべき自動テストがうまく働かないことの兆しなどを説明したものです(<a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B5%2FThe+Project+Smells" class="external">Part1 Chapter2. Test Smells - The Project Smells</a>)。</p>
+<p>以下の文章では xUTP の記載を抜粋して紹介していますが、<a href="http://www.amazon.co.jp/dp/4894712288" class="external">リファクタリング</a>や<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001)</a>を参照しているものは、その旨を記載するようにしました。</p>
+<p>ざっくりと見回しただけですが、原文ではそれぞれの「匂い」について、症状・影響・原因・解決方法を 1 セットとして解説しています。
+詳しくは原文か、xUTP 読書会 Wiki の該当ページを参照してみてください。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l4"> </a></span><span class="title"><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l1" class="external">テストコードの匂い</a></span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l5"><span class="sanchor"> </span></a>Obscure Test</h3>
+<p>テストがどんな振る舞いを検証してるのか理解するのが困難になっている。</p>
+<p>ドキュメントとしてのテストにほど遠い状態だし、メンテナンスにかかるコストがとても高くなる。</p>
+<p>テストコードの中にバグが隠れやすくなってしまう。</p>
+<ul>
+<li>初出<ul>
+<li>Eager Test は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 5</a> より。</li>
+</ul></li>
+</ul>
+<ul>
+<li>原因<ul>
+<li>Eager Test<ul>
+<li><strong>根本原因</strong> 一つのテストで検証してる機能が多すぎる</li>
+</ul></li>
+<li>Mystery Guest<ul>
+<li>フィクスチャや検証ロジックがテストメソッドの外にあるので、テストの読み手が期待する振る舞いなどを理解できない</li>
+</ul></li>
+<li>General Fixture<ul>
+<li>共通フィクスチャを使っているので、そのテストでどれが必要なのか分からない</li>
+</ul></li>
+<li>Irrelevant Information<ul>
+<li>フィクスチャにおいてテストしたいことと無関係な情報が多く、テスト対象がどのような影響を与えているのかテストの読み手を迷わせる</li>
+</ul></li>
+<li>Hard-Coded Test Data<ul>
+<li>フィクスチャや期待値、テスト対象への引数がハードコードされているので、テスト対象への入力と期待する結果が分かりにくい</li>
+</ul></li>
+<li>Indirect Testing<ul>
+<li>テストメソッドが、間接的にテスト対象とやり取りしているため、複雑に見える</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l6"><span class="sanchor"> </span></a>Conditional Test Logic</h3>
+<p>テストの実行結果は普通なのに、テストメソッドの中の制御構造が複雑で、どのパスが実行されてるのか分からない。</p>
+<p>テストコード自体が複雑になっており、プロダクションコードにバグがあったとして、それが意図したように検出できるか分からない。</p>
+<ul>
+<li>原因<ul>
+<li>Flexible Test<ul>
+<li>テストコード中の実行されるパスによって検証される内容が変わる</li>
+</ul></li>
+<li>Conditional Verification Logic<ul>
+<li>if 文を使って期待する結果が得られなかったら fail するなどのコード</li>
+<li>コレクションを loop を使って繰返し検証し、期待する結果が得られなかったら fail するなどのコード</li>
+</ul></li>
+<li>Production Logic in Test<ul>
+<li>期待値を組み立てるロジックがテストコードに書かれている</li>
+</ul></li>
+<li>Complex Teardown<ul>
+<li>テスト後にフィクスチャを解体するコードが複雑でデータリーク (開放漏れ) が起きやすい</li>
+</ul></li>
+<li>Multiple Test Conditions<ul>
+<li>テストメソッドの中で複数のデータセットについて、繰返し同じロジックを通している</li>
+<li>問題の局所化が難しい</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l7"><span class="sanchor"> </span></a>Hard-to-Test Code</h3>
+<p>自動テストを書くのが困難なコード。</p>
+<p>GUI コンポーネントやマルチスレッドのコード、テストコードから参照できないコードや、他のコードへの依存が深すぎてテストコードをコンパイルできないなどの原因がある。</p>
+<p>自動テストによる検証ができないので手動で検証するしかないため、コードの改修を確認するなどのプロセスがスケールしない。</p>
+<ul>
+<li>原因<ul>
+<li>Highly Coupled Code<ul>
+<li>テスト対象以外のコードについて依存が深すぎる</li>
+</ul></li>
+<li>Asynchronous Code<ul>
+<li>テストコードから直接実行できず、なんらかの実行単位 (プロセス、スレッド) から実行しないと動かない</li>
+</ul></li>
+<li>Untestable Test Code<ul>
+<li>テストコードが不明瞭だったり、検証ロジックが正しいか分からない</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l8"><span class="sanchor"> </span></a>Test Code Duplication</h3>
+<p>テストコードのあちこちに、同じ内容が書かれている。</p>
+<p>テスト対象の呼び出しがコピペされてあちこちに存在するため、テスト対象のインターフェースの改修に追従すべきテストコードが多くなっていく。</p>
+<ul>
+<li>初出<ul>
+<li><a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 11</a></li>
+</ul></li>
+</ul>
+<ul>
+<li>原因<ul>
+<li>Cut-and-Paste Code Reuse<ul>
+<li>コピペされたテストコードが大量にあって、それぞれが個別にメンテナンスされている</li>
+<li>テストで<strong>やるべきこと</strong>よりも<strong>どうやってやるか</strong>に注意が向きすぎている</li>
+</ul></li>
+<li>Reinventing the Wheel<ul>
+<li>同じテストを書いてしまう、という事故が起きてる</li>
+<li>開発者に、他の人が書いたテストを利用するよりも自分で書いてしまう、という傾向がある</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l9"><span class="sanchor"> </span></a>Test Logic in Production</h3>
+<p>プロダクションコードに、テスト時にしか実行されないロジック (内部状態にアクセスする、など) が含まれている。</p>
+<p>バグの元になるのであまりお勧めしない。</p>
+<p>商用環境を想定した設計になっていないコードが何らかの間違いで実行されてしまうと、深刻な問題を引き起こすことになる。</p>
+<ul>
+<li>原因<ul>
+<li>Test Hook<ul>
+<li>プロダクションコードとして動くよう設計されていないコードや、 プロダクション環境において適切に動作するよう検証されていないコードが、 誤って実行され重大な問題を生み出す可能性がある。</li>
+</ul></li>
+<li>For Tests Only<ul>
+<li>プロダクションコードにテストのためにだけ使われる箇所がコードを複雑にしている</li>
+</ul></li>
+<li>Test Dependency in Production<ul>
+<li>プロダクションコードがテストコードに依存しているため、単独でビルドできない</li>
+</ul></li>
+<li>Equality Pollution<ul>
+<li>テストを通すためだけの equals メソッド (等値性の判定処理) が実装されている</li>
+</ul></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l10"> </a></span><span class="title"><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l2" class="external">振る舞いの匂い</a></span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l11"><span class="sanchor"> </span></a>Assertion Roulette</h3>
+<p>テスト失敗時にどの assertion が失敗したのかよく分からないので、開発者がテストを再現できなくてバグの修正に時間がかかってしまう。</p>
+<ul>
+<li>初出<ul>
+<li><a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 7</a></li>
+<li>Eager Test は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 5</a> より。</li>
+<li>Add Assertion Explanation (Missing Assertion Message) は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Refactoring 6</a> より。</li>
+</ul></li>
+</ul>
+<ul>
+<li>原因<ul>
+<li>Eager Test<ul>
+<li><strong>根本原因</strong> 一つのテストで検証してる機能が多すぎる</li>
+<li>一つのテストが検証してる機能が、フィクスチャの準備や assertion などばらばらに呼ばれている</li>
+<li>テストフレームワークを改造して、assertion が失敗してもその行以降を実行させようとしてる</li>
+<li><strong>根本原因</strong> 多くの手順が必要な顧客テスト (Customer Test)を xUnit で行おうとしてる</li>
+</ul></li>
+<li>Missing Assertion Message<ul>
+<li><strong>根本原因</strong> 同じ Assertion Method が複数回使われている</li>
+<li><strong>根本原因</strong> assertion にメッセージが無い</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l12"><span class="sanchor"> </span></a>Erratic Test</h3>
+<p>テストが成功したり失敗したりする。</p>
+<p>急いでるからといってテストスイートから外して後で戻し忘れてしまったり、他のテストが失敗したせいで気付かれなかったりする。</p>
+<p>原因はいろいろあるので根が深い。</p>
+<ul>
+<li>初出<ul>
+<li>Eager Test は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 5</a> より。</li>
+<li>Indirect Testing は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 8</a> より。</li>
+<li>Resource Optimism  は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 2</a> より。</li>
+<li>Test Run War は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 3</a> より。</li>
+</ul></li>
+</ul>
+<ul>
+<li>原因<ul>
+<li>Interacting Tests<ul>
+<li>テストが何らかの形で他のテストや環境に依存している</li>
+<li>テストを単独で実行した場合は成功するが、複数のテストと一緒に実行すると失敗する</li>
+<li>テストのインスタンスより寿命が長いデータベースや static 変数を使っていることが原因になっていることが多い</li>
+<li>テスト自体は正しい (false-positive、偽陽性)</li>
+</ul></li>
+<li>Interacting Test Suites<ul>
+<li>"Interacting Tests" のテストスイート版</li>
+</ul></li>
+<li>Lonley Test<ul>
+<li>"Interacting Tests" の逆</li>
+<li>テストスイートの一部として実行した場合は成功するが単独で実行すると失敗する</li>
+</ul></li>
+<li>Resource Leakage<ul>
+<li>テストを実行するにつれて遅くなり、失敗しだすようになる</li>
+<li>リソースの開放に失敗している</li>
+</ul></li>
+<li>Resource Optimism<ul>
+<li>ある環境で成功するテストが他の環境では失敗する</li>
+<li>テストの合否が、テストが成功する環境にだけあるリソースに依存している</li>
+</ul></li>
+<li>Unrepeatable Test<ul>
+<li>テストの合否が、複数のテストを実行したときの実行順によって変わる</li>
+</ul></li>
+<li>Test Run War<ul>
+<li>一人でテストを実行した場合は成功するが、複数人で実行すると失敗する</li>
+<li>「最後の変更を疑え」ルールが機能しなくなる</li>
+</ul></li>
+<li>Nondeterministic Test<ul>
+<li>テストの合否が環境にも同時に実行することにも関係無く、ランダム</li>
+<li>テスト対象のアルゴリズムへの入力に、ランダムな値を使っていると発生する</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l13"><span class="sanchor"> </span></a>Fragile Test</h3>
+<p>修正した箇所と無関係なはずのテストが失敗しはじめる。</p>
+<p>時にはプロダクションコードを修正してないのに発生することもある。</p>
+<ul>
+<li>初出<ul>
+<li>Sensitive Equality は<a href="http://ciclamino.dibe.unige.it/xp2001/conference/papers/Chapter22-vanDeursen+alii.pdf" class="external">Refactoring Test Code(XP2001) の Smell 10</a> より。</li>
+</ul></li>
+</ul>
+<ul>
+<li>原因<ul>
+<li>Indirect Testing<ul>
+<li>テストコードから、他のオブジェクトを介して間接的にテスト対象のオブジェクトにアクセスしている</li>
+</ul></li>
+<li>Eager Test<ul>
+<li>一つのテストで検証してる機能が多すぎる</li>
+</ul></li>
+<li>Interface Sensivity<ul>
+<li>インターフェースを修正したらテストコードがコンパイルエラー</li>
+<li>インターフェースを修正したらテスト実行時に型非互換ランタイムエラー</li>
+</ul></li>
+<li>Behavior Sensivity<ul>
+<li>テスト対象のプロダクトコードを修正したら無関係なテストが失敗する</li>
+<li>特にフィクスチャの準備、事後状態の検証、フィクスチャの解体で起きる場合が問題</li>
+</ul></li>
+<li>Data Sensivity<ul>
+<li>テストデータを変更するとテストが失敗する</li>
+</ul></li>
+<li>Context Sensivity<ul>
+<li>テストコード、テストデータは修正してないのに、テストが失敗し始める</li>
+<li>時刻や日付、他システムからの入力などに依存している</li>
+</ul></li>
+<li>Overspecified Software<ul>
+<li>テストコードで、テスト対象の振る舞いを<em>過剰</em>に検証してる</li>
+<li>実装依存</li>
+</ul></li>
+<li>Sensitive Equality<ul>
+<li>オブジェクトの等値性の比較が、文字列化した文字列比較になっている</li>
+</ul></li>
+<li>Fragile Fixture<ul>
+<li>フィクスチャの準備をするコードを修正したら、無関係なテストが失敗する</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l14"><span class="sanchor"> </span></a>Frequent Debugging</h3>
+<p>テストが失敗してもメッセージから特定できないため、デバッガを使うことがしょっちゅうある。</p>
+<p>ユニットテストの粒度が大きすぎたり、テスト自体が不足しているような場合もある。</p>
+<ul>
+<li>原因<ul>
+<li>Production Bugs<ul>
+<li>"<em>Infrequetly Run Tests</em>" 開発者がテストを稀にしか動かしていない</li>
+<li>"<em>Untested Requirements</em>" 皆が気付いているのにテストされてない機能性がある</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l15"><span class="sanchor"> </span></a>Manual Intervention</h3>
+<p>テストのたびに何らかの手作業が必要になっていて、めったにテストが実行されない。</p>
+<p>テストの自働化ができない。</p>
+<ul>
+<li>原因<ul>
+<li>Manual Fixture Setup<ul>
+<li>フィクスチャの準備が手作業</li>
+</ul></li>
+<li>Manual Result Verification<ul>
+<li>テスト結果の検証が手作業</li>
+<li>テスト結果が正しくなくてもテスト自体は正常終了してしまう</li>
+</ul></li>
+<li>Manual Event Injection<ul>
+<li>テストの実行中に手動でなんらかの介入をする</li>
+<li>ネットワークケーブルを抜いたりボタンをクリックしたり</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l16"><span class="sanchor"> </span></a>Slow Tests</h3>
+<p>テストの実行に時間がかかる。</p>
+<ul>
+<li>原因<ul>
+<li>Slow Component Usage<ul>
+<li>遅いコンポーネントを使っている</li>
+<li>データベースとのやりとり、など</li>
+</ul></li>
+<li>General Fixture<ul>
+<li>巨大になってしまった汎用フィクスチャ</li>
+<li>テストケースごとにフィクスチャを準備するため、テストの数だけ所要時間が増えていく</li>
+</ul></li>
+<li>Asynchronous Test<ul>
+<li>テストやテスト対象に非同期処理を行っているものがあり、その中で待ち状態になっている</li>
+</ul></li>
+<li>Too Many Tests<ul>
+<li>テストの数が多すぎる</li>
+</ul></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l17"> </a></span><span class="title"><a href="http://www.fieldnotes.jp/xutp/?%C3%B4%C5%F6%B3%E4%C5%F6%C9%BD%2FPART%AD%B6#l3" class="external">プロジェクトの匂い</a></span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l18"><span class="sanchor"> </span></a>Buggy Tests</h3>
+<p>自動化テストがうまくいってないことを示す兆し。</p>
+<p>テスト対象のコードは正しいとしか思えないのにテストが失敗する。
+(false positive、偽陽性)</p>
+<p>テストコードにバグがあって、プロダクションコードのバグを見逃してしまう。
+(false negative、偽陰性)</p>
+<ul>
+<li>原因<ul>
+<li>Fragile Test<ul>
+<li>テストもテスト対象も正しいはずなのに、テストが失敗するようになってしまう</li>
+</ul></li>
+<li>Obscure Test<ul>
+<li>失敗するはずのテストが成功してしまう</li>
+</ul></li>
+<li>Hard-to-Test Code<ul>
+<li>自動テスト用のテストスイートがないレガシーコード</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l19"><span class="sanchor"> </span></a>Developers Not Writing Tests</h3>
+<p>開発者がテストを書いてくれず、Production Bugs に対して「テストでカバーできなかった」と言い訳する。</p>
+<p>「テスト」という負債のため、設計を改善するためにコードを書き換えるのが危険なことになっている。</p>
+<ul>
+<li>原因<ul>
+<li>Not Enough Time<ul>
+<li>開発スケジュールが厳しい</li>
+<li>効率良くテストを書くスキルを開発者が持ってないし、学習する時間もない</li>
+</ul></li>
+<li>Hard-to-Test Code<ul>
+<li>テストが書きにくい設計になっている</li>
+</ul></li>
+<li>Wrong Test Automation Stragety<ul>
+<li>テスト戦略の誤り</li>
+<li>テスト環境のせいでテストが書きにくくなっている</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l20"><span class="sanchor"> </span></a>High Test Maintenance Cost</h3>
+<p>ちゃんとテストを書いているのに、新機能の開発速度が徐々に落ちていく。</p>
+<p>コードを書いている時間の大部分を、既存のテストコードの修正に費している。</p>
+<p>開発者が、失敗するようになったテストをテストスイートから削除している。</p>
+<ul>
+<li>原因<ul>
+<li>Fragile Test<ul>
+<li>プロダクションコードの軽微な改修でもテストが失敗しはじめる</li>
+</ul></li>
+<li>Obscure Test<ul>
+<li>既存のテストが理解しづらく、テストのデバッグに時間を費している</li>
+</ul></li>
+<li>Hard-to-Test Code<ul>
+<li>プロダクションコード (レガシーコード) が十分に安定してしまっているため、テストを書くのが大変</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l21"><span class="sanchor"> </span></a>Production Bugs</h3>
+<p>自動化テストを書いているのに、テストチームによるテスト、顧客によるテスト、商用環境で多くのバグが発見される。</p>
+<ul>
+<li>原因<ul>
+<li>Infrequently Run Tests<ul>
+<li>開発者はテストをあまり実行してないし、日次の結合ビルドのテストも失敗している</li>
+</ul></li>
+<li>Lost Test<ul>
+<li>テストが削除されたり無効にされたりしていて、実際に実行されてるテストの数がやけに少ない</li>
+</ul></li>
+<li>Missing Unit Test<ul>
+<li>改修があってもユニットテストが追加されてないので、リファクタリングでどこかの機能を壊してしまう</li>
+</ul></li>
+<li>Untested Code<ul>
+<li>テスト対象のコードパスが他コンポーネントに依存しており、それをテストする方法が分からないのでテストが書けない</li>
+</ul></li>
+<li>Untested Requirement<ul>
+<li>テスト対象の個々の部品はテストしているが、システムの機能のテストをしてない</li>
+</ul></li>
+<li>Neverfail Test<ul>
+<li>assertion が間違っていて絶対に失敗しなくなっている</li>
+<li>非同期システムのテストにおいて、テストを実行しているスレッドとは異なるスレッドやプロセスから例外がスローされて見逃している</li>
+</ul></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l22"> </a></span><span class="title">さいごに</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>メリハリ無く書き連ねたせいで、「匂い」間の関連性は表現できませんでした。
+関連性とは、Code Smells や Behavior Smells を放置すると Project Smells の原因となる、といったことです。</p>
+<p>Project Smells が感じられるということは、それだけ根が深い問題なのかもしれません。
+自分たちの身の回りを見直す際の観点として利用してみてはいかがでしょうか。</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/06/10 00:24:05<br>
+        Keyword(s):<br>
+        References:[<a href="./?0004">xUTP Magazine 0004号</a>] [<a href="./">ぺけま</a>] [<a href="./?SideMenu">SideMenu</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h3><a name="s0"><span class="sanchor"> </span></a>トップ</h3>
+<h3><a name="s1"><span class="sanchor"> </span></a><a href="./?0004">0004号(2012/06/8)</a></h3>
+<ul>
+<li><a href="./?0004%2F%E5%B7%BB%E9%A0%AD%E8%A8%80">巻頭言</a></li>
+<li><a href="./?0004%2FTopics">xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</a></li>
+<li><a href="./?0004%2FTddlive_Jo">TDD Live 番外編(TDD序破Q)</a></li>
+<li><a href="./?0004%2F%E7%B7%A8%E9%9B%86%E5%BE%8C%E8%A8%98">編集後記</a></li>
+</ul>
+<h3><a name="s2"><span class="sanchor"> </span></a>バックナンバー</h3>
+<ul>
+<li><a href="./?0003">0003号(2011/12/31)</a></li>
+<li><a href="./?0002">0002号(2011/11/30)</a></li>
+<li><a href="./?0001">0001号(2011/11/05)</a></li>
+</ul>
+<h3><a name="s3"><span class="sanchor"> </span></a>リンク</h3>
+<ul>
+<li><a href="http://devtesting.jp/goos/" class="external">goos読書会Wiki</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会Wiki</a></li>
+<li><a href="http://devtesting.jp/tddbc" class="external">TDDBC Wiki</a></li>
+<li><a href="http://groups.google.co.jp/group/devtesting-ja" class="external">devtesting-ja(Google Groups)</a></li>
+<li><a href="http://xunitpatterns.com/" class="external">xUnitPatterns.com</a></li>
+<li><a href="http://www.amazon.co.jp/dp/0131495054" class="external">xUnit Test Patterns(amazon.co.jp)</a></li>
+</ul>
+<h3><a name="s4"><span class="sanchor"> </span></a><a href="http://devtesting.jp/pekema/?c=rss" class="external">RSS</a></h3>
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.1.6-p336 (2015-04-13).<br>
+Founded by devtesing-ja.<br>
+</div>
+</div>
+</body>
+</html>

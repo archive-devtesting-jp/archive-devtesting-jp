@@ -1,0 +1,590 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>xUTP Magazine - goos 読書会への誘い</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    div.adminmenu {
+    display: block;
+}
+
+span.adminmenu {
+    background-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    border-color: rgb(255,255,255);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+span.adminmenu a {
+    background-color: transparent;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+/*
+span.adminmenu a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+*/
+
+span.adminmenu a:hover {
+    background-color: transparent;
+    color: green;
+    text-decoration: none;
+}
+
+body {
+    background-position: top center;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 0.4em;
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 {
+    border-color: #000000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: large;
+    margin-bottom: 0.4em;
+    margin-top: 50px;
+    padding-left: 0.2em;
+    text-align: left;
+}
+h1.header a {
+    color: #444444;
+    text-decoration: none;
+}
+
+div.body a {
+    background-color: transparent;
+    color: #0000EE;
+}
+div.body a:visited {
+    background-color: transparent;
+    color: #000095;
+}
+div.body a:hover {
+    background-color: transparent;
+    color: #FF6835;
+}
+
+div.body h3 a {
+    text-decoration: none;
+}
+div.body h4 a {
+    text-decoration: none;
+}
+
+div.referer, div.refererlist, div.day div.form {
+    border-color: #AA1111;
+    border-style: solid;
+    border-width: 1px;
+    font-size: small;
+    margin-bottom: 0.5em;
+    margin-left: 3em;
+    padding: 0.5em;
+}
+div.day div.field {
+    display: inline;
+    margin-right: 1em;
+}
+img.icon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.amazon {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.right {
+    border: medium none;
+    float: right;
+    margin-left: 0.5em;
+}
+img.ext {
+    border: medium none;
+}
+div.comment {
+    display: none;
+    font-size: x-small;
+}
+div.trackbacks {
+    display: inline;
+    font-size: small;
+}
+
+div.main {
+    background-position: 0 44px;
+    background-repeat: no-repeat;
+    margin-left: 150px;
+    margin-right: 0.6em;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+}
+div.main hr {
+    background-color: transparent;
+    color: #888888;
+    width: 96%;
+}
+div.main hr.sep {
+    display: none;
+    margin: 0;
+}
+div.main h2 {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid green;
+    border-left: 15px solid green;
+    color: #000000;
+    font-size: 150%;
+    margin: 0.5em 0;
+    padding: 0.2em;
+    text-align: left;
+}
+div.main p img {
+    float: left;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p em img {
+    float: none;
+    margin: 0.2em 0.8em 0.8em 0.2em;
+}
+div.main p strong img {
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+div.main dt img {
+    float: left;
+    margin: 0.6em;
+}
+div.main dd img {
+    float: right;
+    margin: 0.2em 0.8em 0.6em 0.6em;
+}
+div.main dl {
+    clear: none;
+}
+div.main div.day, h2, h3, h4, h5, h6, h7, h8, h9, hr {
+    clear: both;
+}
+div.main h2 a:link, div.main h2 a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+div.main h2 span.title {
+}
+div.main div.day {
+    font-size: 90%;
+    margin-right: 0;
+}
+div.main div.section {
+    margin-left: 1em;
+}
+div.main span.readmore {
+    font-size: 80%;
+}
+div.main div.lm {
+    font-size: 75%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-top: 0;
+    text-align: right;
+}
+span.lm {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 1px 0 0;
+}
+div.main h3 {
+    border-color: #950000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    font-size: 110%;
+}
+div.main h4 {
+    border-color: #950000;
+    border-style: dashed;
+    border-width: 0 0 1px;
+    font-size: 100%;
+    margin-left: 0.6em;
+}
+div.main h5, h6, h7, h8, h9 {
+    font-size: 100%;
+    margin: 0;
+    padding: 0.4em 1em;
+}
+div.main p {
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    padding-right: 2em;
+}
+div.main li {
+    line-height: 1.5;
+}
+div.main ul, div.main dl {
+    margin-left: 2em;
+    margin-top: 0.2em;
+    padding-left: 0;
+}
+div.main dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+div.main dd {
+    line-height: 140%;
+    margin-left: 2em;
+}
+div.main pre {
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    margin-left: 2em;
+    padding: 4px;
+}
+div.main blockquote {
+    background-color: #F0F0F0;
+    border-color: #888888;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    color: #333333;
+    padding: 8px 8px 0;
+}
+div.main table {
+    border-collapse: collapse;
+    margin: 1em;
+    text-align: center;
+}
+div.main td {
+    border: thin solid #888888;
+    padding: 2px 0.6em;
+}
+div.form {
+    clear: right;
+}
+span.corres {
+    font-size: 80%;
+    font-weight: lighter;
+}
+div.main span.footnote a {
+    font-size: x-small;
+    text-decoration: none;
+}
+div.main p.footnote {
+    font-size: small;
+}
+div.main p.footnote a {
+    text-decoration: none;
+}
+div.sidebar {
+    display: block;
+    background-color: green;
+    background-repeat: no-repeat;
+    color: #FFEEEE;
+    left: 0;
+    padding-bottom: 5em;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    width: 150px;
+}
+div.sidebar h4 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar h5 {
+    font-size: small;
+    margin-bottom: 0.2em;
+    margin-left: 6px;
+    margin-top: 1em;
+    padding-right: 8px;
+}
+div.sidebar div.menu {
+    font-size: small;
+    font-weight: bold;
+    padding-left: 4px;
+}
+div.sidebar ul {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+div.sidebar li {
+    font-size: x-small;
+    line-height: 100%;
+    list-style-type: none;
+    margin: 6px 0;
+}
+div.sidebar hr {
+    background-color: transparent;
+    color: #FFFFFF;
+    margin-bottom: 1em;
+    width: 80%;
+}
+div.sidebar p {
+    font-size: x-small;
+    margin: 0;
+    padding: 0;
+}
+div.sidebar form {
+    font-size: x-small;
+    line-height: 110%;
+    margin-left: 0.5em;
+    margin-right: 4px;
+    margin-top: 0;
+    padding-right: 8px;
+}
+div.sidebar a {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:visited {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar a:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div.sidebar img {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubynokai {
+    border-style: none;
+    margin-left: 8px;
+}
+div.sidebar img.rubima_logo {
+    border-style: none;
+    left: 0;
+    margin-left: 0;
+    position: absolute;
+    top: 49px;
+}
+div.footer {
+    clear: both;
+    font-size: 90%;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding-top: 36px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.LineNumber {
+    color: #AAAAAA;
+}
+.html_linenumber {
+    color: #AAAAAA;
+}
+.html_webtemplate {
+    color: #0000AA;
+}
+.html_erb {
+    color: #339933;
+}
+.html_tag {
+    color: #AA5500;
+}
+.html_tag_block {
+    color: #AA0000;
+}
+.html_comment {
+    color: #00AA00;
+}
+
+div.day span.sanchor {
+    display: none;
+}
+
+div.note {
+    font-size: small;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
+div.social{
+    padding-bottom: 10px;
+}
+
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/pekema/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./">ぺけま</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=login;p=0003%2FGoos">Login</a></span></div>
+  <h1 class="header">goos 読書会への誘い</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <dl>
+<dt>書いた人</dt>
+<dd><a href="https://twitter.com/#!/tomy_kaira" class="external">@tomy_kaira</a> goos 勉強会皆勤ですが、ただの参加者です。
+</dd>
+</dl>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">goos とはなにか?</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>goos 本とは、<a href="http://www.growing-object-oriented-software.com/" class="external">Growing Object-Oriented Software Guided by Tests</a>という、テストファーストでオブジェクト指向なソフトウェア開発の本です。</p>
+<p>和田さんの TDDBC のスライド等で紹介されているので、ご存知の方も多いかもしれません。テストするのが難しいが、実際に作るソフトウェアでは必須の技術(GUI、通信など)に対して、具体的な手法を学ぶことができます。<a href="http://www.amazon.co.jp/dp/4894717115/" class="external">テスト駆動開発入門</a>で身につけたユニットテストのその先に進むことができます。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">goos 読書会とは?</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>goos 本は、鈍器と呼ばれる xUTP ほどではないですが、内容のしっかりした洋書であり、一人で読みすすめるのにはかなりの忍耐とやる気が必要です。とくに Part Ｉ や Part Ⅱ のテストやオブジェクト指向に関して著者のさまざまな見解が展開されていて、設計などに関する知識を要求されます。</p>
+<p>また、Part Ⅲ ではサンプルアプリケーションを通じて著者の考えかたや、やりかたが示されますが、この作業環境を構築するのに、テストツールを自分でビルドする必要があったりと、いくつもハードルがあります。</p>
+<p>そんなあなたをサポートするのが goos 勉強会です。</p>
+<p>goos 読書会は、大中さんが幹事をされている、xUTP 読書会の後続の勉強会です。日本のテスト界の大御所から学生まで、多様なメンバーが一緒に goos 本を読み、教えあいながら議論にはげんでいます。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">どんなスタイルなの?</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>最近はチームラボさんのオフィスをお借りして、日曜や祝日に開催しています。</p>
+<p>例: <a href="http://atnd.org/events/22029" class="external">第五回(11/23)の ATND</a></p>
+<p>だいたい 13:00 くらいに集まり、各自名札を装備したり、レッドブルを飲んだりと準備をします。会の最初には、ポジションペーパーをつかって自己紹介をします(<a href="https://docs.google.com/present/edit?id=0AZSb0mMLbDCoZHgyM2ZxYl8yNG5jNWQ1Y24" class="external">ポジションペーパーの例</a>)。 <a href="https://twitter.com/#!/yujiorama" class="external">@yujiorama</a> さんが実況しているのを見たことがある人もいるでしょう。自己紹介 + 近況をちょろっと添えるのが一般的です。</p>
+<p>自己紹介がおわると、前回のつづきから議論を再開します。いままでは担当者が本の大意を訳して、コメントを添えた資料を wiki にアップしておき、それを見ながら議論をすすめてきました。さまざまな本を翻訳して出版していらっしゃる和智さんや和田さんから直々の指導を受けることができます。著者の意図についてや、他のモデルやセオリーとの比較で、熱い議論になることもよくあります。TDD をやっているメンバーで、それぞれの実例に即した情報交換もできます。</p>
+<p>英語の本と日本語の訳を追いながらハイレベルな意見交換をしていくのはたいへん疲れます。そこで goos 読書会では休憩を大事にしていて、およそ1時間から1時間半で10〜15分程度の休憩をはさみます。幹事の大中さんは毎回違うスイーツ(それもコンビニのものではなく、有名っぽいお菓子!!)を持ってきてくれています。スイーツ男子である私にとって、これほど魅力的な勉強会はありません。スイーツやレッドブルでエネルギーを補給しながら、いままで議論していたところに関して集まって話したり、近況について雑談したりして、リフレッシュします。</p>
+<p>一回の勉強会で休憩は2度ほどとられます。議論の進行度をみつつ、ちょうどいい時間になったら片付けをしつつ、ふりかえり(KTP)をします。</p>
+<p>その後、希望者で近くの飲食店で懇親会をします。最近の課題を話しあったり、仕事のついて、家庭についてなど、さまざまなおしゃべりがくりひろげられます。 goos 読書会の特徴として、懇親会でも真面目な話をする場合が多いように感じますが、冗談をまじえながら、たのしくじっくりお話する、という雰囲気です。</p>
+<p>このように、goos 勉強会では、優れたメンバーとおいしいスイーツ、たのしい懇親会を用意してあなたの参加をおまちしています。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l3"> </a></span><span class="title">Java や 英語が操れないとダメじゃないの?</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>私は、この勉強会に参加するまで Java を触ったことがありませんでした。この会に参加しだしてから <a href="http://www.amazon.co.jp/dp/4894717115/" class="external">テスト駆動開発入門</a>と goos 本を写経したり、いろいろな人に教えてもらったりして、最低限の読む力をつけました(いまだに満足に書けません)。たしかに、goos 本はすべてのサンプルが Java で書かれており、説明では Java ecosystem の例を引いています。しかし wiki では用語に注をつけており、Java をバリバリ使っているメンバーから知識を得ることもできます。私は Java を勉強するためにもいい環境だと考えています。</p>
+<p>反対に、自分は Java は使わないから関係ないや、というのは違います。この本はオブジェクト指向とデベロッパーテストに関する本なので、他の言語で開発するときにも、一般的に適用できる手法にあふれています。</p>
+<p>英語が苦手な方も、まったく心配ありません。メンバーに開放されている wiki には担当者が日本語化したテキストが整備されています。議論の最中に訂正や補足がはいるので、原書より充実しているほどです。一人で読むと、術語を調べてでてくるのがまた英語の情報で、どんどん嫌になってしまうかもしれません。みんなで読むことで、日本語で用語や概念の解説を聞けます。</p>
+<p>また、テキストは結構高く(3000円程度)入手も面倒ですが、電子版もあり、最悪本がなくても、wiki の訳を見ながら参加できます(だいたいの発表は本ありきで進めますが、ない人に配慮して、図をホワイトボードに書いたり、プロジェクターも利用しています)。気になるけど……という人は本なしでとりあえず遊びにきてみるのもアリです。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l4"> </a></span><span class="title">こわくないの?</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>方々で怖いという噂がたっているようですが、怖くないです。怖くないよ!!</p>
+<p>たしかにハードルは高いかもしれません。扱うテキストは洋書ですし、他の人の発表を聞くだけという受け身な状態では得るものは少なく、わいわいしたりするような軽い雰囲気ではありません。けれども、その分、達成感はただ参加するだけの勉強会よりもはるかに大きく、実際に得る知識も多岐にわたります。</p>
+<p>これまで述べてきたように、テキストを読んでいくうえでは他のメンバーからの強力なバックアップがあります。回によっては振り返りセッションもあるので、途中参加でも心配ありません(たぶん振り返りセッションのスライドをもらうこともできるでしょう。wiki にも蓄積された情報があります)。</p>
+<p>次回からは Part Ⅲ という実際に AuctionSniper という例題にそって、コードを書いていく部分になります。ちょうど切りがいいので、これまで参加を検討していた人は一度来てみてはどうでしょうか。</p>
+<p>テストや設計というと、業務でバリバリ開発している人向けのイメージがありますが、学生の参加も歓迎しています。いまも、私ふくめ、2名の学生が定期的に出席しています。情報系の学生だとある程度大きなプログラムを書くことや、グループで課題をこなすこともあると思います。それらの場面で SCM (git などのソフトウェア構成管理)ツールやテスト駆動という手法、設計の考えかたなどを利用しない手はありません。せっかくプログラムを書くのですから、一緒に開発ツールの使い方や設計手法などを学ぶことができれば一石二鳥です。</p>
+<p>まだ不安だ、という人には<a href="http://www.amazon.co.jp/dp/4894717115/" class="external">テスト駆動開発入門</a>の写経をおすすめします。これができれば、あなたはもう参加する資格(と義務 ;D)があります(もちろん、必須ではないですよ)。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l5"> </a></span><span class="title">オラ参加したくなってきたぞ!</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><a href="https://groups.google.com/group/devtesting-ja" class="external">devtesting-ja( Growing Object-Oriented Software, Guided by Tests読書会) - Google グループ</a>に参加されることをお勧めしします。次回の読書会の ATND が立つと、このメーリングリストで告知されます。</p>
+<p>また、<a href="http://devtesting.jp/goos/" class="external">goos 読書会の wiki</a> にも ATND へのリンクがあります。過去の議論についての情報もここから参照できます(一部のコンテンツを見るには、メンバー向けの認証が必要です)。</p>
+<p>Twitter のハッシュタグは #goos_jp です。遠方や用事で参加できない場合は、ハッシュタグと wiki を追えばなんとなく分かるかもしれません。</p>
+<p>goos 勉強会は、あなたの参加をお待ちしております。</p>
+<h3><a name="l6"><span class="sanchor"> </span></a>編集部注</h3>
+<p>goos読書会の次回は、2011/1/21となります。<a href="http://atnd.org/events/23826" class="external">ATND</a>も立っています！</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2011/12/31 19:58:41<br>
+        Keyword(s):<br>
+        References:[<a href="./?0003">xUTP Magazine 0003号</a>] [<a href="./?0003%2F%E5%B7%BB%E9%A0%AD%E8%A8%80">0003/巻頭言</a>] [<a href="./">ぺけま</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h3><a name="s0"><span class="sanchor"> </span></a>トップ</h3>
+<h3><a name="s1"><span class="sanchor"> </span></a><a href="./?0004">0004号(2012/06/8)</a></h3>
+<ul>
+<li><a href="./?0004%2F%E5%B7%BB%E9%A0%AD%E8%A8%80">巻頭言</a></li>
+<li><a href="./?0004%2FTopics">xUTP Topics: 第三回 xUnit Test Patterns の世界観「テストコードの不吉な臭い」</a></li>
+<li><a href="./?0004%2FTddlive_Jo">TDD Live 番外編(TDD序破Q)</a></li>
+<li><a href="./?0004%2F%E7%B7%A8%E9%9B%86%E5%BE%8C%E8%A8%98">編集後記</a></li>
+</ul>
+<h3><a name="s2"><span class="sanchor"> </span></a>バックナンバー</h3>
+<ul>
+<li><a href="./?0003">0003号(2011/12/31)</a></li>
+<li><a href="./?0002">0002号(2011/11/30)</a></li>
+<li><a href="./?0001">0001号(2011/11/05)</a></li>
+</ul>
+<h3><a name="s3"><span class="sanchor"> </span></a>リンク</h3>
+<ul>
+<li><a href="http://devtesting.jp/goos/" class="external">goos読書会Wiki</a></li>
+<li><a href="http://www.fieldnotes.jp/xutp/" class="external">xUTP読書会Wiki</a></li>
+<li><a href="http://devtesting.jp/tddbc" class="external">TDDBC Wiki</a></li>
+<li><a href="http://groups.google.co.jp/group/devtesting-ja" class="external">devtesting-ja(Google Groups)</a></li>
+<li><a href="http://xunitpatterns.com/" class="external">xUnitPatterns.com</a></li>
+<li><a href="http://www.amazon.co.jp/dp/0131495054" class="external">xUnit Test Patterns(amazon.co.jp)</a></li>
+</ul>
+<h3><a name="s4"><span class="sanchor"> </span></a><a href="http://devtesting.jp/pekema/?c=rss" class="external">RSS</a></h3>
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.1.6-p336 (2015-04-13).<br>
+Founded by devtesing-ja.<br>
+</div>
+</div>
+</body>
+</html>
