@@ -1,0 +1,194 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC大阪2.0/課題</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%AA%B2%E9%A1%8C">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC大阪2.0/課題</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDD Boot Camp 大阪 2.0/課題( #tddbc )</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>対象</h3>
+<p>　飲み物自動販売機 Ver 2.0</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>課題を解くにあたって大事な事</h3>
+<ul>
+<li>課題を全部解くのを目標するのではなく、ワークショップの学習成果を最大化するように心がけましょう！</li>
+<li>ペアプロはこまめに交代するようにしましょう！10分ぐらいが目安です！</li>
+<li>TDDは「きれいで動くコード」を目指します。必要に応じて各自独自にリファクタリングを心がけましょう！</li>
+<li>課題の箇条書きはTDDのRED-&gt;GREENの１サイクルに対応している訳ではありません。やりやすいように仕様を整理・分割して、スモールステップで進めましょう</li>
+</ul>
+<h3><a name="l3"><span class="sanchor"> </span></a>課題</h3>
+<h4><a name="l4"> </a>ステップ０　お金の投入と払い戻し</h4>
+<ul>
+<li>10円玉、50円玉、100円玉、500円玉、1000円札を１つずつ投入できる。</li>
+<li>投入は複数回できる。</li>
+<li>投入金額の総計を取得できる。</li>
+<li>払い戻し操作を行うと、投入金額の総計を釣り銭として出力する。</li>
+</ul>
+<h4><a name="l5"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h4><a name="l6"> </a>ステップ１　扱えないお金</h4>
+<ul>
+<li>想定外のもの（硬貨：１円玉、５円玉。お札：千円札以外のお札）が投入された場合は、投入金額に加算せず、それをそのまま釣り銭としてユーザに出力する。</li>
+</ul>
+<h4><a name="l7"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h4><a name="l8"> </a>ステップ２　ジュースの管理</h4>
+<ul>
+<li>値段と名前の属性からなるジュースを１種類格納できる。初期状態で、コーラ（値段:120円、名前”コーラ”）を5本格納している。</li>
+<li>格納されているジュースの情報（値段と名前と在庫）を取得できる。</li>
+</ul>
+<h4><a name="l9"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h4><a name="l10"> </a>ステップ３　購入</h4>
+<ul>
+<li>投入金額、在庫の点で、コーラが購入できるかどうかを取得できる。</li>
+<li>ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、ジュースの在庫を減らし、売り上げ金額を増やす。</li>
+<li>投入金額が足りない場合もしくは在庫がない場合、購入操作を行っても何もしない。</li>
+<li>現在の売上金額を取得できる。</li>
+<li>払い戻し操作では現在の投入金額からジュース購入金額を引いた釣り銭を出力する。</li>
+</ul>
+<h4><a name="l11"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h4><a name="l12"> </a>ステップ４　機能拡張</h4>
+<ul>
+<li>ジュースを3種類管理できるようにする。<ul>
+<li>在庫にレッドブル（値段:200円、名前”レッドブル”）5本を追加する。</li>
+<li>在庫に水（値段:100円、名前”水”）5本を追加する。</li>
+</ul></li>
+<li>投入金額、在庫の点で購入可能なドリンクのリストを取得できる。</li>
+</ul>
+<h4><a name="l13"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h4><a name="l14"> </a>ステップ５　釣り銭と売り上げ管理</h4>
+<ul>
+<li>ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、釣り銭（投入金額とジュース値段の差分）を出力する。<ul>
+<li>ジュースと投入金額が同じ場合、つまり、釣り銭0円の場合も、釣り銭0円と出力する。</li>
+<li>釣り銭の硬貨の種類は考慮しなくてよい。</li>
+</ul></li>
+</ul>
+<h4><a name="l15"> </a>リファクタリング</h4>
+<ul>
+<li>（今後の仕様変更に備えて実装とテストをリファクタリングしましょう！）</li>
+</ul>
+<h3><a name="l16"><span class="sanchor"> </span></a>以下応用課題</h3>
+<h4><a name="l17"> </a>ステップ6　釣り銭ストックの導入</h4>
+<ul>
+<li>自動販売機は釣り銭ストックを持つ事ができる。</li>
+<li>釣り銭ストックとして、有効な各お札と硬貨10枚ずつ保持する。</li>
+<li>釣り銭を返す際は、値段の大きな物から硬貨を優先して出力するようにする。ストックからなくなった硬貨は、可能であれば他の硬貨で補う（例えば50円硬貨を10円硬貨で補う）<ul>
+<li>釣り銭には投入金額のお札および硬貨も使える(110円入れて、100円の水を買うといった場合のように余分に入れたお金も戻る)。</li>
+<li>釣り銭を出力したら、釣り銭用ストックを減らす。</li>
+</ul></li>
+<li>購入操作を行った際に、釣り銭用ストックが足りない場合、何もしない。</li>
+<li>釣り銭用ストックを取得できる。</li>
+</ul>
+<h4><a name="l18"> </a>ステップ７　ジュースのランダム購入</h4>
+<ul>
+<li>在庫にダイエットコーラ（値段:120円、名前”ダイエットコーラ”）5本を追加する。</li>
+<li>在庫にお茶（値段:120円、名前”お茶”）5本を追加する。</li>
+<li>「ランダム」購入ボタンを導入する。<ul>
+<li>「ランダム」購入ボタンを押すと、コーラ、ダイエットコーラ、お茶がランダムに購入できる。<ul>
+<li>「ランダム」候補のドリンクの在庫が全てない時は通常のドリンクがない場合と同じ振る舞いをする。</li>
+<li>「ランダム」は投入金額、在庫の点で購入可能なドリンクのリストに中に入る(つまり、120円入れて、コーラとお茶の在庫がある場合、「コーラ」と「お茶」と「ランダム」が購入可能なドリンクのリストになる)。</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3><a name="l19"><span class="sanchor"> </span></a>以下進捗を見て追加するさらなる応用課題</h3>
+<h4><a name="l20"> </a>釣銭の高機能化</h4>
+<ul>
+<li>売上金額を釣銭に回すことができる</li>
+</ul>
+<h4><a name="l21"> </a>賞味期限管理</h4>
+<ul>
+<li>ジュースの賞味期限（年月日）を1本単位で登録できる。</li>
+<li>現在日時が購入対象のジュースの賞味期限を過ぎている場合、ジュースの購入ボタンを押しても何もしない。</li>
+<li>格納されているジュースの賞味期限情報を取得できる</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/06/03 15:18:30<br>
+        Keyword(s):<br>
+        References:[<a href="./?TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E8%AA%B2%E9%A1%8C">TDDBC横浜2nd/課題</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

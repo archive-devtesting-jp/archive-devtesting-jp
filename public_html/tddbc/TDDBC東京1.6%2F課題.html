@@ -1,0 +1,174 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC東京1.6/課題</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E6%9D%B1%E4%BA%AC1.6%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E6%9D%B1%E4%BA%AC1.6%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E6%9D%B1%E4%BA%AC1.6%2F%E8%AA%B2%E9%A1%8C">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC東京1.6/課題</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <p>Backlogに記載されているものをこちらに転載しておきます</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">お題その1</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>putでkeyとvalueを追加し、dumpで一覧表示、getでkeyに対応するvalueを取得できる</p>
+<ul>
+<li>put で keyとvalueを追加する</li>
+<li>dumpで登録されている一覧を表示</li>
+<li>getで指定したkeyのvalueを取得</li>
+</ul>
+<p>※keyにnullをわたすと例外が発生
+※valueのnullは許容する</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">お題その2</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>deleteで指定のkey-valueを削除</p>
+<ul>
+<li>deleteで指定したkeyとvalueを削除する</li>
+<li>存在しないkeyが渡されたら何もしない</li>
+<li>nullを渡すと例外が発生する</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">お題その3</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>putの引数に既に存在するkeyが指定された場合、valueのみを更新する</p>
+<ul>
+<li>putで既に存在するkeyの場合はvalueを更新する</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l3"> </a></span><span class="title">お題その4</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>複数のkeyとvalueをまとめて追加できるようにする</li>
+</ul>
+<p>同じキーが複数ある場合、一番最後に指定されたものが使用される。
+既に存在するキーがある場合も、今回指定したものが優先される。
+指定した引数の中にnullのキーがある場合、例外を投げ、状態を元に戻す。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l4"> </a></span><span class="title">お題その5</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>putでkey,valueを追加する際に追加時間も格納するように変更する</li>
+<li>dump関数は時刻が新しい方から古い方へ順にkey、valueを出力するように変更する</li>
+<li>引数に複数指定して追加する関数の場合、後ろにあるものほど新しいとみなす</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l5"> </a></span><span class="title">お題その6</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>dumpの引数に時刻（秒単位）を指定できるようにする。</li>
+<li>dump関数は時刻が指定された場合、指定時刻以降のデータのみを表示する</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l6"> </a></span><span class="title">お題その7</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>deleteの引数に分・秒を指定できる</li>
+<li>deleteは分・秒を指定された場合、データの時刻情報が「現在時刻-引数の分・秒」よりも古いデータをすべて削除する</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2011/12/22 22:31:20<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

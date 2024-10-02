@@ -1,0 +1,164 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台08/課題_2</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B008%2F%E8%AA%B2%E9%A1%8C_2" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B008%2F%E8%AA%B2%E9%A1%8C_2" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B008%2F%E8%AA%B2%E9%A1%8C_2">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台08/課題_2</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDDBC仙台08課題：複素数</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>虚数単位</h3>
+<p><strong>虚数単位</strong>（きょすうたんい : imaginary unit）とは、−1 の平方根（2乗して −1 になる数）である2つの数のうちの1つの数のことである（どちらかを特定することはできない）。
+そのような数を記号で <strong>i</strong> で表す。</p>
+<p>(<a href="https://ja.wikipedia.org/wiki/%E8%99%9A%E6%95%B0%E5%8D%98%E4%BD%8D" class="external">Wikipedia</a> より抜粋)</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>複素数</h3>
+<p>a, b を実数として形式的に a + bi の形に書かれる式を一種の数と見做して <strong>複素数</strong> (ふくそすう : complex number) と呼ぶ。</p>
+<p>複素数 a + bi に対して、a をその <strong>実部</strong> (じつぶ : real part) といい、b をその <strong>虚部</strong> (きょぶ : imaginary part) という。</p>
+<p>(<a href="https://ja.wikipedia.org/wiki/%E8%A4%87%E7%B4%A0%E6%95%B0" class="external">Wikipedia</a> より抜粋)</p>
+<h3><a name="l3"><span class="sanchor"> </span></a>虚数と純虚数</h3>
+<p><strong>虚数</strong>（きょすう : imaginary number）とは、実数ではない複素数のことである。</p>
+<p>すなわち、複素数 a + bi（a, b は実数、i は虚数単位）のうち、b ≠ 0 を満たすものである。</p>
+<p>また、a = 0 かつ b ≠ 0 を満たすものを <strong>純虚数</strong> (じゅんきょすう : purely imaginary number) という。</p>
+<p>(<a href="https://ja.wikipedia.org/wiki/%E8%99%9A%E6%95%B0" class="external">Wikipedia</a> より抜粋)</p>
+<h3><a name="l4"><span class="sanchor"> </span></a>ガウス整数</h3>
+<p><strong>ガウス整数</strong>（ガウスせいすう : Gaussian integer）とは、実部と虚部が共に整数である複素数のことである。</p>
+<p>すなわち、a + bi（a, b は整数）の形の数のことである。ここで i は虚数単位を表す。</p>
+<p>(<a href="https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A6%E3%82%B9%E6%95%B4%E6%95%B0" class="external">Wikipedia</a> より抜粋)</p>
+<h3><a name="l5"><span class="sanchor"> </span></a>課題１ 純虚数</h3>
+<h4><a name="l6"> </a>課題１−１ 純虚数の生成と文字列表記の取得</h4>
+<ul>
+<li><strong>虚部</strong> (きょぶ : imaginary part) を与えて <strong>純虚数</strong> (じゅんきょすう : purely imaginary number) を生成してください<ul>
+<li>ただし、 虚部は「0ではない整数」とします</li>
+</ul></li>
+<li>生成した純虚数から <strong>文字列表記</strong> (notation) を取得してください<ul>
+<li>虚部が b である純虚数の文字列表記は bi となります</li>
+<li>ただし、 虚部が 1 および -1 である純虚数の文字列表記は、 それぞれ i と -i となります (1i, -1i でないことに注意)</li>
+</ul></li>
+</ul>
+<pre>【例】
+// 虚部 に 4 を与えて 純虚数 を生成
+PurelyImaginaryNumber sut = new PurelyImaginaryNumber(4);
+// 文字列表記は 4i
+String notation = sut.getNotation(); // =&gt; 4i
+// 虚部 に 0 を与えて 純虚数 は生成することができない
+new PurelyImaginaryNumber(0); // =&gt; エラー</pre>
+<h4><a name="l7"> </a>課題１−２ 同一性の判定</h4>
+<ul>
+<li>任意の２つの純虚数について、その同一性を判定してください</li>
+<li>虚部が同一の値を持つ純虚数同士を同一であるとみなします</li>
+</ul>
+<h4><a name="l8"> </a>課題１−３ 共役の取得</h4>
+<p>任意の純虚数 bi に対して、その虚部の符号だけが異なる純虚数 -bi を <strong>共役</strong> (きょうやく : conjugate) と呼びます</p>
+<ul>
+<li>任意の純虚数の共役を取得してください</li>
+</ul>
+<h3><a name="l9"><span class="sanchor"> </span></a>課題２ 虚数 (実部 ≠ 0)</h3>
+<h4><a name="l10"> </a>課題２−１ 虚数の生成と文字列表記の取得</h4>
+<ul>
+<li><strong>実部</strong> (実部 : real part) と <strong>虚部</strong> (きょぶ : imaginary part) を与えて <strong>虚数</strong> (きょすう : imaginary number) を生成してください<ul>
+<li>ただし、 実部および虚部は 「0ではない整数」とします</li>
+</ul></li>
+<li>生成した虚数から文字列表記を取得してください<ul>
+<li>実部が a、 虚部が b である虚数の文字列表記は a + bi となります</li>
+<li>ただし、 虚部が負の数である虚数の文字列表記は  a - bi となります (b &lt; 0) (a + (-b)i ではないことに注意)</li>
+</ul></li>
+</ul>
+<h4><a name="l11"> </a>課題２−２ 同一性の判定</h4>
+<ul>
+<li>任意の２つの虚数について、その同一性を判定してください</li>
+<li>実部および虚部が同一の値を持つ虚数同士を同一であるとみなします</li>
+</ul>
+<h4><a name="l12"> </a>課題２−３ 共役の取得</h4>
+<p>任意の虚数 a + bi に対して、その虚部の符号だけが異なる純虚数 a - bi を <strong>共役</strong> (きょうやく : conjugate) と呼びます</p>
+<ul>
+<li>任意の虚数の共役を取得してください<ul>
+<li>ただし、任意の虚数 a + bi に対する共役は、その虚部の符号だけが異なる虚数 a - bi です</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l13"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス">
+この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2018/10/20 16:09:58<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

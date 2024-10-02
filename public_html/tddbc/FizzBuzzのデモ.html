@@ -1,0 +1,170 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - FizzBuzzのデモ</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=FizzBuzz%E3%81%AE%E3%83%87%E3%83%A2" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=FizzBuzz%E3%81%AE%E3%83%87%E3%83%A2" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=FizzBuzz%E3%81%AE%E3%83%87%E3%83%A2">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">FizzBuzzのデモ</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">FizzBuzz<a class="nodisp" href="./?c=edit;p=FizzBuzz" title="Create and edit the page FizzBuzz.">?</a> のデモ</span></h2>
+  <div class="body">
+    <div class="section">
+      <blockquote><p>1から100までの数をプリントするプログラムを書け。
+ただし3の倍数のときは数の代わりに｢Fizz｣と、
+5の倍数のときは｢Buzz｣とプリントし、
+3と5両方の倍数の場合には｢FizzBuzz<a class="nodisp" href="./?c=edit;p=FizzBuzz" title="Create and edit the page FizzBuzz.">?</a>｣とプリントすること。</p>
+</blockquote>
+<p><a href="http://www.aoky.net/articles/jeff_atwood/why_cant_programmers_program.htm" class="external">どうしてプログラマに・・・プログラムが書けないのか?</a></p>
+<h4><a name="l1"> </a>さあどうやってテスト駆動しましょうか。</h4>
+<p>(大事なのは <em>Think</em> -&gt; Red -&gt; Green -&gt; Refactor のサイクルを見せること)</p>
+<h4><a name="l2"> </a>正直に行くと</h4>
+<pre> assertEquals(..., fizzBuzz.print()); // 出力のテストどうやるの…</pre>
+<h4><a name="l3"> </a>文字列にしたらどうだろう?</h4>
+<pre> assertEquals(fizzBuzz.print(), "1,2,Fizz,4,Buzz,...");</pre>
+<p>テストデータがまだ大きい 「77 は Fizz? Buzz?」</p>
+<p>一口サイズまでテストを小さくしたい</p>
+<h4><a name="l4"> </a>分割統治しよう</h4>
+<p>ループと判定を分ける。プリントと判定を分ける。</p>
+<pre> (1..100).map {|n| fizzbuzz(n) }.join(',')</pre>
+<p>みたいなイメージ。判定なら小さくテストしやすい</p>
+<h4><a name="l5"> </a>ここまで小さくすればテストリストが書ける</h4>
+<pre> [] 3の倍数の時は Fizz と返す
+ [] 5の倍数の時は Buzz と返す
+ [] 3と5の倍数の時は FizzBuzz と返す
+ [] その他の数のときはその数を返す</pre>
+<h4><a name="l6"> </a>最初にテストに書く TODO を決める</h4>
+<p>(やらせ臭くなく「その他の数のときはその数を返す」を選ばないと三角測量できないので注意)</p>
+<pre>Fizz,Buzz,FizzBuzz は「ただし、」の後の特記事項なので、「その他の数」が一番の正常系というロジックで押す</pre>
+<h3><a name="l7"><span class="sanchor"> </span></a>最初のテスト</h3>
+<h4><a name="l8"> </a>「その他の数」でテストを書き始める</h4>
+<p>テストコードを書く際の議論をここで行う</p>
+<ul>
+<li>テスト名はどうする (Test 前置か否か)</li>
+<li>テストコードの書き順 (assert first)</li>
+<li>プロダクトコードの場所 (影響力が強いので最初から別ファイルに)</li>
+<li>テストデータを選ぶ (1,2,4,...)</li>
+</ul>
+<h3><a name="l9"><span class="sanchor"> </span></a>仮実装</h3>
+<h4><a name="l10"> </a>最初のテストを書いて Red を見せる</h4>
+<p>リファクタリングをふまえて、最初はベタ気味の名前で</p>
+<pre> assertEquals("4", FizzBuzz.fizzbuzz(4));</pre>
+<p>とか</p>
+<h4><a name="l11"> </a>仮実装で Green</h4>
+<p>(和田) 仮実装の説明を入れる</p>
+<h3><a name="l12"><span class="sanchor"> </span></a>三角測量</h3>
+<p>仮実装では実装にならないのでもうひとつデータを選ぶ</p>
+<p>assert を増やすか、テストメソッドを増やすかという議論</p>
+<p>両者のメリット、デメリット</p>
+<p>(和田が説明入れるかも)</p>
+<p>できればテストメソッドを増やす路線で</p>
+<h4><a name="l13"> </a>三角測量のテストを書いて Red</h4>
+<h4><a name="l14"> </a>きちんと実装して Green</h4>
+<p>「その他の数のときはその数を返す」に DONE マークを付ける</p>
+<p>(和田)TDD の歩幅の説明を入れる</p>
+<p>ここまでが<em>「ローギアの TDD 」</em></p>
+<p>(Q&amp;A をやるか?)</p>
+<h3><a name="l15"><span class="sanchor"> </span></a>次のテストを選ぶ</h3>
+<p>「3の倍数の時は Fizz と返す」を選択</p>
+<p>残り時間次第で仮実装コースに行くか明白な実装コースに行くかを判断</p>
+<ul>
+<li>時間が無い場合は、明白な実装コースで</li>
+<li>時間があるなら、 Fizz は三角測量、Buzz は明白な実装の方が説明がスムーズ</li>
+</ul>
+<h4><a name="l16"> </a>「3の倍数の時は Fizz と返す」のテストを書く</h4>
+<p>仮実装 &amp; 三角測量を使って解く
+三角測量のところで剰余を使う</p>
+<h4><a name="l17"> </a>「5の倍数の時は Fizz と返す」のテストを書く</h4>
+<p>剰余が使えることが分かるので、明白な実装で解く</p>
+<p>(和田)明白な実装の説明</p>
+<h3><a name="l18"><span class="sanchor"> </span></a>リファクタリング</h3>
+<p>ナビゲータがドライバーを止め、リファクタリングを促す
+改善できる / いらいらする ところはないか?</p>
+<ul>
+<li>引数の名前</li>
+<li>メソッド名</li>
+<li>テストコードの重複</li>
+<li>テストメソッド名</li>
+</ul>
+<p>上記を Green to Green でリファクタリングする</p>
+<p>(和田) リファクタリングの説明</p>
+<h4><a name="l19"> </a>テストコードのリファクタリング</h4>
+<p>実装のテストになってしまっているテスト名から仕様を示すテスト名への変更</p>
+<h3><a name="l20"><span class="sanchor"> </span></a>Q&amp;A</h3>
+<p>(和田) コミットのタイミングの説明とか</p>
+<p>おそらくここまでで時間を使い切る</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2013/05/18 08:06:18<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

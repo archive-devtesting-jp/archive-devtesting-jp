@@ -1,0 +1,187 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC長岡1.0/KPT</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E9%95%B7%E5%B2%A11.0%2FKPT" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E9%95%B7%E5%B2%A11.0%2FKPT" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E9%95%B7%E5%B2%A11.0%2FKPT">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC長岡1.0/KPT</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">Keep</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>デモでペアプロ再現</li>
+<li>おかし</li>
+<li>楽しむ!!</li>
+<li>@kenchan さんにダックタイピングの心得を教えて頂いた</li>
+<li>会場が駅から近くて良い</li>
+<li>テストを書く!</li>
+<li>めげずに TDD</li>
+<li>テストを書かなければという意思(キリッ)</li>
+<li>長岡で TDDBC</li>
+<li>継続的な開催</li>
+<li>TA 一人あたりのペア数が少なかったので、じっくり見れた(地方開催の利点?)</li>
+<li>自己紹介</li>
+<li>ハンズオン</li>
+<li>ペアプロ</li>
+<li>たっぷりペアプロできた</li>
+<li>ペアとはよく話す</li>
+<li>ポジションペーパーを事前にアップする</li>
+<li>早めに申し込む</li>
+<li>相手にはっきり自分の意見を伝える</li>
+<li>相手の意見を最後まで聞く・聞き出す</li>
+<li>議論を避けない</li>
+<li>楽しむ！</li>
+<li>おいしいお菓子（長岡銘菓的な）</li>
+<li>懇親会（緑川的な）</li>
+<li>テストを書くことを継続したい</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">Problem</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>デモで Eclipse を使うことを事前に知りたかった</li>
+<li>レビューで何をしたら良いか戸惑う方がいたので、経験者がいる場合、先にやってもらった方が良かったと思います</li>
+<li>コードレビューの質疑応答の時間が短い</li>
+<li>レビュータイムの長さの不足</li>
+<li>写経しながらの TDD デモはやりづらい</li>
+<li>昼食時間の不足</li>
+<li>昼食</li>
+<li>定員に満たなかった</li>
+<li>(言語の習熟度の関係で) TDD にハマっているのか実装で躓いているのかわからない</li>
+<li>混乱して喋れなかった</li>
+<li>プロジェクタに映せなかった</li>
+<li>手をもって動かす(テスト、プロダクトコード共に) -&gt; これはTry?</li>
+<li>遅刻した</li>
+<li>Java の例外が分からなかった</li>
+<li>飲みながら書くの難しい -&gt; これは懇親会で KPT をやったためか</li>
+<li>大きめな変更を加えたとき、テストを通すのにデバッグに時間がかかった</li>
+<li>時間の区切りタイマー欲しい(ペアプロ交代タイミングのため)</li>
+<li>ペアプロのパートナーチェンジがなかった。せっかく多くの人が集まっているのだから、いろんな人とペアプロしたかった。</li>
+<li>環境を整いきれずに参加した事</li>
+<li>言語の復習をせずに参加した事</li>
+<li>懇親会に参加できなかった事</li>
+<li>自分の技術の浅さを思い知った</li>
+<li>ペアプロの最中、ペアに頼る場面が多かった</li>
+<li>勉強会の最中、ほとんど誰にも話しかけることができなかった</li>
+<li>懇親会のお金の集計が大変そうだった（常識かもしれないが、お釣無く会費を持ってくることに協力して欲しいことを強めに事前に訴えるべきだったのかもしれないです）</li>
+<li>レビューの時間が短かった</li>
+<li>利用するテストフレームワークについて下調べが足りなかった</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">Try</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>地元リソースでの開催</li>
+<li>地元開催へ参加者として関わる</li>
+<li>ビアバッシュ</li>
+<li>できれば前日泊</li>
+<li>レビュータイムも一つのメインに</li>
+<li>レビュー前の休憩時に接続テストをやっておくとスムーズだと思います</li>
+<li>レビュー方針の明示化 (深く or 他の言語との比較)</li>
+<li>TA もペアプロ</li>
+<li>TA による「自分だったらこう実装する!!」(コミットログ付き)</li>
+<li>新人にペアプロを通して TDD を身につけさせたい</li>
+<li>来週から会社で布教活動します</li>
+<li>会社で TDD Boot Camp やる</li>
+<li>TiDD と TDD の連携</li>
+<li>まずはバイブル(テスト駆動開発入門)を読む</li>
+<li>テストケースをもらう</li>
+<li>should be_xxx じゃない書き方</li>
+<li>TDD やる</li>
+<li>一人でもTDDする</li>
+<li>懇親会に参加する</li>
+<li>TDDBC 新潟をやる</li>
+<li>和田さんにサインをもらう</li>
+<li>自分が教える側になる</li>
+<li>会社でTDD Boot Campする</li>
+<li>運営の手伝いに積極的に加わる</li>
+<li>紹介された本を全部読む</li>
+<li>人見知り克服して、いろんな人の話を聞く</li>
+<li>いつか富山でもTDDBC</li>
+<li>テスト実行の自動化</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2013/06/04 00:44:26<br>
+        Keyword(s):<br>
+        References:[<a href="./?TDDBC%E9%95%B7%E5%B2%A11.0">TDDBC長岡1.0</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

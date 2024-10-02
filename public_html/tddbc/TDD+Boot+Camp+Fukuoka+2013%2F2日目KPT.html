@@ -1,0 +1,225 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDD Boot Camp Fukuoka 2013/2日目KPT</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDD+Boot+Camp+Fukuoka+2013%2F2%E6%97%A5%E7%9B%AEKPT" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDD+Boot+Camp+Fukuoka+2013%2F2%E6%97%A5%E7%9B%AEKPT" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDD+Boot+Camp+Fukuoka+2013%2F2%E6%97%A5%E7%9B%AEKPT">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDD Boot Camp Fukuoka 2013/2日目KPT</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">Keep</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>当分補給！</li>
+<li>自分の不勉強(言語仕様とか)がよくわかった！</li>
+<li>とても（頭が）つかれた！</li>
+<li>昨日にくらべてTDDに慣れたので回転が早くなった</li>
+<li>１つづつテスト→空実装→テスト→実装→リファクタと細かく回せた</li>
+<li>試行錯誤がうまくいってキレイに実装できた</li>
+<li>JavaのRegexの使い方に詳しくなれた</li>
+<li>置換する文字列のパターンを変数名で表現できた</li>
+<li>仕様を小さく落としこむことをTODOの作成を通して進めれた</li>
+<li>TODOを作る時は大きな課題を小さく細かくする</li>
+<li>難しい題材にペアプロで取り組む</li>
+<li>レベルが同じくらいの人とのペアプロが楽しかった</li>
+<li>昨日よりスムーズにドライバーとナビゲータを切り替えられた</li>
+<li>実装に移る前に手順について２人で話す</li>
+<li>Vimmerとペアを組む</li>
+<li>gitが使えるようになったのが嬉しい！テストもうまくかけるようになった</li>
+<li>gitでしっかりコミットログを残せた</li>
+<li>githubにコードを上げる</li>
+<li>gitを使う時の注意を再確認できた</li>
+<li>githubの使い方に少し詳しく慣れた</li>
+<li>rspecのexpectをつかった</li>
+<li>意識して回転良くまわせて気持ちよかった！</li>
+<li>ペアプログラミングが体験できる、楽しい</li>
+<li>昨日より実践的な課題だったので、細かい疑問点などがでてきて他の人に聞くことができた</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">Problem</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>実装になかなか移れない</li>
+<li>単純にプログラミングの力が足りず、お題をなかなかこなすことができなかった</li>
+<li>実装をよくするにはコーディング力が当たり前に必要・・・</li>
+<li>サイクルを回すことにとらわれて実装コードが拙い</li>
+<li>LTの準備ができなかった</li>
+<li>もうちょっと無難なスイーツにすべきだったかも。。。</li>
+<li>ランチの場所に困った!</li>
+<li>昨日のお酒がのこってる。。。</li>
+<li>gitのコミットをすぐわすれる</li>
+<li>projectのインポートやgithubの準備にてまどってしまった</li>
+<li>もっと時間がほしかった</li>
+<li>時間配分やコーディングの流れをうまく調節することができず少しグダグダになってしまった</li>
+<li>設計の時間配分ができていなかった</li>
+<li>黄金の回転をすばやく回すことができなかった</li>
+<li>時間があっというまだった</li>
+<li>2日連続は疲れる</li>
+<li>Rspecをもっと勉強しなければ</li>
+<li>Rspecのdescribeの名前に困る</li>
+<li>テストコードが具体的過ぎて量が多くなった</li>
+<li>obj-cでバグがクソ！</li>
+<li>C#でpaserやformatterを良い感じに作る方法がわからなかった</li>
+<li>xcodeキライ</li>
+<li>USキーボード使いづらい</li>
+<li>vim × emacs JIS vs US</li>
+<li>IntelliJ IDEAの環境が死んでた</li>
+<li>昨日、今日ともにお題そのものよりも正規表現にハマっていた気がする</li>
+<li>設計のことがわからなかったのでテストが考えられなかった</li>
+<li>wikiの仕様が分析しづらかった</li>
+<li>仕様の確認が甘かった</li>
+<li>冷房直下のせいか少し寒かった</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">Try</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>railsでアプリを作るときのTDDを使ってみたい</li>
+<li>androidでTDDやりたい</li>
+<li>このTDDをきっかけに返ってからTDDを取り入れたい</li>
+<li>昼食は弁当を一括注文したら、みんなでワイワイ盛り上がれたかもしれない</li>
+<li>ペアプロ時に23インチワイドくらいの画面があるとやりやすいかも</li>
+<li>もっと設計を詰めて方TDDしたほうがよい?</li>
+<li>設計の勉強をする。テストファーストは無理でもテストは書く！</li>
+<li>テストコードを抽象化する</li>
+<li>サイクルをもっと早く回す</li>
+<li>プログラミング力をつける</li>
+<li>明日からTDDとペアプロを始める</li>
+<li>rubyのコーディング力UP</li>
+<li>同じ言語チーム間での結果、手法を比較</li>
+<li>coqで証明駆動開発</li>
+<li>自分の守備範囲外の言語に挑戦したいです</li>
+<li>次は別言語に挑戦したい！</li>
+<li>macとlinux環境も欲しい</li>
+<li>commitの粒度をもう少し細かくしたい</li>
+<li>git-nowについて話しておく</li>
+<li>gitへのこまめなコミットをする。（なぜこの変更をしたか、どこを変更したか）</li>
+<li>gitでテストコード管理</li>
+<li>レビューを見据えたペアプロでのgithubの利用方法をまとめたい</li>
+<li>.NetFrameworkの勉強をする</li>
+<li>Gauche使い　Clojure使いを連れてくる</li>
+<li>実践 and 実践 skill up</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l3"> </a></span><span class="title">振り返り</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l4"><span class="sanchor"> </span></a>Keep</h3>
+<ul>
+<li>テンプレートを用意した</li>
+<li>途中でレビューを入れた</li>
+<li>コードレビューをいつもより長め行い、きちんとコメントした</li>
+<li>ネットワークが安定している会場を使った</li>
+</ul>
+<h3><a name="l5"><span class="sanchor"> </span></a>Problem</h3>
+<ul>
+<li>テンプレートがない言語があった(obj-c, php)</li>
+<li>TDDと関係ない問題にハマ人がいた(git、正規表現)</li>
+<li>ランチの場所に困る人がいた</li>
+<li>最初のアイスブレイクがなかったことで、１日目の出だしが遅かった</li>
+<li>ペアづくりに困る人がいた(C#)</li>
+</ul>
+<h3><a name="l6"><span class="sanchor"> </span></a>Try</h3>
+<ul>
+<li>テンプレートを増やす(organizationのissueに上げる)</li>
+<li>正規表現系の課題はやめる or 減らす</li>
+<li>休日を加味したランチマップをつくる</li>
+<li>アイスブレイクの時間をスケジュールに組み込む</li>
+<li>ポジションペーパーをつくる(wiki or google docs)</li>
+<li>リポジトリは主催者のところでなく、TDDのorganizitionに作る</li>
+<li>募集言語をTAのスキルに合わせる</li>
+<li>TAのスキルセットがわかるページを作る(organizationのwikiを使うなど)</li>
+<li>TDD devtestingで設計の良書紹介</li>
+</ul>
+<h3><a name="l7"><span class="sanchor"> </span></a>Pending(結論先送り)</h3>
+<ul>
+<li>gitについてTDDでどこまでサポートするか？</li>
+<li>応募時にgitありなしをいれるか？</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2013/06/17 10:59:29<br>
+        Keyword(s):<br>
+        References:[<a href="./?TDD+Boot+Camp+Fukuoka+2013">TDD Boot Camp Fukuoka 2013</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

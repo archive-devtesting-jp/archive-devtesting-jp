@@ -1,0 +1,203 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDD Boot Camp Fukuoka 2013/1日目KPT</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBoot+Camp+Fukuoka+2013%2F1%E6%97%A5%E7%9B%AEKPT" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBoot+Camp+Fukuoka+2013%2F1%E6%97%A5%E7%9B%AEKPT" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBoot+Camp+Fukuoka+2013%2F1%E6%97%A5%E7%9B%AEKPT">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDD Boot Camp Fukuoka 2013/1日目KPT</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">Keep</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>きしださんのノウハウが面白かった</li>
+<li>Refactorを忘れない</li>
+<li>Githubでコード共有</li>
+<li>書く前に〇〇しようとするけどどう？と相談する</li>
+<li>TDDを体験できて面白かった。今までにない経験になった</li>
+<li>テストは1つずつ</li>
+<li>作業をToDo管理でき、順調に作業できた</li>
+<li>TODOを作ることは常にやっていきたい</li>
+<li>黄金の回転を簡単なところから実際にやれた</li>
+<li>一つずつテストするの意味が分かった</li>
+<li>Git/Githubを使いこなす or 使う</li>
+<li>会計受付担当だったのでお金がたくさん触れて幸せだった。一時的だけど…</li>
+<li>shared_examplesを使う</li>
+<li>日本語のテストメソッド名いいね!!</li>
+<li>ペアプロで強制的に人と話したり意見交換できる</li>
+<li>とにかく参加する</li>
+<li>テスト駆動開発のRed-Green-Refactorを体験できた</li>
+<li>前回(長岡)の反省を活かしてTAできた!!</li>
+<li>レビューに時間を取れた</li>
+<li>お菓子食べながらペアプロ!!</li>
+<li>命名を最初に議論する</li>
+<li>やっぱりコード書くには楽しい! テストコードにするのは気持ちいい</li>
+<li>JUnitの使い方が分かった</li>
+<li>ペアプロ楽しい</li>
+<li>JUnit4の使い方がちょっと分かった</li>
+<li>おかしおいしかった</li>
+<li>久々にペアプロした</li>
+<li>データプロバイダ便利</li>
+<li>ペアプログラミングはとても良い経験でした</li>
+<li>一応課題が全部終わった</li>
+<li>悩んだ、困ったときはすぐ声を出して相談する</li>
+<li>適度なタイミングで交代しながら進める</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">Problem</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>テストコードを書き続けるモチベーションの維持が大事。やっぱり手を抜きたくなる…</li>
+<li>やっぱり普及させるには実践するしかないのかな…。チームに浸透させるにはどうしたら…</li>
+<li>RubyMineがいなかった</li>
+<li>端末の動作確認がとれていなかったので、時間をロスした</li>
+<li>Emacsが使えなかった</li>
+<li>C#よりF#で書きたいなぁ…</li>
+<li>人によってエディターが違うのでやりにくいところも…</li>
+<li>他人のPCは使いづらい</li>
+<li>TDDBC経験者2人+初参加者1人だと経験者が先行してしまう感が…</li>
+<li>ナビゲーターの時に手を出してしまうのを控えたい</li>
+<li>Groovyがいなかった</li>
+<li>Javaの人が少なかった</li>
+<li>Gauche使いたかった</li>
+<li>実はRSpecを良く知らなかった</li>
+<li>テストコードが冗長すぎる</li>
+<li>言語の勉強をもっとしなければ!</li>
+<li>テストに通らないテストを行うのを最初忘れていた!</li>
+<li>Parserや正規表現を使った方が楽なお題だとついそちらで考えてしまう？</li>
+<li>前半Gitを使っていなくてソースの変更内容を忘れてしまった</li>
+<li>ついついテストコードより先に実装を行おうとしてしまうorz</li>
+<li>最初はなかなかやり方が分からず、困惑した</li>
+<li>全体のテスト戦略を十分に練っていなかった (何をどういう順序でテストしていくか）</li>
+<li>コーディング力が圧倒的に足りない</li>
+<li>寒暖の差が激しい</li>
+<li>時間の管理が甘かった</li>
+<li>アイスブレイクがあった方が良い？</li>
+<li>会場設営に時間がかかった</li>
+<li>あつい。</li>
+<li>テストの順番をミスって、TDDの手順(Red, Green, Refactor)を回せなかった</li>
+<li>red-&gt;green-&gt;refactorのサイクルが回るまで時間がかかった。(greenのケースのみを書いていた)</li>
+<li>課題をシンプルに考えることが出来ずに行き詰まった</li>
+<li>課題は全部終わったが、もっといいロジックがあるのではないか</li>
+<li>RSpecの記法を十分に知らなかった</li>
+<li>テスト名を適当に付けていたので、分かりやすい名前をつける</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l2"> </a></span><span class="title">Try</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>RSpecのリファレンスを読む</li>
+<li>コミット単位を十分に小さくする</li>
+<li>黄金の回転を意識して続ける!</li>
+<li>問題を小さな単位に分割する</li>
+<li>LTやる!!</li>
+<li>MSTest + Chaining Assertion</li>
+<li>クロージャを使った実装をする(JavaScript<a class="nodisp" href="./?c=edit;p=JavaScript" title="Create and edit the page JavaScript.">?</a>)</li>
+<li>Jenkinsを使ったテスト自動化を試したい</li>
+<li>Dom描画のテストもしてみたい</li>
+<li>moreスイーツ</li>
+<li>RSpecのテストのグループ分けを美しくしたい</li>
+<li>仕事でTDDをやりたい</li>
+<li>いろいろな本を読もうと思った</li>
+<li>時間配分を意識する</li>
+<li>臆せず意見を出す</li>
+<li>だんだん慣れてきたので回転のスピードを上げていく</li>
+<li>Githubを使いたかった。もしくはローカルにgitサーバを立てる</li>
+<li>Githubにpushしながらする</li>
+<li>電話番号のバリデートプログラミング</li>
+<li>RSpecのshouldじゃなくてexpectを使ってみる</li>
+<li>RSpecの新記法を試す。should -&gt; expect</li>
+<li>今後はもっとたくさんのお題を試してみたいです</li>
+<li>Selenium連携とか他の機能を使いたい</li>
+<li>月曜からのコーディングでテスト書く!</li>
+<li>ペアプロよりトリプロが難しい! うまく回したい!</li>
+<li>仕様はちゃんとチェックしようと思った</li>
+<li>Groovyをちょっとやってみたい</li>
+<li>JUnit実践入門をちゃんと読みたい</li>
+<li>画面共有とか出来ると便利</li>
+<li>LT</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2013/06/16 01:00:12<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

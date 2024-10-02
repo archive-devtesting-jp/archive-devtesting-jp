@@ -1,0 +1,237 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC大阪2.0/記録</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%A8%98%E9%8C%B2" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%A8%98%E9%8C%B2" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%A8%98%E9%8C%B2">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC大阪2.0/記録</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">1.0であがったProblemの改善案</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>KPTから</p>
+<ul>
+<li>ドライバー/ナビゲーターの入れ替えがなく消耗した<ul>
+<li>10分で強制的に交代させる</li>
+</ul></li>
+<li>FizzBuzzについてきっちりした説明がなかった</li>
+<li>デモTDDはしこみでよいと思う<ul>
+<li>スタッフでデモのストーリーを予め決めておく</li>
+</ul></li>
+<li>リファクタリングにあまり時間を取れなかった<ul>
+<li>課題に「リファクタリング」を追加</li>
+</ul></li>
+<li>タイムテーブルを守る<ul>
+<li>TAはタイムボックス厳守に協力</li>
+</ul></li>
+<li>TA、スタッフの作業で気が散ってしまっていた<ul>
+<li>TAの各種作業は別の場所で行う</li>
+</ul></li>
+</ul>
+<p>スタッフ意見から</p>
+<ul>
+<li>慣れている人同士、初心者同士+TAでペアを作る</li>
+<li>ロビーとエレベーターホールで誘導係を用意する</li>
+<li>個別に質問されたことはTAが後から付箋で全体共有</li>
+<li>スタッフは1時間前に集合して朝会</li>
+<li>希望言語一覧をGoogle Docsで公開</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">KPT</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l2"><span class="sanchor"> </span></a>KEEP</h3>
+<ul>
+<li>すばらしい講師陣</li>
+<li>知らない言語に挑戦したこと。Groovy!</li>
+<li>テストも進化しているので勉強して新たなことを仕入れるのは続けない</li>
+<li>ペアプロが思った以上に楽しかった(ただ自分のコードが稚拙ではずかしい)</li>
+<li>初めてのペアプロ</li>
+<li>ペアプロでテクニック伝承</li>
+<li>ペアプログラミング</li>
+<li>ペアプロを経験できた</li>
+<li>ペアプロ。初めてやったが気づきが多かった。でも次やったときはあきてる気もする。継続してやりたい。</li>
+<li>ペアプログラミング。ベースの知識が違うと得るものが多い!</li>
+<li>Testを書くことによる安心感を実感できた</li>
+<li>テストコードを書いて実装することでリファクタリング時に安心して変更できることを実感できた</li>
+<li>Red/Green/Refactorを"速く"まわす</li>
+<li>「TDDかくあるべし」みたいなことはあまり考えなくていい。とにかくテスト書けってこと。</li>
+<li>楽天食堂スバラシイ!!</li>
+<li>テストコードの作成にGroovyとSpockを使ってわかりやすいテスト実施する</li>
+<li>Groovyに触れたこと</li>
+<li>Javaアプリケーションに対してSpockでテストコードを書く。シンプルで読みやすい。</li>
+<li>よりよいテスティングフレームワークSpockに触れたこと</li>
+<li>テストコード、プロダクトコードの書き方の意見交換できた</li>
+<li>ふりかえりでコミュニケーションエラーを指摘してもらえた</li>
+<li>実際に手を動かしたことでTDDのよさを実感できた</li>
+<li>テストを書くのは楽しい。自分のコードのへたくそさがよくわかる。</li>
+<li>不安と思う実装に対しテストコードを書く</li>
+<li>目標をテストで表現するという考え方が気に入った</li>
+<li>運営準備が入念だった</li>
+<li>スタッフと参加者の人数が丁度良かった</li>
+<li>楽天カフェテリアがすてき</li>
+<li>楽天カフェテリアさいこう!</li>
+<li>ペアプロを体験できたこと</li>
+<li>テストフレームワークを使用してテスト/実装のサイクルをまわせた</li>
+</ul>
+<h3><a name="l3"><span class="sanchor"> </span></a>Problem</h3>
+<ul>
+<li>組み込みの実機への導入は難しそう</li>
+<li>実践する時間の確保</li>
+<li>TDDがチームに受け入れられるか不安→Testしたい</li>
+<li>会社・上司の理解</li>
+<li>ペアプロでの気づきがあったが、共有できなかった</li>
+<li>コミュニケーション。もっといろいろな人ととった方が良かったかもしれない。</li>
+<li>ペアとちゃんとコミュニケーションとれてなかった</li>
+<li>パートナーのナビゲーションというよりも、自分の意見の押し付けになっていた時があった</li>
+<li>パートナーの交換がない</li>
+<li>環境構築のTipsがどこかにまとめられているとなお良い</li>
+<li>環境構築がむつかしそう</li>
+<li>環境構築準備不足</li>
+<li>ゼロから環境設定することに慣れてないと、今日のような場ではバタついてしまう</li>
+<li>演習での開発はもう少し小さなものを。完成させたかった。</li>
+<li>参加時にもう少し予習しておきたかった</li>
+<li>リファクタリングをする余裕がなかった</li>
+<li>予想以上に尻が痛かったこと(注意はちゃんと聞くべき)</li>
+<li>組み込み機器開発へ、どのように導入するかが見えていない</li>
+<li>業務でテストコードを書く習慣がない</li>
+<li>体力を消耗する</li>
+<li>スクリーン上の証明。本当は消せると見やすい。</li>
+<li>Rubyユーザが少なかった</li>
+<li>もう少しほかの言語も見たかった</li>
+<li>まだテストファーストではなく実装を考えている</li>
+<li>仕様を詰める前に着手してしまった</li>
+<li>自分自身がテストの認知が甘いところもある気がするので、まずは書いて実践したい</li>
+<li>仕様→テストケースの変換が弱い。精進あるのみ。</li>
+<li>コーディングに熱中しすぎて、パートナーの意見を聞き流すことがあった</li>
+<li>問題間違えた</li>
+<li>Todoをシンプルに整理</li>
+<li>タイムボックスの切れ目が弱い</li>
+<li>最初のテーブルの時アイスブレイクがあったが、その後大きく移動したので、ペアにはならなかった</li>
+<li>グループわけ時は言語に加えてエディタの宗派を参考にすると良いかも</li>
+<li>TDDのフレームワークを複数知れたことはありがたい。ただ、どれを使えばよいのか悩ましい。</li>
+<li>新しいこと(Groovy/IntelliJ)にチャレンジして、うまくテストサイクルをまわせなかった</li>
+<li>油断するとテストよりアプリコードを先に書いていた。TDDしみついていない。</li>
+<li>テストの粒度が大きい。手が止まってしまう時があった。</li>
+<li>プログラミングを忘れていた</li>
+<li>全体的に知識が足りない</li>
+</ul>
+<h3><a name="l4"><span class="sanchor"> </span></a>Try</h3>
+<ul>
+<li>楽天カフェテリアで勉強会+2</li>
+<li>紹介された書籍購入</li>
+<li>環境(セットアップ手順、必要なもの)をあらかじめ知らせてもらえるとスムースだったと思う</li>
+<li>寝る</li>
+<li>ペアプロ相手のチェンジ</li>
+<li>TDDBCのペアプロで途中になっている課題を全部終わらせてみる。TDDやりながら。</li>
+<li>組み込み機器開発でPCUnit等を使用し実機上で動かせないか検討する</li>
+<li>Objective-Cでやってみる</li>
+<li>Groovy</li>
+<li>Groovyシェルとコンソールを活用する</li>
+<li>テストコードだけでもGroovy(Spock)で書いてみる</li>
+<li>組み込みの現場でも回してみたい</li>
+<li>Webテストの実装にチャレンジ</li>
+<li>もうちょっと設計してからコード書き始めた方がいいかも。TDDというとつい、設計せずに書き始めてしまう。</li>
+<li>テストもっと書く。粒度も細かくしてみる。</li>
+<li>まずは独自でTDDし実績をあげる</li>
+<li>TDD実践</li>
+<li>TDDの実践</li>
+<li>これからの仕事でTDDを取り入れる</li>
+<li>不安をテストでスッキリさせる!!</li>
+<li>次に自分が書くコードではTDDしてやってみる</li>
+<li>TDDで開発をする!</li>
+<li>実際の開発現場でテストコードを書くこと</li>
+<li>ペアプロを業務でも実践してみようと思った</li>
+<li>テストツールのことをもっと勉強する</li>
+<li>とりあえずCIまわしたい</li>
+<li>小規模なところからCppUnitを導入する</li>
+<li>パラメタライズテストがかけなかったのでかけるようになる</li>
+<li>テスト後にDBロールバックする仕組み作る</li>
+<li>授業の中でペアプロ、TDDを取り入れる</li>
+<li>ペアプロの実践</li>
+<li>VCSを交えてペアプロとか</li>
+<li>チーム内にTDDを広める</li>
+<li>社内でのワークショップ</li>
+<li>ほかの人をTDDに巻き込む</li>
+<li>業務に導入すること</li>
+<li>社内にTDDができる空気を!</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/06/04 15:31:03<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

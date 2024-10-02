@@ -1,0 +1,156 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC長岡1.0/演習</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E9%95%B7%E5%B2%A11.0%2F%E6%BC%94%E7%BF%92" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E9%95%B7%E5%B2%A11.0%2F%E6%BC%94%E7%BF%92" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E9%95%B7%E5%B2%A11.0%2F%E6%BC%94%E7%BF%92">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC長岡1.0/演習</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">お題 : Javaの奇妙なバージョン</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><a href="http://news.mynavi.jp/news/2013/05/17/044/index.html" class="external">Java、バージョン番号のルールを変更 - 20の倍数、5の倍数、1足して……</a> (<a href="http://www.oracle.com/technetwork/java/javase/overview/jdk-version-number-scheme-1918258.html" class="external">アナウンス原文</a>)</p>
+<blockquote><ul>
+<li>Limited Updateは20の倍数を割り当てる</li>
+<li>Critical Patch Update(CPU)には5の倍数を割り当てる。倍数が偶数になる場合にはさらに1を加算して奇数へ変更する</li>
+<li>Limited UpdateとCPU以外の予定外のアップデート(Security Alert 等)はそれらバージョン番号の間の数字を使用する</li>
+</ul>
+</blockquote>
+<h3><a name="l1"><span class="sanchor"> </span></a>例</h3>
+<p>JDK7u40</p>
+<ul>
+<li>7 : family number</li>
+<li>40 : update number</li>
+</ul>
+<h4><a name="l2"> </a>バージョンアップ</h4>
+<ul>
+<li>LUされたら → JDK7u60</li>
+<li>CPUされたら → JDK7u45 → JDK7u51</li>
+<li>その他 → JDK7u41</li>
+</ul>
+<h3><a name="l3"><span class="sanchor"> </span></a>最初に</h3>
+<p><em>この仕様に矛盾点がないかペアで相談してみよう！</em></p>
+<h3><a name="l4"><span class="sanchor"> </span></a>題1 : validかどうか調べよう</h3>
+<pre> Version.isValid("JDK7u40")
+     #=&gt; true
+
+ Version.isValid("hoge")
+     #=&gt; false
+
+ Version.isValid("JDK7u9x")
+     #=&gt; false</pre>
+<h3><a name="l5"><span class="sanchor"> </span></a>題2 : parseしよう</h3>
+<pre> v = Version.parse("JDK7u40")
+     #=&gt; JDK7u40を示すオブジェクトを返す
+ v.familyNumber #=&gt; 7
+ v.updateNumber #=&gt; 40
+
+ Version.parse("JDK7u9x") #=&gt; 例外</pre>
+<h3><a name="l6"><span class="sanchor"> </span></a>題3 : 大小比較しよう</h3>
+<pre> u40 = Version.parse("JDK7u40")
+ u51 = Version.parse("JDK7u51")
+ jdk8u0 = Version.parse("JDK8u0")
+
+ u40.lt(u51)      #=&gt; true
+ u40.gt(u51)      #=&gt; false
+ u40.lt(jdk8u0)   #=&gt; true
+ jdk8u0.gt(u51)   #=&gt; true
+ #          ↑ 言語に応じて演算子オーバーロード等はご自由に</pre>
+<h3><a name="l7"><span class="sanchor"> </span></a>題4 : 次の番号を計算しよう</h3>
+<pre> u45 = Version.parse("JDK7u45")
+
+ u60 = u45.nextLimitedUpdate()
+ u60.updateNumber #=&gt; 60
+
+ u51 = u45.nextCriticalPatchUpdate()
+ u51.updateNumber #=&gt; 51
+
+ u46 = u45.nextSecurityAlert()
+ u46.updateNumber #=&gt; 46
+   ## next～メソッドはすべて、新たなバージョンを表すオブジェクトを返す
+   ## （selfのバージョンを変えて返すのではない）</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l8"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス"></p>
+<p>この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2013/06/06 14:26:00<br>
+        Keyword(s):<br>
+        References:[<a href="./">TDDBC</a>] [<a href="./?TDDBC%E9%95%B7%E5%B2%A11.0">TDDBC長岡1.0</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

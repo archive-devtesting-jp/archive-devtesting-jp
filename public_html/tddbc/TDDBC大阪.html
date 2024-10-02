@@ -1,0 +1,375 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC大阪1.0</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E5%A4%A7%E9%98%AA" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E5%A4%A7%E9%98%AA" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E5%A4%A7%E9%98%AA">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC大阪1.0</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDD Boot Camp 大阪 1.0( #tddbc )</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>対象</h3>
+<p>　飲み物自動販売機</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>課題</h3>
+<h4><a name="l3"> </a>ステップ１　お金の入力と表示</h4>
+<ul>
+<li>千円札と硬貨を投入することができる。<ul>
+<li>入力は複数回できる。</li>
+</ul></li>
+<li>投入操作は釣り銭を出力する。<ul>
+<li>想定内のもの(10円、50円、100円、500円、1000円)が投入された場合、投入金額として蓄える</li>
+<li>想定外のもの（硬貨：１円玉、５円玉。お札：千円札以外のお札）が投入された場合、そのまま釣り銭として払い戻す (APIレベルでは例外でも良い)</li>
+</ul></li>
+<li>払い戻しボタン操作を行うと、投入金額を釣り銭として出力し、投入金額を０にする。</li>
+<li>現在投入されている合計金額を取得できる。</li>
+</ul>
+<h4><a name="l4"> </a>ステップ２　ジュースの管理</h4>
+<ul>
+<li>値段と名前の属性からなるジュースを１種類格納できる。</li>
+<li>初期状態で、コーラ（値段:120円、名前”コーラ”）を５本格納している。</li>
+<li>格納されているジュースの情報（値段と名前と在庫）を取得できる。</li>
+</ul>
+<h4><a name="l5"> </a>ステップ３　購入</h4>
+<ul>
+<li>在庫状況と投入金額を元に、コーラが購入できるかどうかを取得できる。</li>
+<li>購入できるまでお金を投入して購入操作をすると、１個ずつジュースを出力する。<ul>
+<li>購入操作はジュースと釣り銭を出力する。</li>
+<li>購入操作をして購入できたら、ジュースの在庫を減らし、売り上げ金額を増やす。</li>
+</ul></li>
+<li>在庫切れのジュースを購入した場合、何もしない。ジュースは出力しない。</li>
+</ul>
+<p>ステップ３では釣銭切れを考慮しない。</p>
+<h4><a name="l6"> </a>ステップ４　釣り銭と売り上げ管理</h4>
+<ul>
+<li>釣り銭用ストックを持つ事ができる。釣り銭用ストックの初期状態は千円札5枚、硬貨各10枚。<ul>
+<li>なお釣り銭用ストックと売り上げは別管理。売り上げのお金を釣り銭用ストックとして流用する事はない。</li>
+</ul></li>
+<li>購入操作をして釣り銭が発生した場合、その釣り銭を出力する。<ul>
+<li>釣り銭を返した分、釣り銭用ストックを減らす。</li>
+</ul></li>
+<li>購入操作を行った際に、釣り銭用ストックが足りない場合、何もしない。</li>
+<li>売り上げと釣り銭用ストックの状況を取得できる。</li>
+</ul>
+<h4><a name="l7"> </a>ステップ５　機能拡張</h4>
+<ul>
+<li>ジュースを3種類管理できるようにする。<ul>
+<li>在庫にレッドブル（値段:200円、名前”レッドブル”）5本を追加する。</li>
+<li>在庫に水（値段:100円、名前”水”）5本を追加する。</li>
+</ul></li>
+<li>お金を投入した際は、購入可能なドリンクのリストを出力する</li>
+<li>売上金を釣り銭にまわす事ができる。<ul>
+<li>売上金の出力では、釣り銭と売上金の合算を出力する。</li>
+</ul></li>
+</ul>
+<h3><a name="l8"><span class="sanchor"> </span></a>以下応用課題</h3>
+<h4><a name="l9"> </a>ステップ６　更なる機能拡張</h4>
+<ul>
+<li>「ランダム」ドリンクを在庫に加える。<ul>
+<li>「ランダム」ドリンクは、コーラ、ダイエットコーラ（値段:120円、名前”ダイエットコーラ”）、お茶（値段:120円、名前”お茶”）がランダムに並べられている。購入するたびに、ランダムにならべたドリンクを順々に出力する。</li>
+</ul></li>
+<li>ジュース購入後、5%の確率で「あたり」イベントを発生させる。<ul>
+<li>「あたり」イベントが発生したら同じジュースを２つ出力する。</li>
+<li>なお在庫がない場合は「あたり」イベントは発生させない。</li>
+</ul></li>
+</ul>
+<h4><a name="l10"> </a>ステップ７　更なる更なる機能拡張</h4>
+<ul>
+<li>在庫のジュースの賞味期限（年月日）を個々のジュース単位で保持・取得できる。</li>
+<li>現在日時が購入対象のジュースの興味期限を超えていた場合、ジュースを購入不能にする。</li>
+</ul>
+<h3><a name="l11"><span class="sanchor"> </span></a>インターフェース</h3>
+<p>　状態を持つ対話的なインターフェース。それぞれのステップで使う統一インターフェースではなく、全体概要を示す参考情報です。</p>
+<ul>
+<li>【入力】<ul>
+<li>お金</li>
+<li>払い戻しボタン</li>
+</ul></li>
+<li>【状態】<ul>
+<li>お金（釣り銭用ストックと売上）</li>
+<li>ジュース</li>
+</ul></li>
+<li>【出力】<ul>
+<li>投入金額</li>
+<li>売り上げ金額</li>
+<li>釣り銭</li>
+<li>ジュース一覧</li>
+<li>購入可能なジュース一覧</li>
+<li>ジュース</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l12"> </a></span><span class="title">KPT</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l13"><span class="sanchor"> </span></a>Keep</h3>
+<ul>
+<li>会場</li>
+<li>楽天会場</li>
+<li>会場、快適でした #ステマじゃなく。</li>
+</ul>
+<ul>
+<li>Groovy!</li>
+<li>Spockス・テ・キv</li>
+<li>Groovyに興味が沸いた</li>
+<li>Groovyが楽しそうだった。書きやすい＆見やすい</li>
+<li>新しいライブラリを知った（Spock）</li>
+</ul>
+<ul>
+<li>昼食：弁当</li>
+</ul>
+<ul>
+<li>ペアプロをちゃんと初めてできた</li>
+<li>ペアプロ、TDD</li>
+<li>ペアプロ、TDDが経験出来たということがよかった。これまで経験した事がなかったので。</li>
+<li>ペアプロ初体験</li>
+<li>ペアプロを初めて行って、その楽しさを知った</li>
+<li>ペアプロについて体験する事ができた。</li>
+<li>ペアプロでテストの抜けに気づけた！</li>
+<li>今回、ペアプロ初体験だったのですが、自分では中々気付けない事、気付けても遅くなってしまう事をその場で指摘してもらえるかはイイデスネ！</li>
+<li>久しぶりにペアプロががっつりできて良かった</li>
+<li>TDDを具体的に体験出来た</li>
+<li>TDDの実際の使い方がよく理解出来た！</li>
+<li>TDDでたくさん失敗出来た（テストの粒度とか）</li>
+<li>TDDによって「不安をなくすため、テストをする」ということが理解出来た</li>
+<li>TDDの進め方がわかった</li>
+<li>うわさに聞いていたTDDを体感できてよかった</li>
+<li>自分が行っていたTDDが間違っていた事が判った。（テスト項目が細かすぎた）</li>
+<li>楽しかった。刺激になった。（ペアプロはアイスブレークに使えるのかも…）</li>
+<li>他の人の書いたコードを（レビューなどで）見ることができた</li>
+<li>新しい実装の仕方が判って良かった</li>
+<li>進行がやさしい</li>
+<li>発想が根っこから変わった</li>
+<li>テストを書いている時に思っていた疑問点が解消されたり、ヒントが貰えたりして、良かった。</li>
+<li>楽しかった</li>
+<li>テストコードを実際に書いてみるのは初めてでしたが、とにかく粒度を下げてちょっとずつ解決していくのは良い経験になりました。</li>
+<li>何をテストすべきなのか分かった</li>
+<li>コードとテストで相互にテストしていく。（単純な実装でテストの正しさを確認）</li>
+</ul>
+<ul>
+<li>経験者のテストコードの書き方、作法を見ることができた</li>
+<li>仕様にあまり迷わないよう事前に決めた</li>
+<li>C言語でのTDDは可能だと分かった</li>
+<li>テストの組み立て型がちょっと分かった</li>
+<li>仮実装をやってみたところ、テストコードのバグを見つけることができた。100%自信がある時でもやってみるべきだと感じた</li>
+<li>TDD自体が良かった</li>
+<li>盛り上がっていて会場の雰囲気がとても良かった</li>
+<li>セッションと手を動かすバランスが良かった</li>
+<li>吉岡さん、和田さんとお話しできた</li>
+</ul>
+<ul>
+<li>上役を説得するのに良い情報を仕入れることができた</li>
+<li>TAの方がたくさんいてくれたのでワークショップの時はとても良かった</li>
+<li>TAの人数が多かったので、質問しやすかった</li>
+<li>TAの方に沢山アドバイスやテクをいただきました。</li>
+<li>TAの皆様が話しやすく、気さくで良かった。</li>
+<li>色々な人の体験談(生の声)が聞けた</li>
+<li>JASSTにも興味が出た</li>
+<li>レガシーコード改善ガイドを読みたくなった</li>
+<li>レガシーコードに対する方法は使えそうで良い</li>
+<li>テストを書くことで、コードを使う人のことを考えられた</li>
+<li>色々な人の話が聞けた</li>
+<li>なんとなくTDDをやっていたが、今回のBCで理解が深まった</li>
+<li>他の言語での実装を見て勉強になった(テストメソッドの作り方、メソッドの作り方)</li>
+</ul>
+<ul>
+<li>事前に環境をインストールしていたこと</li>
+<li>シンプルな実装を心がけたら、キレイに書けた。</li>
+<li>ペアプロいいね。聞ける人がいるのは安心する。</li>
+<li>会社や家ではなかなかできないペアプロができる環境を提供して頂いたこと。</li>
+<li>vimに詳しくなった！</li>
+<li>社内で広める自信がついた（Groovyじゃないです）</li>
+<li>TDDについて考えたいところが色々と話しをして考えることができた</li>
+<li>ペアプログラミングをじっくり経験することができてよかった。業務ではなかなか経験できないので。</li>
+<li>C++忘却していたけどペアプロで何とかなった。</li>
+<li>ペアプロをすることでレビューをするまえに改善されると思った。</li>
+<li>なじみの薄い言語やフレームワークを見ることができた</li>
+<li>assertThatをおしえてもらった</li>
+<li>自分の知らない言語のテストとか見れて参考になった</li>
+<li>貴重なペアプロタイミングの機会</li>
+<li>ペアプログラミングが勉強になった。いつも一人で開発してるのでそうだんしながらできてよかった。</li>
+<li>Red→Greenをゲーム感覚で楽しめることがわかった</li>
+<li>ネット（無線）あるのべんり！楽天は神 #ステマ</li>
+<li>TDDBCそのもの</li>
+<li>同じペアでじっくり考えられるのは良かった</li>
+</ul>
+<h3><a name="l14"><span class="sanchor"> </span></a>Problem</h3>
+<ul>
+<li>弁当のおかずのバリエーション</li>
+<li>おしりが痛い</li>
+<li>もっと交代した方が良かったかも</li>
+<li>テストの習熟度が違う人とペアプロした方が良いかも</li>
+<li>コーディングする人が偏ってしまった</li>
+<li>書き始めると交代する機会が掴みにくい</li>
+<li>ドライバー/ナビゲーターの入れ替えがなく消耗した</li>
+</ul>
+<ul>
+<li>FizzBuzzについてきっちりした説明がなかった</li>
+<li>ペアプロはどのように進めていったら良かったのか、分からなかった</li>
+<li>デモTDDはしこみでよいと思う</li>
+<li>開場時刻のちょっと前にスタッフが行く</li>
+<li>課題のディテールが分かりにくかった(相談する材料にはなった)</li>
+<li>ToDoをもっと明確に</li>
+<li>タイムテーブルを守る</li>
+</ul>
+<ul>
+<li>途中で体力が尽きて集中力がなくなった</li>
+<li>女性...</li>
+<li>しっかり睡眠をとらないと体力が…</li>
+<li>RSpec、Rubyの知識不足</li>
+<li>いす。尻いたい</li>
+</ul>
+<ul>
+<li>TDDを回すサイクルの大きさに迷いがあった</li>
+<li>リファクタリングにあまり時間を取れなかった</li>
+<li>テストメソッドの粒度が荒くいくつものassertを入れてしまった</li>
+<li>ビルド環境を整えていなかった</li>
+<li>2日前の23時にIntelliJ IDEAの導入をすすめるTA</li>
+<li>動作環境の基準が少しはあっても良かったと思う</li>
+<li>ツールの使い方をもう少し知っておけばWorkshopの時間が有効に使えたのに</li>
+<li>コードは管理の仕方を考えて、全て、全員に見える形になるともっと勉強になるのかなと</li>
+<li>テストを書くこと自体が目的となってしまった</li>
+<li>リファクタリングをしようと各関数の引数や戻り値を見直したが、テストを変えずに変更してしまったため目標点を途中で見失った</li>
+<li>リファクタリングで設計が変わるならテストを変えるべきだった</li>
+<li>課題をこなすことに注力しすぎた</li>
+<li>ある程度慣れてきたところでテストの粒度を荒くしてみたが、それをパスするコードを書いているうちにあちこちに目がいってしまい寄り道してしまった。結果、1 サイクルがとても長くなってしまった</li>
+<li>設計せずにコードを書いた。本当にうまく出来たか不安になった。ToDoリストをうまく使うべきだった？</li>
+<li>テストコードを書くのがやっぱり面倒に感じてしまう</li>
+<li>xUnit導入ガイドの案内とか、リンクが欲しい。あるいはチュートリアルとか</li>
+<li>仕様変更辛かった</li>
+<li>途中でペア変更があってもよかった</li>
+<li>仕様変更の難しさを改めて実感した</li>
+<li>Java組がassertThatを使ってなかった</li>
+<li>コードレビューはもう少し深くやっても良かったのではないか？コード、テストの問題点・改善点がもう少しあっても良かったと思う</li>
+</ul>
+<h3><a name="l15"><span class="sanchor"> </span></a>Try</h3>
+<ul>
+<li>クッションを持ってくる</li>
+<li>Ustまたは録画</li>
+<li>事前におすすめのテスト実行環境を公開する</li>
+<li>泊まりありのブートキャンプも参加してみたい</li>
+<li>1時間くらいで交代を促す</li>
+<li>デモペアプロの時、「いま何をやっているフェーズか(Red/Green/Refactoringなど)」の掲示があると、参加者に分かりやすい</li>
+<li>今度の開発でTDDを提案してみる</li>
+</ul>
+<ul>
+<li>ゴミ出しオペレーション</li>
+<li>TA静かに</li>
+<li>飲み物(紙コップなど)のオペレーション</li>
+<li>お題に対して、TAはこういう風に解いたという紹介が最後にあるとよかった</li>
+<li>Q &amp; Aの時間を増やして全体共有の場をもっととると面白いかも</li>
+<li>もっとみんなの体験談、苦労話を聞いてみたかった</li>
+<li>今回のような入門と、業務への導入とのギャップ(DB周りとか)が大きく感じるので、そこを埋める学習法の紹介</li>
+<li>人数ごとの言語分布。人がいるならやってみたい言語がある</li>
+<li>TDDでのテストコードとプロダクトコードの環境の分け方</li>
+</ul>
+<ul>
+<li>もう少しペース配分を考えたい</li>
+<li>実装は大きなディスプレイでやりたい</li>
+<li>Jenkins、SATDD、Gradle、Mercurial</li>
+<li>RSpecとRubyの学習</li>
+<li>十分な睡眠</li>
+</ul>
+<ul>
+<li>言語固定でのTDDBC</li>
+<li>あらかじめ環境を整えておく</li>
+<li>環境設定に手間取ったので事前に設定しておく</li>
+<li>PHPの開発環境を確立しないと</li>
+<li>サイクルを早くする</li>
+<li>ユニットテストの行える状態にしていなかったので次くる時は気をつけたい</li>
+<li>ちゃんとIDE使い慣れないと</li>
+<li>TDD関連書籍, サイトの写経</li>
+<li>Spockというものを知ったので使ってみたい</li>
+<li>ある程度踏み込んだ踏み込んだデータモデル/ドメインモデルを提示する</li>
+<li>ほかのチームのソースがもっと簡単に見れるといいな</li>
+<li>githubで標準環境を整えておく</li>
+<li>テストそのものをきれいに書けるようにする</li>
+<li>参加者の横の連絡・交流</li>
+<li>フレームワークのチュートリアル</li>
+<li>Extreme Fish Bowlやりたい</li>
+<li>疲れ果てたのでちょっと休憩をする</li>
+<li>F#に冒険する勇気がなかった。次こそは…</li>
+<li>次回は教える側になれるように、今後TDDを実践したい</li>
+<li>ソフトウェアテスト技法の本を読む</li>
+<li>エディタの使い方まで教えてもらっていたので、次までには使えるようになっておきたい</li>
+<li>TDDを持ち帰って社内にその文化を根付かせたい。まずは自分から！</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/06/03 01:10:43<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

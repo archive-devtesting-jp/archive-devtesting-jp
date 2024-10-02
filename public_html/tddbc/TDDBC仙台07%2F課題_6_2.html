@@ -1,0 +1,499 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台07/課題_6_2</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B007%2F%E8%AA%B2%E9%A1%8C_6_2" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B007%2F%E8%AA%B2%E9%A1%8C_6_2" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B007%2F%E8%AA%B2%E9%A1%8C_6_2">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台07/課題_6_2</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDDBC仙台07課題：ポーカー</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>ポーカー</h3>
+<p>ポーカー(poker)は、トランプを使って行うゲームのジャンルである。
+プレイヤー達は5枚の札でハンド（役、手役）を作って役の強さを競う</p>
+<p>( <a href="https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%82%AB%E3%83%BC" class="external">https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%82%AB%E3%83%BC</a> より抜粋)</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>トランプ</h3>
+<p>トランプは、日本ではカードを使用した室内用の玩具を指すために用いられている用語で、もっぱら4種各13枚の計52枚(+α)を1セットとするタイプのものを指して言うことが多い。</p>
+<p>( <a href="https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%83%97" class="external">https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%83%97</a> より抜粋)</p>
+<ul>
+<li>カード (card)<ul>
+<li>スートとランクを持つ</li>
+</ul></li>
+<li>スート (suit) - 以下の４種類を持つ<ul>
+<li>♠ (スペード/spade)</li>
+<li>♥ (ハート/heart)</li>
+<li>♣ (クラブ/club)</li>
+<li>♦︎ (ダイヤ/diamond)</li>
+</ul></li>
+<li>ランク (rank) - 以下の１３種類を持つ<ul>
+<li>A (エース/ace), 2, 3, 4, 5, 6, 7, 8, 9, 10, J(ジャック/jack), Q(クイーン/queen), K(キング/king)</li>
+</ul></li>
+<li>カードひと組(4スート x 13ランク = 52枚)のことをデッキ(deck)と呼ぶ</li>
+</ul>
+<h3><a name="l3"><span class="sanchor"> </span></a>課題1 トランプのカード</h3>
+<h4><a name="l4"> </a>課題1-1 カードの文字列表記</h4>
+<p>任意のカード1枚について、その文字列表記を取得してください</p>
+<ul>
+<li><strong>スート</strong> (suit) と <strong>ランク</strong> (rank) を与えて <strong>カード</strong> (card) を生成してください</li>
+<li>生成した<strong>カード</strong>から<strong>文字列表記</strong> (notation) を取得してください</li>
+</ul>
+<pre>【例】
+// スートにスペード, ランクに3を与えてカードを生成
+Card threeOfSpades = new Card("♠", "3");
+// 「スペードの3」の文字列表記は「3♠」
+String notation = threeOfSpades.getNotation(); // =&gt; "3♠"
+ // スートにハート, ランクにJを与えてカードを生成
+ Card jackOfHearts = new Card("♥", "J");
+ // 「ハートのJ」の文字列表記は「J♥」
+ String notation = jackOfHearts.getNotation(); // =&gt; "J♥"</pre>
+<h4><a name="l5"> </a>課題1-2 カードの比較</h4>
+<p>任意のカード2枚について、同じスート／ランクを持つか判断してください</p>
+<ul>
+<li><strong>カード</strong> (card) がもう1枚のカードと<strong>同じスートを持つか</strong> (has same suit) を判断してください</li>
+<li><strong>カード</strong> (card) がもう1枚のカードと<strong>同じランクを持つか</strong> (has same rank) を判断してください</li>
+</ul>
+<pre>【例】
+Card threeOfSpades = new Card("♠", "3"); // スペードの3
+Card aceOfSpades = new Card("♠", "A"); // スペードのA
+Card aceOfHearts = new Card("♥", "A") // ハートのA
+// スペードの3とスペードのAは同じスートを持つ
+threeOfSpades.hasSameSuit(aceOfSpades) // =&gt; true
+// スペードの3とハートのAは異なるスートを持つ
+threeOfSpades.hasSameSuit(aceOfHearts) // =&gt; false
+// スペードの3とスペードのAは異なるランクを持つ
+threeOfSpades.hasSameRank(aceOfSpades) // =&gt; false
+// スペードのAとハートのAは同じランクを持つ
+aceOfSpades.hasSameRank(aceOfHearts) // =&gt; true</pre>
+<h3><a name="l6"><span class="sanchor"> </span></a>課題2 ツーカードポーカー (two card poker) の役を判定</h3>
+<p>1デッキのトランプの内、任意の2枚から構成される手札を使ったポーカー</p>
+<h3><a name="l7"><span class="sanchor"> </span></a>課題2-1 ツーカードポーカーの役を判定</h3>
+<p>ツーカードボーカーの任意の <strong>手札</strong> (cards) について、その <strong>役</strong> (hand) を判定してください</p>
+<p>ツーカードポーカーには以下の役があります</p>
+<ul>
+<li>ペア (pair)<ul>
+<li>2枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>フラッシュ (flush)<ul>
+<li>2枚のカードが同じスートを持つ</li>
+</ul></li>
+<li>ハイカード (high card)<ul>
+<li>2枚のカードが異なるランク/スートを持つ</li>
+</ul></li>
+</ul>
+<h3><a name="l8"><span class="sanchor"> </span></a>課題2-2 ツーカードポーカーの役を判定(役の追加)</h3>
+<p>ツーカードポーカーに新たな役が追加されます</p>
+<p>ツーカードボーカーの任意の手札について、その役を判定してください
+(複数の役が成立している場合は、より上位の役が成立しているとみなしてください)</p>
+<ul>
+<li>ストレートフラッシュ (straight flush)<ul>
+<li>ストレートとフラッシュが成立している</li>
+</ul></li>
+<li>ペア (pair)<ul>
+<li>2枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ストレート (straight)<ul>
+<li>2枚のカードのランクが連続している</li>
+<li>A は 2 と K の両方と連続しているとみなす (A-K および 2-A のランクの組み合わせはいずれもストレートである)</li>
+</ul></li>
+<li>フラッシュ (flush)<ul>
+<li>2枚のカードが同じスートを持つ</li>
+</ul></li>
+<li>ハイカード (high card)<ul>
+<li>上記の役が1つも成立していない</li>
+</ul></li>
+</ul>
+<h3><a name="l9"><span class="sanchor"> </span></a>課題3 ツーカードポーカーの2つの手札の強さを比較</h3>
+<p>ツーカードポーカーの2つの手札について、その強さを比較してください</p>
+<h3><a name="l10"><span class="sanchor"> </span></a>課題3-1 2つの手札の役が異なる場合</h3>
+<p>より上位の役を持つ手札が強いものとします</p>
+<h3><a name="l11"><span class="sanchor"> </span></a>課題3-2 2つの手札の役が同じ場合も含む</h3>
+<p>2つの手札が同じ役を持つ場合は、各カードのランクによって強さを比較します (スートは手札の強さには関係ありません)</p>
+<p>ランクの強さは以下の通りです (全ての課題で共通. ただし、一部例外あり(ストレート 等))</p>
+<p>(弱) 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; 9 &lt; 10 &lt; J &lt; Q &lt; K &lt; A (強)</p>
+<p>2つの手札が同じ役を持つ場合のランクの比較方法は以下の通りです</p>
+<ul>
+<li>ストレートフラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、2-A のランクの組み合わせの場合は、2 を一番強いランクとする (A-K が最強、2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>ペア<ul>
+<li>ペアのランクを比較する</li>
+<li>ペアのランクが同じ場合は引き分け</li>
+</ul></li>
+<li>ストレート<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、2-A のランクの組み合わせの場合は、2 を一番強いランクとする (A-K が最強、2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>フラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、もう一枚のカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ハイカード<ul>
+<li>一番強いランクランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、もう一枚のカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+</ul>
+<h3><a name="l12"><span class="sanchor"> </span></a>課題4 スリーカードポーカー (three card poker)</h3>
+<p>1デッキのトランプの内、任意の3枚から構成される手札を使ったポーカー</p>
+<h3><a name="l13"><span class="sanchor"> </span></a>課題4-1 スリーカードポーカーの役を判定</h3>
+<p>スリーカードボーカーの任意の手札について、その役を判定してください</p>
+<p>スリーカードポーカーには以下の役があります
+(複数の役が成立している場合は、より上位の役が成立しているとみなしてください)</p>
+<ul>
+<li>ストレートフラッシュ (straight flush)<ul>
+<li>ストレートとフラッシュが成立している</li>
+</ul></li>
+<li>スリーカード (three of a kind)<ul>
+<li>3枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ストレート (straight)<ul>
+<li>3枚のカードのランクが連続している</li>
+<li>A は 2 と K の両方と連続しているとみなす (A-K-Q および 3-2-A のランクの組み合わせはいずれもストレートである. ただし、2-A-K のランクの組み合わせはストレートとはみなさない)</li>
+</ul></li>
+<li>フラッシュ (flush)<ul>
+<li>3枚のカードが同じスートを持つ</li>
+</ul></li>
+<li>ペア (pair)<ul>
+<li>3枚のカードの内、2枚が同じランクを持つ</li>
+</ul></li>
+<li>ハイカード (high card)<ul>
+<li>上記の役が1つも成立していない</li>
+</ul></li>
+</ul>
+<h3><a name="l14"><span class="sanchor"> </span></a>課題4-2 スリーカードポーカーの2つの手札の強さを比較</h3>
+<p>スリーカードポーカーの2つの手札について、その強さを比較してください</p>
+<p>2つの手札の役が異なる場合は、より上位の役を持つ手札が強いものとします</p>
+<p>2つの手札が同じ役を持つ場合は、各カードのランクによって強さを比較します (スートは手札の強さには関係ありません)</p>
+<p>2つの手札が同じ役を持つ場合のランクの比較方法は以下の通りです</p>
+<ul>
+<li>ストレートフラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、3-2-A のランクの組み合わせの場合は、3 を一番強いランクとする (A-K-Q が最強、3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>スリーカード<ul>
+<li>スリーカードのランクを比較する</li>
+<li>スリーカードのランクが同じ場合は引き分け</li>
+</ul></li>
+<li>ストレート<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、3-2-A のランクの組み合わせの場合は、3 を一番強いランクとする (A-K-Q が最強、3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>フラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ペア<ul>
+<li>ペアのランクを比較する</li>
+<li>ペアのランクが同じ場合、ペアではない3枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ハイカード<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+</ul>
+<h3><a name="l15"><span class="sanchor"> </span></a>課題5 ファイブカードポーカー (five card poker)</h3>
+<p>1デッキのトランプの内、任意の5枚から構成される手札を使ったポーカー</p>
+<h3><a name="l16"><span class="sanchor"> </span></a>課題5-1 ファイブカードポーカーの役を判定</h3>
+<p>ファイブカードボーカーの任意の手札について、その役を判定してください</p>
+<p>ファイブカードポーカーには以下の役があります
+(複数の役が成立している場合は、より上位の役が成立しているとみなしてください)</p>
+<ul>
+<li>ロイヤルフラッシュ (royal flush)<ul>
+<li>ストレートフラッシュが成立しており、かつ、A-K-Q-J-10 のランクの組み合わせを持つ</li>
+</ul></li>
+<li>ストレートフラッシュ (straight flush)<ul>
+<li>ストレートかつフラッシュが成立している</li>
+</ul></li>
+<li>フォーカード (four of a kind)<ul>
+<li>5枚のカードの内、4枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>フルハウス (full house)<ul>
+<li>5枚のカードの内、3枚のカードが同じランクを持ち、かつ、残りの2枚も同じランクを持つ</li>
+</ul></li>
+<li>フラッシュ (flush)<ul>
+<li>5枚のカードが同じスートを持つ</li>
+</ul></li>
+<li>ストレート (straight)<ul>
+<li>5枚のカードのランクが連続している</li>
+<li>A は 2 と K の両方と連続しているとみなす (A-K-Q-J-10 および 5-4-3-2-A のランクの組み合わせはいずれもストレートである. ただし、4-3-2-A-K / 3-2-A-K-Q / 2-A-K-Q-J のランク組み合わせはストレートとはみなさない)</li>
+</ul></li>
+<li>スリーカード (three of a kind)<ul>
+<li>5枚のカードの内、3枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ツーペア (two pair)<ul>
+<li>5枚のカードの内、2枚のカードが同じランクを持ち、残りの3枚の内、2枚が同じランクを持つ</li>
+</ul></li>
+<li>ワンペア (one pair)<ul>
+<li>5枚のカードの内、2枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ハイカード (high card)<ul>
+<li>上記の役が1つも成立していない</li>
+</ul></li>
+</ul>
+<h3><a name="l17"><span class="sanchor"> </span></a>課題5-2 ファイブカードポーカーの2つの手札の強さを比較</h3>
+<p>ファイブカードポーカーの2つの手札について、その強さを比較してください</p>
+<p>2つの手札の役が異なる場合は、より上位の役を持つ手札が強いものとします</p>
+<p>2つの手札が同じ役を持つ場合は、各カードのランクによって強さを比較します (スートは手札の強さには関係ありません)</p>
+<p>2つの手札が同じ役を持つ場合は、以下の条件で強さを比較します</p>
+<ul>
+<li>ロイヤルフラッシュ<ul>
+<li>ロイヤルフラッシュ同士は引き分け</li>
+</ul></li>
+<li>ストレートフラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、5-4-3-2-A のランクの組み合わせの場合は、5 を一番強いランクとする (A-K-Q-J-10 が最強、5-4-3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>フォーカード<ul>
+<li>フォーカードのランクを比較する</li>
+<li>フォーカードのランクが同じ場合、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>フルハウス<ul>
+<li>フルハウスの内、3枚組のランクを比較する</li>
+<li>上記が同じランクの場合は、残りの2枚組のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>フラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、四番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、五番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ストレート<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、5-4-3-2-A のランクの組み合わせの場合は、5 を一番強いランクとする (A-K-Q-J-10 が最強、5-4-3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>スリーカード<ul>
+<li>スリーカードのランクを比較する</li>
+<li>スリーカードのランクが同じ場合、残りの2枚の内、より強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ツーペア<ul>
+<li>2つのペアの内、より強いランクを持つペア同士で比較する</li>
+<li>上記が同じランクの場合は、もう１つのペア同士で比較する</li>
+<li>上記が同じランクの場合は、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ワンペア<ul>
+<li>ペアのランクを比較する</li>
+<li>ペアのランクが同じ場合、ペア以外のの3枚の内、一番目に強いランクを持つカード同士を比較する</li>
+<li>上記のランクが同じ場合、ペア以外のの3枚の内、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記のランクが同じ場合、ペア以外のの3枚の内、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ハイカード<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、四番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、五番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+</ul>
+<h3><a name="l18"><span class="sanchor"> </span></a>課題6 ジョーカーを含むファイブカードポーカー (five card poker with a joker)</h3>
+<p>1デッキのトランプに加えて、ジョーカー(joker) を加えた53枚の内、任意の5枚から構成される手札を使ったポーカー</p>
+<h3><a name="l19"><span class="sanchor"> </span></a>課題6-1 ジョーカーを含むファイブカードポーカーの役を判定</h3>
+<p>ジョーカーを含むファイブカードポーカーの任意の手札について、その役を判定してください</p>
+<p>ジョーカーは、ワイルドカード(任意のスート/ランクを持ったカード)とみなしてください</p>
+<p>ジョーカーを含むファイブカードポーカーには以下の役があります
+(複数の役が成立している場合は、より上位の役が成立しているとみなしてください)
+(ジョーカーを含まない場合と比較して、ツーペアとスリーカードの順序が異なっていることに注意してください)</p>
+<ul>
+<li>ファイブカード (five of a kind)<ul>
+<li>同じランクを持つ4枚組とジョーカーから構成される</li>
+</ul></li>
+<li>ロイヤルフラッシュ (royal flush)<ul>
+<li>ストレートフラッシュが成立しており、かつ、A-K-Q-J-10 のランクの組み合わせを持つ</li>
+</ul></li>
+<li>ストレートフラッシュ (straight flush)<ul>
+<li>ストレートかつフラッシュが成立している</li>
+</ul></li>
+<li>フォーカード (four of a kind)<ul>
+<li>5枚のカードの内、4枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>フルハウス (full house)<ul>
+<li>5枚のカードの内、3枚のカードが同じランクを持ち、かつ、残りの2枚も同じランクを持つ</li>
+</ul></li>
+<li>フラッシュ (flush)<ul>
+<li>5枚のカードが同じスートを持つ</li>
+</ul></li>
+<li>ストレート (straight)<ul>
+<li>5枚のカードのランクが連続している</li>
+<li>A は 2 と K の両方と連続しているとみなす (A-K-Q-J-10 および 5-4-3-2-A のランクの組み合わせはいずれもストレートである. ただし、4-3-2-A-K / 3-2-A-K-Q / 2-A-K-Q-J のランク組み合わせはストレートとはみなさない)</li>
+</ul></li>
+<li>ツーペア (two pair)<ul>
+<li>5枚のカードの内、2枚のカードが同じランクを持ち、残りの3枚の内、2枚が同じランクを持つ</li>
+</ul></li>
+<li>スリーカード (three of a kind)<ul>
+<li>5枚のカードの内、3枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ワンペア (one pair)<ul>
+<li>5枚のカードの内、2枚のカードが同じランクを持つ</li>
+</ul></li>
+<li>ハイカード (high card)<ul>
+<li>上記の役が1つも成立していない</li>
+</ul></li>
+</ul>
+<h3><a name="l20"><span class="sanchor"> </span></a>課題6-2 ジョーカーを含むファイブカードポーカーの2つの手札の強さを比較</h3>
+<p>ジョーカーを含むファイブカードポーカーの2つの手札について、その強さを比較してください</p>
+<p>2つの手札の役が異なる場合は、より上位の役を持つ手札が強いものとします</p>
+<p>2つの手札が同じ役を持つ場合は、各カードのランクによって強さを比較します (スートは手札の強さには関係ありません)</p>
+<p>2つの手札が同じ役を持つ場合は、以下の条件で強さを比較します</p>
+<ul>
+<li>ファイブカード<ul>
+<li>同じランクを持つ4枚組のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け(ただし、ジョーカーは1枚しかないので２つの手札が同時にファイブカードであることはない)</li>
+</ul></li>
+<li>ロイヤルフラッシュ<ul>
+<li>ロイヤルフラッシュ同士は引き分け</li>
+</ul></li>
+<li>ストレートフラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、5-4-3-2-A のランクの組み合わせの場合は、5 を一番強いランクとする (A-K-Q-J-10 が最強、5-4-3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>フォーカード<ul>
+<li>フォーカードのランクを比較する</li>
+<li>フォーカードのランクが同じ場合、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>フルハウス<ul>
+<li>フルハウスの内、3枚組のランクを比較する</li>
+<li>上記が同じランクの場合は、残りの2枚組のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>フラッシュ<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、四番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、五番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ストレート<ul>
+<li>一番強いランクを持つカード同士を比較する (ただし、5-4-3-2-A のランクの組み合わせの場合は、5 を一番強いランクとする (A-K-Q-J-10 が最強、5-4-3-2-A が最弱))</li>
+<li>一番強いランクが同じ場合は引き分け</li>
+</ul></li>
+<li>ツーペア<ul>
+<li>2つのペアの内、より強いランクを持つペア同士で比較する</li>
+<li>上記が同じランクの場合は、もう１つのペア同士で比較する</li>
+<li>上記が同じランクの場合は、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>スリーカード<ul>
+<li>スリーカードのランクを比較する</li>
+<li>スリーカードのランクが同じ場合、残りの2枚の内、より強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、5枚目同士のランクを比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ワンペア<ul>
+<li>ペアのランクを比較する</li>
+<li>ペアのランクが同じ場合、ペア以外のの3枚の内、一番目に強いランクを持つカード同士を比較する</li>
+<li>上記のランクが同じ場合、ペア以外のの3枚の内、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記のランクが同じ場合、ペア以外のの3枚の内、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+<li>ハイカード<ul>
+<li>一番強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、二番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、三番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、四番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は、五番目に強いランクを持つカード同士を比較する</li>
+<li>上記が同じランクの場合は引き分け</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l21"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス">
+この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2018/01/29 22:27:25<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

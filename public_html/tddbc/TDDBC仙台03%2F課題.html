@@ -1,0 +1,235 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台03/課題</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B003%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B003%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B003%2F%E8%AA%B2%E9%A1%8C">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台03/課題</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDDBC仙台03課題：整数の区間</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>課題１  整数の閉区間 (closed range)</h3>
+<pre>【例】
+[3,8]
+-&gt; 下端点 (lower endpoint) が3, 上端点 (upper endpoint) が8 である整数閉区間
+-&gt; 3 と 8 は区間に含まれます</pre>
+<h4><a name="l2"> </a>課題１−１</h4>
+<ul>
+<li>下端点と上端点を与えて閉区間を生成しよう</li>
+<li>閉区間から下端点と上端点を取得しよう</li>
+<li>閉区間から文字列表記を取得しよう</li>
+</ul>
+<pre>【例】
+// [3,8] を生成
+ClosedRange c3to8 = new ClosedRange(3,8);
+// [3,8] の下端点は 3
+int lowerEndpoint = c3to8.getLowerEndpoint(); // =&gt; 3
+// [3,8] の上端点は 8
+int upperEndpoint = c3to8.getUpperEndpoint(); // =&gt; 8
+// [3,8] の文字列表記は "[3,8]"
+String notation = c3to8.toString(); // =&gt; "[3,8]"
+// [8,3] は生成出来ない
+ClosedRange c8to3 = new ClosedRange(8,3); // =&gt; エラー</pre>
+<h4><a name="l3"> </a>課題１−２</h4>
+<ul>
+<li>閉区間が指定した整数を含むか (contains) 判定しよう</li>
+</ul>
+<pre>【例】
+// [3,8] は 5 を含む
+c3to8.contains(5); // =&gt; true
+// [3,8] は -1 を含まない
+c3to8.contains(-1); // =&gt; false</pre>
+<h3><a name="l4"><span class="sanchor"> </span></a>課題１−３</h3>
+<ul>
+<li>閉区間が別の閉区間と等しいか (equals) 判定しよう</li>
+<li>閉区間が別の閉区間と接続しているか (isConnectedTo) 判定しよう</li>
+</ul>
+<pre>【例】
+// [3,8] は [3,8] と等しい
+c3to8.equals(new ClosedRange(3, 8)); // =&gt; true
+// [3,8] は [1,6] と等しくない
+c3to8.equals(c1to6); // =&gt; false
+// [3,8] は [1,6] と接続している
+c3to8.isConnectedTo(c1to6); // =&gt; true
+// [3,8] は [8,15] と接続している
+c3to8.isConnectedTo(c8to15); // =&gt; true
+// [3,8] と [9,12] は接続していない
+c3to8.isConnectedTo(c9to12); // =&gt; false</pre>
+<h3><a name="l5"><span class="sanchor"> </span></a>課題２ 整数の開区間 (open range)</h3>
+<pre> 【例】
+ (3,8)
+-&gt; 下端点 (lower endpoint) が3, 上端点 (upper endpoint) が8 である開区間
+-&gt; 3 と 8 は区間に含まれない</pre>
+<h4><a name="l6"> </a>課題２−１</h4>
+<ul>
+<li>下端点と上端点を与えて開区間を生成しよう</li>
+<li>開区間の下端点と上端点を取得しよう</li>
+<li>開区間の文字列表記を取得しよう</li>
+</ul>
+<h4><a name="l7"> </a>課題２−２</h4>
+<ul>
+<li>開区間が指定した整数を含むか (contains) 判定しよう</li>
+</ul>
+<h4><a name="l8"> </a>課題２−３</h4>
+<ul>
+<li>開区間が別の開区間と等しいか (equals) 判定しよう</li>
+<li>開区間が別の開区間と接続しているか (isConnectedTo) 判定しよう</li>
+</ul>
+<h3><a name="l9"><span class="sanchor"> </span></a>課題３ 閉区間と開区間</h3>
+<h4><a name="l10"> </a>課題３−１</h4>
+<ul>
+<li>閉区間と開区間と等しいか (equals) 判定しよう</li>
+</ul>
+<h4><a name="l11"> </a>課題３−２</h4>
+<ul>
+<li>閉区間と開区間と接続しているか (isConnectedTo) 判定しよう</li>
+</ul>
+<h3><a name="l12"><span class="sanchor"> </span></a>課題４ 閉区間／開区間への機能追加</h3>
+<h4><a name="l13"> </a>課題４−１</h4>
+<ul>
+<li>指定した全ての整数を含むか (containsAll) 判定しよう</li>
+<li>閉区間と別の閉区間との共通集合 (intersection) を取得しよう</li>
+</ul>
+<pre>【例】
+// [3,8] は 4, 7, 3 を全て含む
+c3to8.containsAll(Arrays.asList(4,7,3)); // =&gt; true
+// [3,8] は 6, -1 のいずれかを含まない
+c3to8.containsAll(Arrays.asList(6,-1)); // =&gt; false
+ // [3,8] と [4, 10] の共通集合は [4,8]
+c3to8.getIntersection(c4to10); // =&gt; [4,8]
+// [3,8] と [9,12] は共通集合を持たない
+c3to8.getIntersection(c9to12); // =&gt; エラー
+</pre>
+<h4><a name="l14"> </a>課題４−２</h4>
+<ul>
+<li>文字列表記を解析して (parse) 区間を生成しよう</li>
+</ul>
+<pre>【例】
+// 文字列 "[3,8]" をパースすると閉区間 [3,8] を生成する
+ClosedRange c3to8 = ClosedRange.parse("[3,8]") // =&gt; [3,8] を表すオブジェクト</pre>
+<h3><a name="l15"><span class="sanchor"> </span></a>課題５ 半開区間 (open closed range)</h3>
+<pre>左閉右開区間 (left-closed right-open range)
+-&gt; [a,b) = {x | a&lt;=x&lt;b}
+左開右閉区間 (left-open right-closed range)
+-&gt; (a,b] = {x | a&lt;x&lt;=b}
+
+(補足) [a,a) , (a,a] = Φ (空区間)</pre>
+<h3><a name="l16"><span class="sanchor"> </span></a>課題５−１</h3>
+<ul>
+<li>閉区間／開区間と同等の機能を実装しよう</li>
+</ul>
+<h3><a name="l17"><span class="sanchor"> </span></a>課題６ 無限区間 (infinite range)</h3>
+<pre>以上 (at least)
+-&gt; [a,+∞) = {x | a&lt;=x}
+より大きい (greater than)
+-&gt; (a,+∞) = {x | a&lt;x}
+以下 (at most)
+-&gt; (-∞,b] = {x | x&lt;=b}
+未満 (less than)
+-&gt; (-∞,b) = {x | x&lt;b}
+整数全体 (all)
+-&gt; (-∞,+∞) = {x}</pre>
+<h4><a name="l18"> </a>課題６−１</h4>
+<ul>
+<li>閉区間／開区間／半開区間と同等の機能を実装しよう</li>
+</ul>
+<h3><a name="l19"><span class="sanchor"> </span></a>課題７ 区間を使ったコレクション操作</h3>
+<h4><a name="l20"> </a>課題７−１</h4>
+<ul>
+<li>整数コレクションの各要素を区間でフィルタリング (filter) しよう</li>
+</ul>
+<pre>【例】
+// 9,4,0,7,5,-8 の内、[3,8] に含まれる要素は 4,7.5
+Collection&lt;Integer&gt; integers = Arrays.asList(9,4,0,5,7,-8);
+Collection&lt;Integer&gt; filtered = Ranges.filter(integers, c3to8); // =&gt; 4,7,5</pre>
+<h3><a name="l21"><span class="sanchor"> </span></a>課題８ 整数以外の比較可能なオブジェクトを扱う区間(例：日付、文字列 等)</h3>
+<h4><a name="l22"> </a>課題８−１</h4>
+<ul>
+<li>整数の区間と同等の機能を実装しよう</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l23"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス">
+この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2016/12/06 14:41:09<br>
+        Keyword(s):<br>
+        References:[<a href="./">TDDBC</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

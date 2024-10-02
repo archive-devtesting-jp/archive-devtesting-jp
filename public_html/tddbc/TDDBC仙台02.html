@@ -1,0 +1,397 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台02</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B002" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B002" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B002">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台02</h1>
+  
+  <div><ul>
+<li><a href="#l0">開催概要</a></li>
+<li><a href="#l1">テーマ</a></li>
+<ul>
+<li><a href="#l2">内容</a></li>
+<ul>
+<li><a href="#l3">タイムテーブル</a></li>
+<li><a href="#l4">参加希望言語</a></li>
+<li><a href="#l5">サポート可能な言語,テスティングフレームワーク,スタッフ</a></li>
+</ul>
+</ul>
+<li><a href="#l6">当日の役割分担</a></li>
+<li><a href="#l7">当日の準備物</a></li>
+<li><a href="#l8">参加準備</a></li>
+<li><a href="#l9">FAQ(本家ページから転載)</a></li>
+<ul>
+<li><a href="#l10">Q1. 過去のTDDBCに参加していなくても参加できますか？</a></li>
+<li><a href="#l11">Q2. 参加するのに必要な知識・スキルはありますか？</a></li>
+<li><a href="#l12">Q3. ノートパソコンは必須ですか？</a></li>
+<li><a href="#l13">Q4. 使用するプログラミング言語の制限はありますか？</a></li>
+</ul>
+<li><a href="#l14">課題</a></li>
+<li><a href="#l15">KPT</a></li>
+<ul>
+<li><a href="#l16">Keep</a></li>
+<li><a href="#l17">Problem</a></li>
+<li><a href="#l18">Try</a></li>
+</ul>
+<li><a href="#l19">参加者レポート等</a></li>
+<li><a href="#l20">当日の写真</a></li>
+</ul>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">開催概要</span></h2>
+  <div class="body">
+    <div class="section">
+      <table border="1">
+<tr><th>日時</th><td>2012年8月11日（土） 10:00〜17:30</td></tr>
+<tr><th>場所</th><td>エル・ソーラ仙台　大研修室（アエル　28階）</td></tr>
+<tr><th>参加費</th><td>2000円</td></tr>
+<tr><th>定員</th><td>３０名</td></tr>
+<tr><th>講師</th><td>@t_wada</td></tr>
+<tr><td>ハッシュタグ</td><td>#tddbc</td></tr>
+</table>
+<p>参加登録は、 <a href="http://tohoku-dev.jp/modules/eguide/event.php?eid=144" class="external">http://tohoku-dev.jp/modules/eguide/event.php?eid=144</a> までお願いします。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l1"> </a></span><span class="title">テーマ</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>「テスト駆動開発を体験しよう」</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>内容</h3>
+<p>3〜4名でチームを作り、お題を解きながらテスト駆動開発を体験する。</p>
+<h4><a name="l3"> </a>タイムテーブル</h4>
+<table border="1">
+<tr><td>09:00〜10:00</td><td>会場準備</td></tr>
+<tr><td>10:00〜10:30</td><td>受付開始</td></tr>
+<tr><td>10:30〜10:45</td><td>Opening</td></tr>
+<tr><td>10:45〜12:00</td><td>基調講演・デモペアプロ</td></tr>
+<tr><td>12:00〜12:10</td><td>LT</td></tr>
+<tr><td>12:10〜13:00</td><td>Lunch</td></tr>
+<tr><td>13:00〜14:30</td><td>1つめの開発するテーマを発表+ペアプロ大会</td></tr>
+<tr><td>14:30〜15:00</td><td>コードレビュー+休憩</td></tr>
+<tr><td>15:00〜16:30</td><td>2つめの開発するテーマを発表+ペアプロ大会</td></tr>
+<tr><td>16:30〜17:00</td><td>コードレビュー+休憩</td></tr>
+<tr><td>17:00〜17:30</td><td>ふりかえり</td></tr>
+<tr><td>17:30〜18:00</td><td>後片付け</td></tr>
+</table>
+<ul>
+<li>時間配分等は目安です。</li>
+<li>演習は３〜４名で１チームで行います。</li>
+<li>演習は１台のPCを使って、TDDの１サイクル毎に実装者を交代する乱取り形式で行います。</li>
+<li>演習ではノートPCを使用しますが、３〜４名に１台あれば良いので全員が持ってくる必要はありません。</li>
+<li>PCをご持参いただく際に、延長コードを併せてお持ちいただけましたら幸いです。</li>
+</ul>
+<h4><a name="l4"> </a>参加希望言語</h4>
+<p>申し込みフォームにてアンケートを行い、ペアが組める言語を選択していただきます。
+運営側でサポートする言語は以下の通りです。
+サポート外の言語を選択されても構いませんが自己責任でお願いします。</p>
+<p>【言語】
+Java
+Groovy
+C#
+C++
+C
+VB.NET
+Python
+Ruby</p>
+<h4><a name="l5"> </a>サポート可能な言語,テスティングフレームワーク,スタッフ</h4>
+<table border="1">
+<tr><td>言語</td><td>テスティングフレームワーク</td><td>スタッフ</td></tr>
+<tr><td>Java</td><td>JUnit</td><td>@tosikawa,@yujiorama,@masanobuimai,@i_takehiro
+</td></tr>
+<tr><td>Groovy</td><td>?</td><td>@masanobuimai
+</td></tr>
+<tr><td>C#</td><td>NUnit,MSTest(VS2012)</td><td>@nnasaki
+</td></tr>
+<tr><td>C++</td><td>cpptest,gtest</td><td>@tosikawa,@yujiorama
+</td></tr>
+<tr><td>C</td><td>ctest,cunit</td><td>@tosikawa,@yujiorama
+</td></tr>
+<tr><td>VB.NET</td><td>NUnit,MSTest(VS2012)</td><td>@nnasaki
+</td></tr>
+<tr><td>Python</td><td>?</td><td>@tosikawa
+</td></tr>
+<tr><td>Ruby</td><td>runit,rspec</td><td>@tosikawa,@yujiorama
+</td></tr>
+</table>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l6"> </a></span><span class="title">当日の役割分担</span></h2>
+  <div class="body">
+    <div class="section">
+      <table border="1">
+<tr><td>受付(施設入り口)</td><td></td></tr>
+<tr><td>受付(会場)</td><td></td></tr>
+<tr><td>会場準備</td><td>@nnasaki</td></tr>
+<tr><td>タイムキーパー</td><td></td></tr>
+<tr><td>昼休憩LT(の司会)</td><td></td></tr>
+<tr><td>懇親会(の司会)</td><td></td></tr>
+</table>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l7"> </a></span><span class="title">当日の準備物</span></h2>
+  <div class="body">
+    <div class="section">
+      <table border="1">
+<tr><td>モノ</td><td>準備者
+</td></tr>
+<tr><td>ネームカード入れ</td><td>@i_takehiro(TDC保有のもの)
+</td></tr>
+<tr><td>紙</td></tr>
+<tr><td>筆記用具</td></tr>
+<tr><td>ポストイット</td><td>@nnasaki
+</td></tr>
+<tr><td>電源タップ</td><td>@nnasaki x 2, 会場(10台分程度借りれます)
+</td></tr>
+<tr><td>Macのディスプレイアダプタ</td><td>@nnasaki
+</td></tr>
+<tr><td>ディスプレイ</td><td>無しかな
+</td></tr>
+<tr><td>Wi-Fi機器</td><td>@yujiorama(Wimax+AirMacExtreme<a class="nodisp" href="./?c=edit;p=AirMacExtreme" title="Create and edit the page AirMacExtreme.">?</a>), @i_takehiro(Wimax)
+</td></tr>
+<tr><td>おやつ</td><td>@nnasaki(家にあるもの適当に)
+</td></tr>
+<tr><td>グリーンバンド</td><td>@tosikawa(@nnasakiが必要数を連絡する)
+</td></tr>
+</table>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l8"> </a></span><span class="title">参加準備</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li><a href="https://docs.google.com/present/edit?id=0Af8NIU3ixgIZZGY4Zzg2d2ZfMmZyZDJoOGh0" class="external">みんなで作るポジションペーパー</a> にご記入ください。こちらは<strong>必須ではありません</strong>が、積極的に自分をアピールしてみましょう!</li>
+<li>可能であれば事前にテスティングフレームワークをインストールしてくる準備とノートパソコンの持参をお願いいたします。Java の環境構築に関しては、<a href="./?%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28Java%2F%E4%BB%99%E5%8F%B001%29">環境構築(Java/仙台01)</a>を参照してください。</li>
+<li>Macを持参する方へ。<ul>
+<li>ACアダプターが干渉して他の人が電源を確保できなくなるため、100円ショップ等で延長または分岐タップをご用意ください。</li>
+<li>コードレビュー時にスクリーンに投影してもらうかもしれませんので、ディスプレイアダプタをご用意ください。</li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l9"> </a></span><span class="title">FAQ(本家ページから転載)</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l10"><span class="sanchor"> </span></a>Q1. 過去のTDDBCに参加していなくても参加できますか？</h3>
+<p>A1. 制限はありません。</p>
+<h3><a name="l11"><span class="sanchor"> </span></a>Q2. 参加するのに必要な知識・スキルはありますか？</h3>
+<p>A2. 以下に目安を示します</p>
+<ul>
+<li>Javaなどプログラミング言語の基礎を理解し、簡単なプログラムを書いて実行できる</li>
+<li>JUnitなどのNUnitフレームワークをサンプルレベルでも良いので書いたことがある</li>
+</ul>
+<p>テスト駆動開発自体の経験は問いませんが、ユニットテストに関して少し学習しておくと効率よく参加できると思います。</p>
+<h3><a name="l12"><span class="sanchor"> </span></a>Q3. ノートパソコンは必須ですか？</h3>
+<p>A3. 必須ではありませんが、ある方がベターです。
+TDDBCではペアプログラミングまたは３−５名程度のグループでの乱取り形式で実施します。
+参加者の中の一定数はノートPCを持参するので、なければ参加できないという事はありません。</p>
+<h3><a name="l13"><span class="sanchor"> </span></a>Q4. 使用するプログラミング言語の制限はありますか？</h3>
+<p>A4. TDDBC仙台の運営側で正式にサポートする言語は、Javaのみの予定です。
+他の言語の利用に関しては、環境の設定など自己責任でお願いします。
+尚、目安としてグループに「その言語である程度はユニットテストをやり慣れている人がいる」事が必要と考えています。
+そうでない場合は、環境構築などに時間を取られてしまいTDD自体を体験できないかもしれません。
+Javaを利用する限りでは環境構築やサンプルなどをレクチャー可能ですので、言語自体の経験はなくてもTDDを学習できます。</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l14"> </a></span><span class="title">課題</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li><a href="http://devtesting.jp/tddbc/?TDDBC%E5%A4%A7%E9%98%AA2.0%2F%E8%AA%B2%E9%A1%8C" class="external">TDDBC大阪の課題</a>を使用します。</li>
+<li>課題中のドメインについて使用する<a href="http://devtesting.jp/tddbc/?TDDBC%E4%BB%99%E5%8F%B002%2F%E8%AA%B2%E9%A1%8C%E7%94%A8%E8%AA%9E%E9%9B%86" class="external">用語例</a>を用意しました</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l15"> </a></span><span class="title">KPT</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l16"><span class="sanchor"> </span></a>Keep</h3>
+<ul>
+<li>他の人の書いたコードを見る</li>
+<li>色々な言語のコードが見れる</li>
+<li>ペアプロ楽しかった！</li>
+<li>実装する機能をよく話し合って決めた</li>
+<li>話し合いながらの実装</li>
+<li>ペアプロで考えるだけの時間を減らす</li>
+<li>何がテストケースか、どのようにテストするかを実装する前に仕様から考えられるようにする</li>
+<li>おかし</li>
+<li>とりあえず実装する</li>
+<li>軽い実装から始める</li>
+<li>テストメソッド名のつけ方がよかった（何のテストか分かる）</li>
+<li>ふせん</li>
+<li>意見の交換ができた！</li>
+<li>テストファーストのソフトウェア開発になれる</li>
+<li>TDDBCを別なとこでも続ける</li>
+<li>TDDについて実践で経験できた</li>
+<li>ペアプロが経験できた</li>
+<li>コードを組めて楽しかった。ペアプロは緊張したけど、楽しかった。</li>
+<li>テストの書き方。状況と条件をあらい出してテストする方法を身に付けた。</li>
+<li>まず個人でTDDを実践したい</li>
+<li>CUnit以外のフレームワークをもう少し調査します</li>
+<li>ペアプロ楽しかった</li>
+<li>テストファースト。１歩ずつ</li>
+<li>おかし</li>
+<li>レビューでいっぱい質問できた</li>
+<li>タイムキープ＋＋</li>
+</ul>
+<h3><a name="l17"><span class="sanchor"> </span></a>Problem</h3>
+<ul>
+<li>実装をあせらない</li>
+<li>細かく１つ１つやっていくことが重要だが、ついつい一気にやってしまう</li>
+<li>変数名を適当にすると後で直すのが大変</li>
+<li>WebAppの場合はどうするんだろう</li>
+<li>Javaの理解が足りなかった</li>
+<li>Javaが進化している</li>
+<li>組み込みソフトへの適用(C言語)</li>
+<li>頭でわかっていてもついつい実装から書いてしまうことがあった。</li>
+<li>グリーンバンドほしい。</li>
+<li>テスト結果として何を返すかを決めるのにとまどった</li>
+<li>作法になれない。大きい目標に目がいってしまう。</li>
+<li>開発環境が進化している</li>
+<li>Java力が足りない</li>
+<li>emacsの使い方になれず時間ロス</li>
+<li>ガッチリ設計する</li>
+<li>ディスプレイケーブル</li>
+<li>実装するイメージを紙とかに書いたらよかった</li>
+<li>CUnitを使うための準備不足でした</li>
+<li>コードだけでも意味がわかるコードにて楽をする</li>
+<li>テストケースを作るよりも先に実装をしがちであった。</li>
+<li>テストケースの実装が冗長であった。</li>
+<li>仕様のあいまいさがなくせなかった。</li>
+<li>テストを書く→実装の流れを飛ばしそうになった</li>
+<li>JoJo完売</li>
+<li>複数の値をテストするとき、メソッドを多くせずに１つに見やすくするまとめる</li>
+<li>オリンピックのサッカーを観てしまった</li>
+<li>TAなのに事前にお題を全部解けなかった</li>
+<li>設計に口出ししすぎorz</li>
+<li>時々ネットワーク不調</li>
+</ul>
+<h3><a name="l18"><span class="sanchor"> </span></a>Try</h3>
+<ul>
+<li>F#,Scala,HaskellでのTDDライブラリを使ってみる</li>
+<li>TDD本(ケント・ベック)を買う</li>
+<li>リファクタリングの方法を覚える</li>
+<li>Androidのアプリ開発でもTDDが使えるかをためしてみる</li>
+<li>またTDDBCに参加したい</li>
+<li>テストケースの作成・実装を通じて、仕様のあいまいさをなくし、プログラムの品質をあげられるようにしていきたい</li>
+<li>TDDを実践してみる</li>
+<li>ジョジョ勉強しておきます</li>
+<li>ふだんの開発でもテストコードを書くようにしようと思いました</li>
+<li>ペアチェンジ</li>
+<li>雑談をする</li>
+<li>Unity(C言語のユニットテスト環境を使ってみる)</li>
+<li>ぜひ次回(03)もやって下さい</li>
+<li>TDDの実践！DB接続のケース</li>
+<li>カバレッジそくてい</li>
+<li>実際に黄金の回転が高速でまわっているかチェック</li>
+<li>Ruby風のテストコード</li>
+<li>お題を家に帰ってから最後まで解く</li>
+<li>内部からアクセスする変数については"_"をつけて外部からアクセスするものと区別しやすくする</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l19"> </a></span><span class="title">参加者レポート等</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><a href="http://d.hatena.ne.jp/masanobuimai/20120814" class="external">http://d.hatena.ne.jp/masanobuimai/20120814</a></p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l20"> </a></span><span class="title">当日の写真</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li><a href="http://www.flickr.com/photos/yura760/sets/72157631046613062/" class="external">flickr</a></li>
+<li><a href="http://t.co/R4fTj7ox" class="external">集合写真w</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/08/15 23:45:46<br>
+        Keyword(s):<br>
+        References:<br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台04/課題</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B004%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B004%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B004%2F%E8%AA%B2%E9%A1%8C">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台04/課題</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDDBC仙台04課題：  人と結婚</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>課題１  人の名字／名前／氏名</h3>
+<ul>
+<li>ある 人 (person) の 名字 (family name)、名前 (first name)、氏名 (full name) を取得できる</li>
+</ul>
+<pre>【例】
+// 佐藤太郎 を生成
+Person taro = new Person("佐藤", "太郎");
+// 佐藤太郎 の名字は "佐藤" である
+taro.getFamilyName(); // =&gt; "佐藤"
+// 佐藤太郎 の名前は "太郎" である
+taro.getFirstName(); // =&gt; "太郎"
+// 佐藤太郎 の氏名は "佐藤太郎" である
+taro.getFullName(); // =&gt; "佐藤太郎"
+// 名字 または 名前 が無い人は生成できない
+Person noName = new Person("", ""); // =&gt; エラー</pre>
+<h3><a name="l2"><span class="sanchor"> </span></a>課題２  人の性別と結婚</h3>
+<h4><a name="l3"> </a>課題２−１  人の性別</h4>
+<ul>
+<li>ある人の 性別 (gender) が判断できる<ul>
+<li>男性 (male)</li>
+<li>女性 (female)</li>
+</ul></li>
+</ul>
+<pre>【例】
+// 佐藤太郎(男性) を生成
+// 佐藤太郎(男性) は 男性 である
+// 佐藤太郎(男性) は 女性 ではない
+// 山田花子(女性) を生成
+// 山田花子(女性) は 男性 ではない
+// 山田花子(女性) は 女性 である</pre>
+<h4><a name="l4"> </a>課題２−２  人との結婚</h4>
+<ul>
+<li>ある人が別のある人と 結婚 (marry) できるか判断できる<ul>
+<li>異性と結婚できる</li>
+<li>同性とは結婚できない</li>
+</ul></li>
+</ul>
+<pre>【例】
+// 佐藤太郎(男性) は 山田花子(女性) と結婚できる
+// 山田花子(女性) は 佐藤太郎(男性) と結婚できる
+// 佐藤太郎(男性) はどの男性とも結婚できない
+// 山田花子(女性) はどの女性と結婚できない</pre>
+<h3><a name="l5"><span class="sanchor"> </span></a>課題３  人の生年月日と満年齢</h3>
+<h4><a name="l6"> </a>課題３−１  人の生年月日</h4>
+<ul>
+<li>ある人の 生年月日 (date of birth) が取得出来る</li>
+</ul>
+<pre>【例】
+// 佐藤太郎(男性,1996/10/11生まれ) を生成
+// 佐藤太郎(男性,1996/10/11生まれ) の生年月日は 1996/10/11 である</pre>
+<h4><a name="l7"> </a>課題３−２  人の満年齢</h4>
+<ul>
+<li>ある人のある日付における 満年齢 (age) が取得できる</li>
+</ul>
+<pre>【例】
+// 佐藤太郎(男性,1996/10/11生まれ) を生成
+// 佐藤太郎(男性,1996/10/11生まれ) の 2014/10/10 における満年齢は 17 である
+// 佐藤太郎(男性,1996/10/11生まれ) の 2014/10/11 における満年齢は 18 である</pre>
+<h4><a name="l8"> </a>課題３−３  結婚の条件</h4>
+<ul>
+<li>ある人が別のある人とある日付において結婚できるか判断できる<ul>
+<li>男性は満18歳以上で結婚できる</li>
+<li>女性は満16歳以上で結婚できる</li>
+</ul></li>
+</ul>
+<pre>【例】
+// 佐藤太郎(男性,1996/10/11生まれ) を生成
+// 山田花子(女性,1994/7/30生まれ) を生成
+ // 佐藤太郎(男性,1996/10/11生まれ) は 山田花子(女性,1994/7/30生まれ) と 2014/10/11 に結婚できる
+// 佐藤太郎(男性,1996/10/11生まれ) は 山田花子(女性,1994/7/30生まれ) と 2014/10/10 には結婚できない</pre>
+<h3><a name="l9"><span class="sanchor"> </span></a>課題４  日付による結婚条件の変化</h3>
+<ul>
+<li>ある人が別のある人とある日付において結婚できるか判断できる<ul>
+<li>ただし、ある日付において施行されている法律によってい結婚の条件が異なる</li>
+<li>1898年7月15日以前<ul>
+<li>男性、女性とも年齢に関係なく結婚できる</li>
+</ul></li>
+<li>1898年7月16日以降 (明治民法)<ul>
+<li>男性は満17歳以上で結婚できる</li>
+<li>女性は満15歳以上で結婚できる</li>
+</ul></li>
+<li>1947年12月22日以降 (現行民法)<ul>
+<li>男性は満18歳以上で結婚できる</li>
+<li>女性は満16歳以上で結婚できる</li>
+</ul></li>
+</ul></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l10"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス">
+この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2014/10/12 02:35:43<br>
+        Keyword(s):<br>
+        References:[<a href="./">TDDBC</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

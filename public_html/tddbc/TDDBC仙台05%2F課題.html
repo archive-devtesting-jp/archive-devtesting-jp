@@ -1,0 +1,179 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC仙台05/課題</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E4%BB%99%E5%8F%B005%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E4%BB%99%E5%8F%B005%2F%E8%AA%B2%E9%A1%8C" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E4%BB%99%E5%8F%B005%2F%E8%AA%B2%E9%A1%8C">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC仙台05/課題</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">TDDBC仙台05課題：格子点</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>課題１ 平面座標上の格子点 (grid point)</h3>
+<p>座標平面上にある点で、<strong>x座標</strong> (x-coordinate) 、<strong>y座標</strong> (y-coordinate) がともに整数である点を<strong>格子点</strong>と呼びます</p>
+<h4><a name="l2"> </a>課題１−１</h4>
+<ul>
+<li><strong>x座標</strong>と<strong>y座標</strong>を与えて<strong>格子点</strong>を生成してください</li>
+<li>生成した<strong>格子点</strong>から<strong>x座標</strong>と<strong>y座標</strong>を取得してください</li>
+<li>生成した<strong>格子点</strong>から<strong>文字列表記</strong> (notation) を取得してください</li>
+</ul>
+<pre>【例】
+// x座標 に 4 , y座標 に 7 を与えて 格子点 を生成
+GridPoint p4_7 = new GridPoint(4, 7);
+// (4,7) の x座標 は 4
+int x = p4_7.getX(); // =&gt; 4
+// (4,7) の y座標 は 7
+int y = p4_7.getY(); // =&gt; 7
+// (4,7) の 文字列表記 は "(4,7)"
+String notation = p4_7.getNotation(); // =&gt; "(4,7)"</pre>
+<h4><a name="l3"> </a>課題１−２</h4>
+<ul>
+<li>２つの<strong>格子点</strong>が同じ<strong>座標</strong>(coordinates)を持つか判定してください</li>
+</ul>
+<pre>【例】
+// (4,7) と (4,7) は同じ座標を持つ
+boolean hasSameCoordinates = p4_7.hasSameCoordinatesWith(new GridPoint(4, 7)); // =&gt; true
+// (4,7) と (3,8) は同じ座標を持たない
+boolean hasNotSameCoordinates = p4_7.hasSameCoordinatesWith(new GridPoint(3, 8)); // =&gt; false</pre>
+<h4><a name="l4"> </a>課題２</h4>
+<ul>
+<li>２つの格子点が <strong>隣り合っている</strong>(neighbor)かを判定しよう</li>
+<li>(補足) 格子点(x,y)は、４つの格子点(x-1,y),(x+1,y),(x,y-1),(x,y+1)と隣り合っているものとします</li>
+</ul>
+<pre>【例】
+// (4,7) と (3,7) は隣り合っている
+boolean isNeighbor = p4_7.isNeighborOf(new GridPoint(3, 7)); // =&gt; true
+// (4,7) と (3,8) は隣り合っていない
+boolean isNotNeighbor = p4_7.isNeighborOf(new GridPoint(3, 8)); // =&gt; false
+// (4,7) と (4,7) は隣り合っていない
+boolean isNotNeighbor = p4_7.isNeighborOf(new GridPoint(4, 7)); // =&gt; false</pre>
+<h4><a name="l5"> </a>課題３</h4>
+<p>異なる座標を持つ２つの格子点を含む<strong>格子点集合</strong>(grid points)を導入します。</p>
+<h4><a name="l6"> </a>課題３−１</h4>
+<ul>
+<li>格子点集合が、指定した格子点を<strong>含む</strong>(contains)かを判定してください</li>
+</ul>
+<h4><a name="l7"> </a>課題３−２</h4>
+<ul>
+<li>格子点集合が<strong>連結している</strong>(connected)かを判定してください</li>
+<li>(補足) 格子点集合に含まれる２つの格子点が隣り合っている場合に限り、その格子点集合が連結しているものとします</li>
+</ul>
+<h4><a name="l8"> </a>課題４</h4>
+<h4><a name="l9"> </a>課題４−１</h4>
+<ul>
+<li>格子点集合を、異なる２つまたは３つの格子点を含むことが出来るように拡張してください</li>
+<li>(補足) 格子点集合に含まれる任意の格子点について、その格子点から隣り合っている格子点のみを経由してその他全ての格子点へ到達できる場合に限り、その格子点集合が連結しているものとします</li>
+</ul>
+<h4><a name="l10"> </a>課題４−２</h4>
+<ul>
+<li>格子点集合から、格子点集合に含まれている<strong>格子点の数</strong>(count)を取得してください</li>
+</ul>
+<h4><a name="l11"> </a>課題５</h4>
+<h4><a name="l12"> </a>課題５−１</h4>
+<ul>
+<li>格子点集合を、異なる２〜４つの格子点を含むことが出来るように拡張してください</li>
+</ul>
+<h4><a name="l13"> </a>課題５−２</h4>
+<ul>
+<li>格子点集合が<strong>一筆書きできるか</strong>(traversable)を判定してください</li>
+<li>(補足) 格子点集合に含まれるある格子点について、その格子点から隣り合っている格子点のみを経由して、最終的に全ての格子点をちょうど一度ずつ経由する組み合わせがある場合に限り、その格子点集合が一筆書きできるものとします</li>
+</ul>
+<h4><a name="l14"> </a>課題６</h4>
+<ul>
+<li>格子点集合を、異なるN個の格子点(Nは2以上の整数)が扱えるように拡張してください</li>
+</ul>
+<h4><a name="l15"> </a>課題７</h4>
+<ul>
+<li>格子点及び格子点集合を、３次元座標上で扱えるように拡張してください</li>
+<li>(補足) ２次元座標上の格子点／格子点集合と、３次元座標上の格子点／格子点集合を同時に扱える必要はありません</li>
+</ul>
+<h4><a name="l16"> </a>課題８</h4>
+<ul>
+<li>格子点及び格子点集合を、N(Nは4以上の整数)次元座標上で扱えるように拡張してください</li>
+<li>(補足) N次元座標上の格子点／格子点集合と、N-1次元以下の座標上の格子点／格子点集合を同時に扱える必要はありません</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l17"> </a></span><span class="title">ライセンス</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><img src="http://i.creativecommons.org/l/by-sa/2.1/jp/88x31.png" alt="クリエイティブ・コモンズ・ライセンス">
+この演習問題は <a href="http://creativecommons.org/licenses/by-sa/2.1/jp/" class="external">クリエイティブ・コモンズ 表示 - 継承 2.1 日本 ライセンスの下に提供されています。</a></p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2015/11/20 00:22:37<br>
+        Keyword(s):<br>
+        References:[<a href="./">TDDBC</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 1.0.0">
+  <title>TDD Boot Camp(TDDBC) - TDDBC横浜2nd/環境構築(Java)</title>
+  <link rel="stylesheet" type="text/css" href="../theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../theme/hiki/hiki.css" media="all">
+    <style type="text/css"><!--
+    .sidebar {
+    background-image: url(/tddbc/TDDBC.png);
+    background-repeat: no-repeat;
+    background-size:100% auto; 
+}
+
+.sidebar h2:first-child {
+    margin-top : 225px;
+}
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://devtesting.jp/tddbc/?c=rss">
+</head>
+
+<body>
+<div class="whole-contents">
+  <div class="contents">
+    
+
+<a name="top"> </a>
+<div class="main">
+  <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28Java%29" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28Java%29" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28Java%29">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
+  <h1 class="header">TDDBC横浜2nd/環境構築(Java)</h1>
+  
+  <div><div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">環境構築(Java)</span></h2>
+  <div class="body">
+    <div class="section">
+      <ul>
+<li>推奨テスティングフレームワークは、<strong>JUnit4</strong> とします。<ul>
+<li><strong><a href="http://www.junit.org/" class="external">Welcome to JUnit.org!｜JUnit.org</a></strong></li>
+</ul></li>
+<li>また、JUnit4を含めた各種推奨環境＆バージョンは以下の通り。(※基本的にはTDDBC実施時点での最新バージョンを導入)</li>
+</ul>
+<table border="1">
+<tr><th>環境</th><th>バージョン</th><th>URL</th></tr>
+<tr><td>Java JDK</td><td>JDK7</td><td><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" class="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></td></tr>
+<tr><td>Eclipse</td><td>Pleiades4.2 又は 3.7</td><td><a href="http://mergedoc.sourceforge.jp/" class="external">http://mergedoc.sourceforge.jp/</a></td></tr>
+<tr><td>JUnit(jar)</td><td>4.10</td><td><a href="http://www.junit.org/" class="external">http://www.junit.org/</a></td></tr>
+<tr><td>hamcrest(jar)</td><td>1.3</td><td><a href="http://code.google.com/p/hamcrest/" class="external">http://code.google.com/p/hamcrest/</a></td></tr>
+<tr><td>Quick JUnit(Eclipse Plugin)</td><td>0.6</td><td><a href="http://quick-junit.sourceforge.jp/" class="external">http://quick-junit.sourceforge.jp/</a></td></tr>
+</table>
+<p>OSとIDEに応じて、以下の4パターンの導入手順をまとめました。お使いの環境に併せてご参考にしてください。</p>
+<ul>
+<li>A.Eclipse on Windows7</li>
+<li>B.Eclipse on Mac OS X</li>
+<li>C.IntelliJ IDEA on Windows7</li>
+<li>D.IntelliJ IDEA on Mac OS X</li>
+</ul>
+<hr>
+<h3><a name="l1"><span class="sanchor"> </span></a>A.Eclipse on Windows7</h3>
+<h4><a name="l2"> </a>1.Java JDK7</h4>
+<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120823/1345658468" class="external">Windows7 開発環境構築手順：Java実行環境(jdk7)インストール</a></strong></li>
+<li>JDK7最新バージョンを入手、インストールし、バージョン確認が出来たら完了。</li>
+</ul>
+<h4><a name="l3"> </a>2.Eclipse (Pleiades4.2 or 3.7)</h4>
+<ul>
+<li><strong><a href="http://mergedoc.sourceforge.jp/" class="external">日本語 Eclipse / Pleiades All in One 日本語ディストリビューション</a></strong><ul>
+<li>環境導入の手間を考えて、ここではPleiades All in Oneを利用する事とします。</li>
+</ul></li>
+</ul>
+<ul>
+<li>上記サイトからアーカイブファイル(64bit/JRE無し/Java)を入手し、解凍。</li>
+<li>C:/eclipse4.2/ 等の簡潔な形で配置、起動する所まで確認。</li>
+</ul>
+<h4><a name="l4"> </a><strong>3.テスティング関連ライブラリ</strong></h4>
+<ul>
+<li>TDDBCで必要になりそうなテスト関連ライブラリについては、以下のものが挙げられます。<ul>
+<li><strong>JUnit</strong></li>
+<li><strong>hamcrest</strong></li>
+</ul></li>
+<li>上記手順に倣い、Pleiades3.7 or 4.2を導入している場合は環境構築の過程でスムーズにライブラリをプロジェクトに追加する事が出来ます。(ライブラリを追加する流れについては、以下エントリに部分的に記載しています。宜しければご参照ください。)<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120719/1342840022" class="external">『車窓からのTDD』を写経してみた #1 米原駅</a></strong></li>
+</ul></li>
+</ul>
+<ul>
+<li><ul>
+<li>ただ、上記手順のようにQuickJUnitプラグイン経由でライブラリを追加した場合、hamcrestのバージョンが古い(機能が少ない)ものが入ってしまうようです。通常通りプロジェクトの任意の場所に配置→ビルドパスに追加、の形を取る場合は上記公式サイトから入手したものを利用した方が良いかも知れません。</li>
+</ul></li>
+</ul>
+<ul>
+<li><ul>
+<li>Pleiades3.7 or 4.2 を使用している場合はassertメソッドやhamcrestのMatcherのコンテンツアシストが設定済みですが、そうでない場合は以下に従ってコンテンツアシストの設定をすると便利です。</li>
+<li><strong><a href="./?TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28Java%29%2FFavorite">TDDBC横浜2nd/環境構築(Java)/Favorite</a></strong></li>
+</ul></li>
+</ul>
+<h4><a name="l5"> </a><strong>4.関連プラグインのインストール</strong></h4>
+<ul>
+<li>TDDBCで必要そう(あると便利)なのは以下のプラグイン。<ul>
+<li><strong>Quick JUnit</strong> ：Pleiades3.7 or 4.2を導入した場合、同梱されています。別途インストールの必要はありません。<ul>
+<li><strong>Pleiades All in Oneに含まれているQuick JUnitプラグインは若干バージョンが古いもののようです。(※TDDBC実践に於いては影響は無い模様ですが) 最新のプラグインで実践作業を行いたい場合は、以下の手順に従って各種プラグインをアップグレードしてみてください。</strong>( → <strong><a href="http://d.hatena.ne.jp/absj31/20120830/1346320237" class="external">Eclipseプラグインのバージョンアップ実施手順について</a></strong> )</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+<h3><a name="l6"><span class="sanchor"> </span></a>B.Eclipse on Mac OS X</h3>
+<h4><a name="l7"> </a>1.Java JDK7</h4>
+<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120725/1343229754" class="external">Mac OS X 開発環境構築手順：Java実行環境(jdk7)インストール</a></strong></li>
+<li>JDK7最新バージョンを入手、インストールし、バージョン確認が出来たら完了。</li>
+</ul>
+<h4><a name="l8"> </a>2.Eclipse (Pleiades4.2 or 3.7)</h4>
+<p>導入に関しては以下のエントリを参考に進めてください。</p>
+<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120403/1333455791" class="external">Mac OS X 開発環境構築手順：Eclipse3.7インストール＆日本語化設定</a></strong></li>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120809/1344631424" class="external">Mac OS X 開発環境構築手順：Eclipse4.2インストール＆日本語化設定</a></strong></li>
+</ul>
+<p>また、導入完了後の諸設定に関しても、以下のエントリを参考にカスタマイズすると幸せになれるかもしれません。</p>
+<ul>
+<li>キーボードショートカット<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120808/1344627123" class="external">Mac OS X 開発環境構築手順：Eclipse3.7 キーボードショートカットの設定</a></strong></li>
+</ul></li>
+</ul>
+<ul>
+<li>メソッドの日本語化について<ul>
+<li><strong><a href="http://d.hatena.ne.jp/irof/20120804/p1" class="external">JUnitのテストメソッド名に日本語を使ったときの問題と対処</a></strong></li>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120810/1344726278" class="external">JUnitの日本語メソッド実行に関して色々確認してみた</a></strong></li>
+</ul></li>
+</ul>
+<h4><a name="l9"> </a><strong>3.テスティング関連ライブラリ</strong></h4>
+<ul>
+<li>(A.Eclipse on Windows7と同一内容の為、割愛。)</li>
+</ul>
+<h4><a name="l10"> </a><strong>4.関連プラグインのインストール</strong></h4>
+<ul>
+<li>(A.Eclipse on Windows7と同一内容の為、割愛。)</li>
+</ul>
+<hr>
+<h3><a name="l11"><span class="sanchor"> </span></a>C.IntelliJ IDEA on Windows7</h3>
+<h4><a name="l12"> </a>1.Java JDK7</h4>
+<ul>
+<li>(B.Eclipse on Mac OS Xと同一内容の為、割愛。)</li>
+</ul>
+<h4><a name="l13"> </a>2.IntelliJ IDEA (Community Edition 11.x)</h4>
+<p>無償のCommunity Editionを利用します。2012/09/01 現在の最新は11.1.3です。</p>
+<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120218/1329636559" class="external">IntelliJ IDEA開発環境構築メモ(IntelliJ IDEA/Java/Groovy)</a></strong></li>
+</ul>
+<p>導入後のJava連携は以下を参照。</p>
+<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120801/1344102946" class="external">IntelliJ IDEA 開発環境構築・設定メモ(Java JDK連携)</a></strong></li>
+</ul>
+<h4><a name="l14"> </a><strong>3.テスティング関連ライブラリ</strong></h4>
+<ul>
+<li>必要なライブラリはこれまで同様、JUnit/hamcrest。追加手順に関しては以下のエントリ内【関連ライブラリの追加】の項を参考にして進めてください。<ul>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120806/1344309887" class="external">Groovy製BDDフレームワーク『Spock』開発環境構築手順(※IntelliJ IDEA ver.)</a></strong></li>
+</ul></li>
+</ul>
+<h4><a name="l15"> </a><strong>4.関連プラグインのインストール</strong></h4>
+<ul>
+<li>Eclipseとは異なり、今回TDDBC実践に際して必要となる関連プラグインは特にありません。</li>
+</ul>
+<hr>
+<h3><a name="l16"><span class="sanchor"> </span></a>D.IntelliJ IDEA on Mac OS X</h3>
+<h4><a name="l17"> </a>1.Java JDK7</h4>
+<ul>
+<li>(A.Eclipse on Windows7と同一内容の為、割愛。)</li>
+</ul>
+<h4><a name="l18"> </a>2.IntelliJ IDEA (Community Edition 11.x)</h4>
+<ul>
+<li>(C.IntelliJ IDEA on Windows7とほぼ同一内容の為、割愛。)</li>
+</ul>
+<h4><a name="l19"> </a><strong>3.テスティング関連ライブラリ</strong></h4>
+<ul>
+<li>(C.IntelliJ IDEA on Windows7とほぼ同一内容の為、割愛。)</li>
+</ul>
+<ul>
+<li>MacにおけるJUnit日本語メソッド名の利用については若干問題があります。以下のエントリを参考にして対処してください。<ul>
+<li><strong><a href="http://d.hatena.ne.jp/irof/20111201/p1" class="external">メソッド名を日本語にする話</a></strong></li>
+<li><strong><a href="http://d.hatena.ne.jp/irof/20120804/p1" class="external">JUnitのテストメソッド名に日本語を使ったときの問題と対処</a></strong></li>
+<li><strong><a href="http://d.hatena.ne.jp/y_sumida/20120805/1344134360" class="external">IntelliJ IDEA + Spock で日本語テストメソッド実行時にハマった話</a></strong></li>
+<li><strong><a href="http://d.hatena.ne.jp/absj31/20120810/1344726278" class="external">JUnitの日本語メソッド実行に関して色々確認してみた</a></strong></li>
+</ul></li>
+</ul>
+<h4><a name="l20"> </a><strong>4.関連プラグインのインストール</strong></h4>
+<ul>
+<li>(C.IntelliJ IDEA on Windows7とほぼ同一内容の為、割愛。)</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/08/30 19:09:16<br>
+        Keyword(s):<br>
+        References:[<a href="./?TDDBC%E6%A8%AA%E6%B5%9C2nd">TDDBC横浜 Second Season</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
+<p><a href="https://github.com/tddbc/" class="external">github</a></p>
+<p><a href="http://tddbc.doorkeeper.jp/" class="external">doorkeeper</a></p>
+<p><a href="https://twitter.com/search?q=%23tddbc&amp;src=typd&amp;f=realtime" class="external">#tddbc</a></p>
+<h2><span class="date"><a name="s1"> </a></span><span class="title">最新の20件</span></h2>
+
+
+</div>
+
+
+  </div>
+  <div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 1.0.0 (2013-03-30).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 2.4.1-p111 (2017-03-22).<br>
+Founded by .<br>
+</div>
+</div>
+</body>
+</html>
