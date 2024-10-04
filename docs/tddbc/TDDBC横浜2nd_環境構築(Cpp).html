@@ -26,38 +26,281 @@
 </head>
 
 <body>
-<div class="whole-contents">
+  <div class="whole-contents">
   <div class="contents">
     
 
+<a name="top"> </a>
 <div class="main">
   <div class="adminmenu"><span class="adminmenu"><a href="./?c=create" rel="nofollow">Create</a></span>&nbsp;
-<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C++%29" rel="nofollow">Edit</a></span>&nbsp;
-<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C++%29" rel="nofollow">Diff</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=edit;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C%2B%2B%29" rel="nofollow">Edit</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=diff;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C%2B%2B%29" rel="nofollow">Diff</a></span>&nbsp;
 <span class="adminmenu"><a href="./">TDDBC</a></span>&nbsp;
 <span class="adminmenu"><a href="./?c=index">Index</a></span>&nbsp;
 <span class="adminmenu"><a href="./?c=search">Search</a></span>&nbsp;
 <span class="adminmenu"><a href="./?c=recent">Changes</a></span>&nbsp;
-<span class="adminmenu"><a href="./?c=history;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C++%29">History</a></span>&nbsp;
+<span class="adminmenu"><a href="./?c=history;p=TDDBC%E6%A8%AA%E6%B5%9C2nd%2F%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%28C%2B%2B%29">History</a></span>&nbsp;
 <span class="adminmenu"><a href="./?c=rss">RSS</a></span>&nbsp;
 <span class="adminmenu"><a href="./?c=admin">Admin</a></span></div>
-  <h1 class="header">TDD Boot Camp(TDDBC) - Create</h1>
+  <h1 class="header">TDDBC横浜2nd/環境構築(C++)</h1>
+  
+  <div><ul>
+<li><a href="#l0">Visual C++ で PCUnit な環境</a></li>
+<ul>
+<li><a href="#l1">必要なもの</a></li>
+<li><a href="#l2">はじめに</a></li>
+<li><a href="#l3">1. プロジェクトを作りましょう</a></li>
+<li><a href="#l4">2. プロジェクトを設定しましょう</a></li>
+<ul>
+<li><a href="#l5">2.1 構成プロパティ &gt; C/C++ &gt; 全般</a></li>
+<li><a href="#l6">2.2 構成プロパティ &gt; リンカー &gt; 入力</a></li>
+<li><a href="#l7">2.3 構成プロパティ &gt; ビルドイベント &gt; ビルド前イベント</a></li>
+<li><a href="#l8">2.4 プロジェクトの依存関係</a></li>
+</ul>
+<li><a href="#l9">3. テストコードの生成</a></li>
+<li><a href="#l10">4. ビルド</a></li>
+<li><a href="#l11">5. テストプログラムの実行</a></li>
+<li><a href="#l12">6. 開発のサイクル</a></li>
+<ul>
+<li><a href="#l13">6.1 すでにあるテストスイートを使う場合</a></li>
+<li><a href="#l14">6.2 テストスイートを追加する場合</a></li>
+</ul>
+</ul>
+<li><a href="#l15">Visual C++ で googletest な環境</a></li>
+<ul>
+<li><a href="#l16">必要なもの</a></li>
+<li><a href="#l17">はじめに</a></li>
+<li><a href="#l18">1. プロジェクトを作りましょう</a></li>
+<ul>
+<li><a href="#l19">1.1. googletest の導入</a></li>
+<li><a href="#l20">1.2. プロジェクトの設定と確認</a></li>
+</ul>
+<li><a href="#l21">2. googltest の使い方</a></li>
+</ul>
+</ul>
+<div class="day">
+  <h2><span class="date"><a name="l0"> </a></span><span class="title">Visual C++ で PCUnit な環境</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l1"><span class="sanchor"> </span></a>必要なもの</h3>
+<dl>
+<dt>Visual C++ Express</dt>
+<dd>IDE です
+</dd>
+<dt>PCUnit</dt>
+<dd> cunit like な libc 非依存のテスティングフレームワークです
+</dd>
+<dt>Ruby</dt>
+<dd>コード生成スクリプトを使うために必要です
+</dd>
+</dl>
+<h3><a name="l2"><span class="sanchor"> </span></a>はじめに</h3>
+<p>この文書は <a href="http://www.microsoft.com/ja-jp/dev/express/default.aspx" class="external">Visual C++ Express</a> で <a href="https://github.com/katono/PCUnit" class="external">PCUnit</a> を使うための環境構築の手順です。
+PCUnit 付属のコード生成スクリプトを使えるようにすることが目的です。
+空っぽの状態から始める手がかりにしてください。</p>
+<h3><a name="l3"><span class="sanchor"> </span></a>1. プロジェクトを作りましょう</h3>
+<p>最低でも3つにしたほうがいいと思います。</p>
+<ul>
+<li>PCUnit<ul>
+<li>スタティックライブラリ</li>
+<li>github で公開されている PCUnit のリソースを置いてしまいましょう</li>
+<li>ソースフォルダには .c なファイルを、ヘッダーフォルダには .h なファイルを入れてください</li>
+</ul></li>
+<li>SampleMain<a class="nodisp" href="./?c=edit;p=SampleMain" title="Create and edit the page SampleMain.">?</a><ul>
+<li>スタティックライブラリ</li>
+<li>本体コードをここに入れます</li>
+</ul></li>
+<li>SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a> (スタートアッププロジェクト)<ul>
+<li>コンソールアプリケーション</li>
+<li>テストコードをここに入れます</li>
+</ul></li>
+</ul>
+<p>ソリューションディレクトリからの構成は次のようになります。</p>
+<pre>C:\USERS\YUJIORAMA\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\SAMPLE
+├───PCUnit
+│   └───PCUnit
+├───SampleMain
+└───SampleTest</pre>
+<h3><a name="l4"><span class="sanchor"> </span></a>2. プロジェクトを設定しましょう</h3>
+<p>テストを実行することが主目的なので、SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a> についていろいろと設定をしていきます。</p>
+<h4><a name="l5"> </a>2.1 構成プロパティ &gt; C/C++ &gt; 全般</h4>
+<p>テストプロジェクトから PCUnit とメインプロジェクトのヘッダーファイルを参照できるようにすることが目的です。</p>
+<p>今回はソースコードファイルとヘッダーファイルでディレクトリを分けない想定のため、プロジェクトのルートディレクトリを追加します。</p>
+<p>設定は「追加のインクルードディレクトリ」に追加します。
+初期値は空欄です。</p>
+<pre>$(SolutionDir)/PCUnit
+$(SolutionDir)/SampleMain</pre>
+<h4><a name="l6"> </a>2.2 構成プロパティ &gt; リンカー &gt; 入力</h4>
+<p>テスト実行ファイルに、PCUnit とメインプロジェクトの生成物をリンクできるようにすることが目的です。</p>
+<p>今回は出力先をデフォルトのままにする想定で、それぞれのライブラリファイルを追加します。
+設定は「追加の依存ファイル」にセミコロン区切りで追加します。
+初期値にいろいろ入っているので、消してしまったらプロジェクト作りなおしたほうが早いと思います。</p>
+<pre>$(SolutionDir)/$(ConfigurationName)/PCUnit.lib
+$(SolutionDir)/$(ConfigurationName)/SampleMain.lib</pre>
+<h4><a name="l7"> </a>2.3 構成プロパティ &gt; ビルドイベント &gt; ビルド前イベント</h4>
+<p>テストプロジェクトをビルドする前に、コード生成スクリプトを実行してテストスイートを登録できるようにすることが目的です。</p>
+<p>ディレクトリの指定は完全パスで行います。
+半角スペースが引数の区切りになってしまうため、クォートが必要です．
+(Rubyのインストール先はそれぞれの環境に合わせてください)</p>
+<pre>d:\dev\ruby193\bin\ruby '$(SolutionDir)/PCUnit/PCUnit/pcunit_register.rb' -d '$(ProjectDir)'</pre>
+<h4><a name="l8"> </a>2.4 プロジェクトの依存関係</h4>
+<p>ソリューションエクスプローラーで、テストプロジェクトの依存先に PCUnit とメインプロジェクトを追加してください。</p>
+<h3><a name="l9"><span class="sanchor"> </span></a>3. テストコードの生成</h3>
+<p>コマンドプロンプトを起動して、ソリューションディレクトリに移動します。</p>
+<pre>cd c:\Users\yujoirama\Documents\Visual Studio 2010\Projects\Sample</pre>
+<p>PCUnit のひな形生成スクリプトを実行します。
+(Rubyのインストール先はそれぞれの環境に合わせてください)</p>
+<pre>d:\dev\ruby193\bin\ruby PCUnit\PCUnit\pcunit_template.rb SampleSuite -d SampleTest -p -m</pre>
+<p>SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a> の下に次のファイルが生成されるので、IDE からテストプロジェクトのソースフォルダに追加してください。</p>
+<pre>main.cpp
+SampleSuite.cpp</pre>
+<h3><a name="l10"><span class="sanchor"> </span></a>4. ビルド</h3>
+<p>IDE で "F7" を押すか、デバッグメニューの「ソリューションのビルド」を実行してください。
+出力ウインドウに次のような結果が表示されます。</p>
+<pre>1&gt;------ ビルド開始: プロジェクト: SampleMain, 構成: Debug Win32 ------
+2&gt;------ ビルド開始: プロジェクト: SampleTest, 構成: Debug Win32 ------
+2&gt;  SampleSuite.cpp
+2&gt;  main.cpp
+2&gt;  コードを生成中...
+2&gt;  SampleTest.vcxproj -&gt; c:\users\yujoirama\documents\visual studio 2010\Projects\Sample\Debug\SampleTest.exe
+========== ビルド: 2 正常終了、0 失敗、1 更新不要、0 スキップ ==========</pre>
+<h3><a name="l11"><span class="sanchor"> </span></a>5. テストプログラムの実行</h3>
+<p><strong>IDE で "Control + F5" を押してください。</strong>
+(デバッグメニューから「デバッグ実行」を実行するとすぐにウインドウが閉じてしまいます)</p>
+<p>コマンドプロンプトが開いて、次のように表示された状態になります。
+何かキーを押すとウインドウは閉じます。</p>
+<pre>
+Suite: SampleSuite
 
-  <div class="day">
-    <div class="body">
-      <div class="section">
-        
-        <div>This page does not exist.  Feel free to create it yourself :-)</div>
-        <form action="./" method="get">
-          <input type="hidden" value="create" name="c">
-          Create: <input size="30" maxlength="50" name="key" value="TDDBC横浜2nd/環境構築(C  )">
-          <input type="submit" value="New"> 
-       </form>
-      </div>
+Test: test_TODO
+ c:\users\yujoirama\documents\visual studio 2010\projects\sample\sampletest\samp
+lesuite.cpp(26) : PCU_FAIL
+  TODO
+
+1 Tests, 1 Failures, 0 Skipped
+
+Press any key to continue . . .</pre>
+<p>以降は、テストプロジェクトに追加したソースコードファイルを編集していけば、
+ビルド時にテストスイートの登録が行われるようになります。</p>
+<h3><a name="l12"><span class="sanchor"> </span></a>6. 開発のサイクル</h3>
+<p>以降は次のようなサイクルでコードを書いていく事になるでしょう。</p>
+<h4><a name="l13"> </a>6.1 すでにあるテストスイートを使う場合</h4>
+<p>+ テスト関数を書く
++ ビルド、実行する</p>
+<h4><a name="l14"> </a>6.2 テストスイートを追加する場合</h4>
+<p>+ コマンドプロンプトから pcunit_template.rb を実行する
++ 生成されたテストコードファイルをテストプロジェクトに追加する
++ テスト関数を書く
++ ビルド、実行する</p>
     </div>
   </div>
 </div>
+<div class="day">
+  <h2><span class="date"><a name="l15"> </a></span><span class="title">Visual C++ で googletest な環境</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l16"><span class="sanchor"> </span></a>必要なもの</h3>
+<dl>
+<dt>Visual C++ Express</dt>
+<dd>IDE です
+</dd>
+<dt>googletest</dt>
+<dd> C++ のための xUnit フレームワークです
+</dd>
+</dl>
+<h3><a name="l17"><span class="sanchor"> </span></a>はじめに</h3>
+<p>この文書は <a href="http://www.microsoft.com/ja-jp/dev/express/default.aspx" class="external">Visual C++ Express</a> で <a href="http://code.google.com/p/googletest/" class="external">googletest</a> を使うための環境構築の手順です。
+空っぽの状態から始める手がかりにしてください。</p>
+<h3><a name="l18"><span class="sanchor"> </span></a>1. プロジェクトを作りましょう</h3>
+<p>最低でも3つにしたほうがいいと思います。</p>
+<ul>
+<li>gtest-md<ul>
+<li>googletest の本体です</li>
+<li>配布されてるアーカイブの中にあるやつを使います<ul>
+<li>手順は後述します</li>
+</ul></li>
+</ul></li>
+<li>SampleMain<a class="nodisp" href="./?c=edit;p=SampleMain" title="Create and edit the page SampleMain.">?</a><ul>
+<li>スタティックライブラリ</li>
+<li>本体コードをここに入れます</li>
+</ul></li>
+<li>SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a> (スタートアッププロジェクト)<ul>
+<li>コンソールアプリケーション</li>
+<li>テストコードをここに入れます</li>
+</ul></li>
+</ul>
+<p>ソリューションディレクトリからの構成は次のようになります。</p>
+<pre>C:\USERS\YUJIORAMA\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\SAMPLE
+├───SampleMain
+└───SampleTest</pre>
+<h4><a name="l19"> </a>1.1. googletest の導入</h4>
+<ul>
+<li><a href="http://code.google.com/p/googletest/downloads/list" class="external">ダウンロードページ</a>から最新版(この時は1.6.0)を取得します</li>
+<li>適当なディレクトリに展開します</li>
+<li><strong>重要(?)</strong>：展開したフォルダのプロパティから、「読み取り専用」のチェックを外します</li>
+</ul>
+<p>ここからは Visual C++ を操作します。</p>
+<ul>
+<li>Visual C++ でさっき作ったソリューションを開きます</li>
+<li>ソリューションエクスプローラーでソリューションを右クリックし、「追加」から「既存のプロジェクト」を選択します</li>
+<li>ファイルダイアログから <strong>gtest-md.vcproj</strong> を選択します<ul>
+<li>場所は <em>展開した googletest のフォルダ\msvc</em> です</li>
+</ul></li>
+<li>変換ウィザードに従いプロジェクト形式を変換してインポートします</li>
+</ul>
+<h4><a name="l20"> </a>1.2. プロジェクトの設定と確認</h4>
+<p>次のようにそれぞれのプロジェクトを設定します。</p>
+<ul>
+<li>gtest-md<ul>
+<li>「全般」「文字セット」→ <strong>Unicode 文字セットを使用する</strong>に変更</li>
+</ul></li>
+<li>SampleMain<a class="nodisp" href="./?c=edit;p=SampleMain" title="Create and edit the page SampleMain.">?</a><ul>
+<li>特になし</li>
+</ul></li>
+<li>SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a><ul>
+<li>スタートアッププロジェクトに設定</li>
+<li>「C/C++」「全般」「追加のインクルードディレクトリ」→<em>展開した googletest のフォルダ\include</em>を追加</li>
+<li>「リンカー」「入力」「追加の依存ファイル」→<em>展開した googletest のフォルダ\msvc\$(SolutionName<a class="nodisp" href="./?c=edit;p=SolutionName" title="Create and edit the page SolutionName.">?</a>)\$(ConfigurationName<a class="nodisp" href="./?c=edit;p=ConfigurationName" title="Create and edit the page ConfigurationName.">?</a>)\gtestd.lib</em>を追加</li>
+</ul></li>
+</ul>
+<p><em>SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a></em> プロジェクトに SampleTest<a class="nodisp" href="./?c=edit;p=SampleTest" title="Create and edit the page SampleTest.">?</a>.cpp があるなら、次の内容で置き換えます。
+(なければ main.cpp とでもして追加します)</p>
+<pre>#include "stdafx.h"
+#include "gtest/gtest.h"
 
+int _tmain(int argc, _TCHAR* argv[])
+{
+  testing::InitGoogleTest(&amp;argc, argv);
+  return RUN_ALL_TESTS();
+}</pre>
+<p><strong>IDE で "Control + F5" を押してください。</strong>
+(デバッグメニューから「デバッグ実行」を実行するとすぐにウインドウが閉じてしまいます)</p>
+<p>コマンドプロンプトが開いて、次のように表示された状態になります。
+何かキーを押すとウインドウは閉じます。</p>
+<pre>[==========] Running 0 tests from 0 test cases.
+[==========] 0 tests from 0 test cases ran. (0 ms total)
+[  PASSED  ] 0 tests.
+続行するには何かキーを押してください . . .</pre>
+<h3><a name="l21"><span class="sanchor"> </span></a>2. googltest の使い方</h3>
+<p><a href="http://opencv.jp/googletestdocs/primer.html" class="external">日本語訳ドキュメント</a>があるので参照してください。</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2012/08/31 01:23:09<br>
+        Keyword(s):<br>
+        References:[<a href="./?TDDBC%E6%A8%AA%E6%B5%9C2nd">TDDBC横浜 Second Season</a>] <br>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<hr style="display: none">
 <div class="sidebar">
   <h2><span class="date"><a name="s0"> </a></span><span class="title">リンク</span></h2>
 <p><a href="https://github.com/tddbc/" class="external">github</a></p>
